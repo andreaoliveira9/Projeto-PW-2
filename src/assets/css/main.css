@@ -1,0 +1,1368 @@
+/**
+* Template Name: Kelly
+* Template URL: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/
+* Updated: Aug 07 2024 with Bootstrap v5.3.3
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+# Help: https://bootstrapmade.com/color-system/
+--------------------------------------------------------------*/
+/* Fonts */
+:root {
+  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --heading-font: "Raleway", sans-serif;
+  --nav-font: "Poppins", sans-serif;
+}
+
+/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+:root {
+  --background-color: #ffffff; /* Background color for the entire website, including individual sections */
+  --default-color: #444444; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #222222; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #34b7a7; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #ffffff; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #ffffff; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+}
+
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+  --nav-color: #444444; /* The default color of the main navmenu links */
+  --nav-hover-color: #34b7a7; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #ffffff; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #ffffff; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #444444; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #34b7a7; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
+
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
+
+.light-background {
+  --background-color: #e9e8e6;
+  --surface-color: #ffffff;
+}
+
+.dark-background {
+  --background-color: #060606;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #252525;
+  --contrast-color: #ffffff;
+}
+
+:root:has(#theme-dark:checked) .light-background,
+:root[data-theme="dark"] .light-background {
+  --background-color: #2a4873;
+  --surface-color: #325280;
+}
+
+:root:has(#theme-dark:checked) .dark-background,
+:root[data-theme="dark"] .dark-background {
+  --background-color: #142a4c;
+  --surface-color: #1f3a63;
+  --default-color: #e6f0ff;
+  --heading-color: #f9fbff;
+  --contrast-color: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(#theme-auto:checked) .light-background,
+  :root[data-theme="auto"] .light-background {
+    --background-color: #2a4873;
+    --surface-color: #325280;
+  }
+
+  :root:has(#theme-auto:checked) .dark-background,
+  :root[data-theme="auto"] .dark-background {
+    --background-color: #142a4c;
+    --surface-color: #1f3a63;
+    --default-color: #e6f0ff;
+    --heading-color: #f9fbff;
+    --contrast-color: #ffffff;
+  }
+}
+
+/* Smooth scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+:root {
+  color-scheme: light;
+}
+
+:root:has(#theme-light:checked),
+:root[data-theme="light"] {
+  color-scheme: light;
+  --background-color: #ffffff;
+  --default-color: #444444;
+  --heading-color: #222222;
+  --surface-color: #ffffff;
+  --contrast-color: #ffffff;
+  --nav-color: #444444;
+  --nav-hover-color: #34b7a7;
+  --nav-mobile-background-color: #ffffff;
+  --nav-dropdown-background-color: #ffffff;
+  --nav-dropdown-color: #444444;
+  --nav-dropdown-hover-color: #34b7a7;
+}
+
+:root:has(#theme-dark:checked),
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --background-color: #142a4c;
+  --default-color: #e6f0ff;
+  --heading-color: #f9fbff;
+  --surface-color: #1f3a63;
+  --contrast-color: #ffffff;
+  --nav-color: #f1f5f9;
+  --nav-hover-color: #58efd8;
+  --nav-mobile-background-color: #1f3a63;
+  --nav-dropdown-background-color: #26456f;
+  --nav-dropdown-color: #e6f0ff;
+  --nav-dropdown-hover-color: #58efd8;
+}
+
+:root:has(#theme-auto:checked),
+:root[data-theme="auto"] {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(#theme-auto:checked),
+  :root[data-theme="auto"] {
+    color-scheme: dark;
+    --background-color: #142a4c;
+    --default-color: #e6f0ff;
+    --heading-color: #f9fbff;
+    --surface-color: #1f3a63;
+    --contrast-color: #ffffff;
+    --nav-color: #f1f5f9;
+    --nav-hover-color: #58efd8;
+    --nav-mobile-background-color: #1f3a63;
+    --nav-dropdown-background-color: #26456f;
+    --nav-dropdown-color: #e6f0ff;
+    --nav-dropdown-hover-color: #58efd8;
+  }
+}
+
+/* Dark mode styling for .bg-light elements */
+:root:has(#theme-dark:checked) .bg-light,
+:root[data-theme="dark"] .bg-light {
+  background-color: var(--surface-color) !important;
+  color: var(--default-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(#theme-auto:checked) .bg-light,
+  :root[data-theme="auto"] .bg-light {
+    background-color: var(--surface-color) !important;
+    color: var(--default-color);
+  }
+}
+
+/*--------------------------------------------------------------
+# General Styling & Shared Classes
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: color-mix(in srgb, var(--accent-color), transparent 25%);
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+}
+
+.card,
+.accordion-item,
+.dropdown-menu,
+.list-group-item,
+.modal-content,
+.offcanvas,
+.table {
+  background-color: var(--surface-color);
+  color: var(--default-color);
+  border-color: color-mix(in srgb, var(--default-color) 12%, transparent 88%);
+}
+
+.list-group-item {
+  border-color: color-mix(in srgb, var(--default-color) 8%, transparent 92%);
+}
+
+.card,
+.accordion-item,
+.modal-content,
+.offcanvas {
+  box-shadow: 0 18px 45px
+    color-mix(in srgb, var(--background-color) 65%, transparent 35%);
+}
+
+.dropdown-menu {
+  border-radius: 0.75rem;
+  box-shadow: 0 18px 40px rgba(10, 15, 25, 0.35);
+}
+
+.dropdown-menu .dropdown-item {
+  color: var(--default-color);
+}
+
+.dropdown-menu .dropdown-item:hover,
+.dropdown-menu .dropdown-item:focus {
+  background-color: color-mix(
+    in srgb,
+    var(--accent-color) 12%,
+    var(--surface-color) 88%
+  );
+  color: var(--heading-color);
+}
+
+.list-group-item-action {
+  transition: background-color 0.25s ease, color 0.25s ease, border-color 0.25s;
+}
+
+.list-group-item-action:hover,
+.list-group-item-action:focus {
+  background-color: color-mix(
+    in srgb,
+    var(--surface-color) 90%,
+    var(--accent-color) 10%
+  );
+  color: var(--heading-color);
+  border-color: color-mix(in srgb, var(--accent-color) 25%, transparent 75%);
+}
+
+.list-group-item-action:hover .text-muted,
+.list-group-item-action:focus .text-muted {
+  color: color-mix(
+    in srgb,
+    var(--heading-color) 80%,
+    var(--contrast-color) 20%
+  );
+}
+
+.form-control,
+.form-select {
+  background-color: color-mix(
+    in srgb,
+    var(--surface-color) 94%,
+    var(--background-color) 6%
+  );
+  color: var(--default-color);
+  border-color: color-mix(in srgb, var(--default-color) 18%, transparent 82%);
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: color-mix(
+    in srgb,
+    var(--surface-color) 96%,
+    var(--background-color) 4%
+  );
+  border-color: var(--accent-color);
+  color: var(--heading-color);
+  box-shadow: 0 0 0 0.15rem
+    color-mix(in srgb, var(--accent-color) 32%, transparent 68%);
+}
+
+.form-check-input {
+  background-color: color-mix(
+    in srgb,
+    var(--surface-color) 90%,
+    var(--background-color) 10%
+  );
+  border-color: color-mix(in srgb, var(--default-color) 20%, transparent 80%);
+}
+
+.form-check-input:checked {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color) 50%, transparent 50%);
+}
+
+:root:has(#theme-dark:checked) input::placeholder,
+:root:has(#theme-dark:checked) textarea::placeholder,
+:root[data-theme="dark"] input::placeholder,
+:root[data-theme="dark"] textarea::placeholder {
+  color: color-mix(in srgb, var(--default-color) 50%, transparent 50%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(#theme-auto:checked) input::placeholder,
+  :root:has(#theme-auto:checked) textarea::placeholder,
+  :root[data-theme="auto"] input::placeholder,
+  :root[data-theme="auto"] textarea::placeholder {
+    color: color-mix(in srgb, var(--default-color) 50%, transparent 50%);
+  }
+}
+
+:root:has(#theme-dark:checked) .text-muted,
+:root[data-theme="dark"] .text-muted {
+  color: color-mix(
+    in srgb,
+    var(--default-color) 75%,
+    var(--contrast-color) 25%
+  ) !important;
+}
+
+:root:has(#theme-dark:checked) .text-secondary,
+:root[data-theme="dark"] .text-secondary,
+:root:has(#theme-dark:checked) .text-body-secondary,
+:root[data-theme="dark"] .text-body-secondary {
+  color: color-mix(
+    in srgb,
+    var(--default-color) 82%,
+    var(--contrast-color) 18%
+  ) !important;
+}
+
+:root:has(#theme-dark:checked) hr,
+:root[data-theme="dark"] hr {
+  border-color: color-mix(in srgb, var(--default-color) 15%, transparent 85%);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(#theme-auto:checked) .text-muted,
+  :root[data-theme="auto"] .text-muted {
+    color: color-mix(
+      in srgb,
+      var(--default-color) 75%,
+      var(--contrast-color) 25%
+    ) !important;
+  }
+
+  :root:has(#theme-auto:checked) .text-secondary,
+  :root[data-theme="auto"] .text-secondary,
+  :root:has(#theme-auto:checked) .text-body-secondary,
+  :root[data-theme="auto"] .text-body-secondary {
+    color: color-mix(
+      in srgb,
+      var(--default-color) 82%,
+      var(--contrast-color) 18%
+    ) !important;
+  }
+
+  :root:has(#theme-auto:checked) hr,
+  :root[data-theme="auto"] hr {
+    border-color: color-mix(in srgb, var(--default-color) 15%, transparent 85%);
+  }
+}
+
+.table th,
+.table td {
+  border-color: color-mix(in srgb, var(--default-color) 12%, transparent 88%);
+}
+:root:has(#theme-dark:checked) .table,
+:root[data-theme="dark"] .table {
+  --mathpath-table-base: color-mix(
+    in srgb,
+    var(--surface-color) 96%,
+    var(--contrast-color) 4%
+  );
+  --bs-table-bg: var(--mathpath-table-base);
+  --bs-table-striped-bg: color-mix(
+    in srgb,
+    var(--mathpath-table-base) 92%,
+    var(--accent-color) 8%
+  );
+  --bs-table-hover-bg: color-mix(
+    in srgb,
+    var(--mathpath-table-base) 88%,
+    var(--accent-color) 12%
+  );
+  --bs-table-color: var(--default-color);
+  color: var(--default-color);
+}
+
+:root:has(#theme-dark:checked) .table thead,
+:root[data-theme="dark"] .table thead {
+  background-color: color-mix(
+    in srgb,
+    var(--surface-color) 85%,
+    var(--contrast-color) 15%
+  );
+  color: var(--heading-color);
+}
+
+:root:has(#theme-dark:checked) .table-striped > tbody > tr:nth-of-type(odd) > *,
+:root[data-theme="dark"] .table-striped > tbody > tr:nth-of-type(odd) > * {
+  background-color: color-mix(
+    in srgb,
+    var(--mathpath-table-base) 88%,
+    var(--accent-color) 12%
+  );
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(#theme-auto:checked) .table,
+  :root[data-theme="auto"] .table {
+    --mathpath-table-base: color-mix(
+      in srgb,
+      var(--surface-color) 96%,
+      var(--contrast-color) 4%
+    );
+    --bs-table-bg: var(--mathpath-table-base);
+    --bs-table-striped-bg: color-mix(
+      in srgb,
+      var(--mathpath-table-base) 90%,
+      var(--accent-color) 10%
+    );
+    --bs-table-hover-bg: color-mix(
+      in srgb,
+      var(--mathpath-table-base) 84%,
+      var(--accent-color) 16%
+    );
+    --bs-table-color: var(--default-color);
+    color: var(--default-color);
+  }
+
+  :root:has(#theme-auto:checked) .table thead,
+  :root[data-theme="auto"] .table thead {
+    background-color: color-mix(
+      in srgb,
+      var(--surface-color) 85%,
+      var(--contrast-color) 15%
+    );
+    color: var(--heading-color);
+  }
+
+  :root:has(#theme-auto:checked)
+    .table-striped
+    > tbody
+    > tr:nth-of-type(odd)
+    > *,
+  :root[data-theme="auto"] .table-striped > tbody > tr:nth-of-type(odd) > * {
+    background-color: color-mix(
+      in srgb,
+      var(--mathpath-table-base) 88%,
+      var(--accent-color) 12%
+    );
+  }
+}
+
+.theme-radio {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.theme-toggle.dropdown > button,
+.user-menu .btn {
+  border-color: color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
+  color: var(--contrast-color);
+  background: color-mix(
+    in srgb,
+    var(--accent-color) 12%,
+    var(--surface-color) 88%
+  );
+  transition: all 0.3s ease;
+  padding: 0.35rem;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0 !important;
+}
+
+:root:has(#theme-light:checked) .theme-toggle.dropdown > button,
+:root[data-theme="light"] .theme-toggle.dropdown > button,
+:root:has(#theme-light:checked) .user-menu .btn,
+:root[data-theme="light"] .user-menu .btn,
+:root:has(#theme-auto:checked) .theme-toggle.dropdown > button,
+:root[data-theme="auto"] .theme-toggle.dropdown > button,
+:root:has(#theme-auto:checked) .user-menu .btn,
+:root[data-theme="auto"] .user-menu .btn {
+  color: var(--nav-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(#theme-auto:checked) .theme-toggle.dropdown > button,
+  :root[data-theme="auto"] .theme-toggle.dropdown > button,
+  :root:has(#theme-auto:checked) .user-menu .btn,
+  :root[data-theme="auto"] .user-menu .btn {
+    color: var(--contrast-color);
+  }
+}
+
+.theme-toggle__icon,
+.user-menu__icon {
+  font-size: 1.05rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-toggle.dropdown > button:hover,
+.theme-toggle.dropdown > button:focus,
+.user-menu .btn:hover,
+.user-menu .btn:focus {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border-color: var(--accent-color);
+}
+
+.user-menu .btn i {
+  color: currentColor;
+  transition: color 0.3s ease;
+}
+
+.theme-toggle .dropdown-menu {
+  min-width: 14rem;
+  border-radius: 0.75rem;
+  border: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
+  padding: 0.25rem 0;
+}
+
+.theme-toggle .dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.theme-toggle .dropdown-item i {
+  font-size: 1.1rem;
+  color: var(--accent-color);
+  transition: color 0.3s ease;
+}
+
+.theme-toggle .dropdown-item:hover i,
+.theme-toggle .dropdown-item:focus i {
+  color: var(--accent-color);
+}
+
+.theme-toggle .dropdown-item .theme-check {
+  margin-left: auto;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  color: var(--accent-color);
+}
+
+#theme-auto:checked ~ .dropdown-menu label[for="theme-auto"] .theme-check,
+#theme-light:checked ~ .dropdown-menu label[for="theme-light"] .theme-check,
+#theme-dark:checked ~ .dropdown-menu label[for="theme-dark"] .theme-check {
+  opacity: 1;
+}
+
+#theme-auto:checked ~ .dropdown-menu label[for="theme-auto"],
+#theme-light:checked ~ .dropdown-menu label[for="theme-light"],
+#theme-dark:checked ~ .dropdown-menu label[for="theme-dark"] {
+  background-color: color-mix(
+    in srgb,
+    var(--accent-color) 8%,
+    var(--surface-color) 92%
+  );
+  font-weight: 600;
+}
+
+:root:has(#theme-dark:checked) .theme-toggle .dropdown-item:hover i,
+:root[data-theme="dark"] .theme-toggle .dropdown-item:hover i,
+:root:has(#theme-dark:checked) .theme-toggle .dropdown-item:focus i,
+:root[data-theme="dark"] .theme-toggle .dropdown-item:focus i {
+  color: var(--contrast-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(#theme-auto:checked) .theme-toggle .dropdown-item:hover i,
+  :root[data-theme="auto"] .theme-toggle .dropdown-item:hover i,
+  :root:has(#theme-auto:checked) .theme-toggle .dropdown-item:focus i,
+  :root[data-theme="auto"] .theme-toggle .dropdown-item:focus i {
+    color: var(--contrast-color);
+  }
+}
+/*--------------------------------------------------------------
+# Global Header
+--------------------------------------------------------------*/
+
+.header {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 15px 0;
+  transition: all 0.5s;
+  z-index: 997;
+  box-shadow: 0px 0 18px rgba(0, 0, 0, 0.1);
+}
+
+.header .logo {
+  line-height: 1;
+}
+
+.header .logo img {
+  max-height: 36px;
+  margin-right: 8px;
+}
+
+.header .logo h1 {
+  font-size: 32px;
+  margin: 0;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: var(--heading-color);
+}
+
+.header .header-social-links {
+  padding-right: 15px;
+}
+
+.header .header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-left: auto;
+}
+
+.header .header-social-links a {
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  padding-left: 6px;
+  display: inline-block;
+  transition: 0.3s;
+  font-size: 16px;
+}
+
+.header .header-social-links a:hover {
+  color: var(--accent-color);
+}
+
+.header .header-social-links a i {
+  line-height: 0px;
+}
+
+.header .user-menu .btn {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.9rem;
+  gap: 0.45rem !important;
+}
+
+.header .user-menu .btn:hover {
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  border-color: var(--accent-color);
+}
+
+.header .user-menu .btn i {
+  color: currentColor;
+  transition: color 0.3s ease;
+}
+
+.header .user-menu .btn:hover i {
+  color: currentColor;
+}
+
+.header .user-menu .dropdown-menu {
+  border-radius: 1rem;
+  border: 1px solid color-mix(in srgb, var(--accent-color) 20%, transparent 80%);
+}
+
+.header .user-menu .dropdown-item i {
+  color: var(--accent-color);
+}
+
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+  color: var(--nav-color);
+  transition: color 0.3s ease;
+}
+
+.navbar-dark .navbar-brand:hover,
+.navbar-dark .navbar-nav .nav-link.active,
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .nav-link:hover {
+  color: var(--nav-hover-color);
+}
+
+:root:has(#theme-dark:checked) .navbar.bg-dark,
+:root[data-theme="dark"] .navbar.bg-dark {
+  background-color: #0f172a !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:has(#theme-auto:checked) .navbar.bg-dark,
+  :root[data-theme="auto"] .navbar.bg-dark {
+    background-color: #0f172a !important;
+  }
+}
+
+.btn-accent,
+.btn-primary {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.btn-accent:hover,
+.btn-primary:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--accent-color) 85%,
+    var(--contrast-color) 15%
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--accent-color) 85%,
+    var(--contrast-color) 15%
+  );
+  color: var(--contrast-color);
+}
+
+.btn-outline-light.btn-hero-user {
+  background-color: color-mix(
+    in srgb,
+    var(--accent-color) 18%,
+    var(--surface-color) 82%
+  );
+  border-color: color-mix(in srgb, var(--accent-color) 35%, transparent 65%);
+  color: var(--heading-color);
+}
+
+.btn-outline-light.btn-hero-user:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.btn-outline-primary {
+  color: var(--accent-color);
+  border-color: color-mix(in srgb, var(--accent-color) 45%, transparent 55%);
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--accent-color);
+  color: var(--contrast-color);
+  border-color: var(--accent-color);
+}
+
+@media (max-width: 991px) {
+  .header .logo {
+    order: 1;
+  }
+
+  .header .header-social-links {
+    order: 2;
+  }
+
+  .header .header-actions {
+    order: 3;
+    margin-left: auto;
+  }
+
+  .header .navmenu {
+    order: 4;
+  }
+}
+
+/*--------------------------------------------------------------
+# Navigation Menu
+--------------------------------------------------------------*/
+/* Desktop Navigation */
+@media (min-width: 992px) {
+  .navmenu {
+    padding: 0;
+  }
+
+  .header .navmenu {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    padding: 0 1.5rem;
+    width: max-content;
+  }
+
+  .navmenu ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navmenu li {
+    position: relative;
+  }
+
+  .navmenu > ul > li {
+    white-space: nowrap;
+    padding: 15px 14px;
+  }
+
+  .navmenu > ul > li:last-child {
+    padding-right: 0;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-color);
+    font-size: 15px;
+    padding: 0 2px;
+    font-family: var(--nav-font);
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    transition: 0.3s;
+  }
+
+  .navmenu > ul > li > a:before {
+    content: "";
+    position: absolute;
+    height: 2px;
+    bottom: -6px;
+    left: 0;
+    background-color: var(--nav-hover-color);
+    visibility: hidden;
+    width: 0px;
+    transition: all 0.3s ease-in-out 0s;
+  }
+
+  .navmenu a:hover:before,
+  .navmenu li:hover > a:before,
+  .navmenu .active:before {
+    visibility: visible;
+    width: 25px;
+  }
+
+  .navmenu li:hover > a,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-hover-color);
+  }
+
+  .navmenu .dropdown ul {
+    margin: 0;
+    padding: 10px 0;
+    background: var(--nav-dropdown-background-color);
+    display: block;
+    position: absolute;
+    visibility: hidden;
+    left: 14px;
+    top: 130%;
+    opacity: 0;
+    transition: 0.3s;
+    border-radius: 4px;
+    z-index: 99;
+    box-shadow: 0 16px 36px rgba(6, 12, 24, 0.2);
+  }
+
+  .navmenu .dropdown ul li {
+    min-width: 200px;
+  }
+
+  .navmenu .dropdown ul a {
+    padding: 10px 20px;
+    font-size: 15px;
+    text-transform: none;
+    color: var(--nav-dropdown-color);
+  }
+
+  .navmenu .dropdown ul a i {
+    font-size: 12px;
+  }
+
+  .navmenu .dropdown ul a:hover,
+  .navmenu .dropdown ul .active:hover,
+  .navmenu .dropdown ul li:hover > a {
+    color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .dropdown:hover > ul {
+    opacity: 1;
+    top: 100%;
+    visibility: visible;
+  }
+
+  .navmenu .dropdown .dropdown ul {
+    top: 0;
+    left: -90%;
+    visibility: hidden;
+  }
+
+  .navmenu .dropdown .dropdown:hover > ul {
+    opacity: 1;
+    top: 0;
+    left: -100%;
+    visibility: visible;
+  }
+}
+
+/* Mobile Navigation */
+@media (max-width: 991px) {
+  .mobile-nav-toggle {
+    color: var(--nav-color);
+    font-size: 28px;
+    line-height: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .navmenu {
+    padding: 0;
+    z-index: 9997;
+  }
+
+  .navmenu ul {
+    display: none;
+    list-style: none;
+    position: absolute;
+    inset: 60px 20px 20px 20px;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 6px;
+    background-color: var(--nav-mobile-background-color);
+    border: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+    box-shadow: none;
+    overflow-y: auto;
+    transition: 0.3s;
+    z-index: 9998;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-dropdown-color);
+    padding: 10px 20px;
+    font-family: var(--nav-font);
+    font-size: 17px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    white-space: nowrap;
+    transition: 0.3s;
+  }
+
+  .navmenu a i,
+  .navmenu a:focus i {
+    font-size: 12px;
+    line-height: 0;
+    margin-left: 5px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+    background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  }
+
+  .navmenu a i:hover,
+  .navmenu a:focus i:hover {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+  }
+
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--nav-dropdown-hover-color);
+  }
+
+  .navmenu .active i,
+  .navmenu .active:focus i {
+    background-color: var(--accent-color);
+    color: var(--contrast-color);
+  }
+
+  .navmenu .dropdown ul {
+    position: static;
+    display: none;
+    z-index: 99;
+    padding: 10px 0;
+    margin: 10px 20px;
+    background-color: var(--nav-dropdown-background-color);
+    transition: all 0.5s ease-in-out;
+  }
+
+  .navmenu .dropdown ul ul {
+    background-color: rgba(33, 37, 41, 0.1);
+  }
+
+  .navmenu .dropdown > .dropdown-active {
+    display: block;
+    background-color: rgba(33, 37, 41, 0.03);
+  }
+
+  .mobile-profile-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    justify-content: flex-start;
+  }
+
+  .mobile-profile-avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: color-mix(
+      in srgb,
+      var(--accent-color) 18%,
+      var(--surface-color) 82%
+    );
+    color: var(--accent-color);
+    font-size: 1.2rem;
+  }
+
+  .mobile-profile-name {
+    font-weight: 600;
+    color: var(--heading-color);
+    font-size: 1.02rem;
+  }
+
+  .navmenu .dropdown.mobile-profile ul {
+    margin: 6px 20px 12px;
+    padding: 6px 0;
+    border-radius: 12px;
+    border: 1px solid
+      color-mix(in srgb, var(--default-color) 14%, transparent 86%);
+    background-color: color-mix(
+      in srgb,
+      var(--surface-color) 96%,
+      var(--contrast-color) 4%
+    );
+  }
+
+  .navmenu .dropdown.mobile-profile ul a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 10px 18px;
+    font-weight: 500;
+    width: 100%;
+    justify-content: flex-start;
+    text-align: left;
+  }
+
+  .mobile-profile-option-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: color-mix(
+      in srgb,
+      var(--accent-color) 18%,
+      var(--surface-color) 82%
+    );
+    color: var(--accent-color);
+    font-size: 1.05rem;
+  }
+
+  .mobile-profile-option-label {
+    font-weight: 600;
+    color: var(--heading-color);
+  }
+
+  .navmenu .dropdown.mobile-profile ul a i {
+    font-size: 1.05rem;
+    color: currentColor;
+  }
+
+  .navmenu .dropdown.mobile-profile ul a:hover,
+  .navmenu .dropdown.mobile-profile ul a:focus {
+    background-color: color-mix(
+      in srgb,
+      var(--accent-color) 12%,
+      var(--surface-color) 88%
+    );
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    color: #fff;
+    position: absolute;
+    font-size: 32px;
+    top: 15px;
+    right: 15px;
+    margin-right: 0;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active .navmenu {
+    position: fixed;
+    overflow: hidden;
+    inset: 0;
+    background: rgba(33, 37, 41, 0.8);
+    transition: 0.3s;
+  }
+
+  .mobile-nav-active .navmenu > ul {
+    display: block;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Footer
+--------------------------------------------------------------*/
+.footer {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-size: 14px;
+  padding: 40px 0;
+  position: relative;
+}
+
+.footer .copyright p {
+  margin-bottom: 0;
+}
+
+.footer .social-links {
+  margin-top: 20px;
+}
+
+.footer .social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 16px;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  margin: 0 5px;
+  transition: 0.3s;
+}
+
+.footer .social-links a:hover {
+  color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.footer .credits {
+  margin-top: 10px;
+  font-size: 13px;
+  text-align: center;
+}
+
+/*--------------------------------------------------------------
+# Preloader
+--------------------------------------------------------------*/
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  background-color: var(--background-color);
+  transition: all 0.6s ease-out;
+  width: 100%;
+  height: 100vh;
+}
+
+#preloader:before,
+#preloader:after {
+  content: "";
+  position: absolute;
+  border: 4px solid var(--accent-color);
+  border-radius: 50%;
+  animation: animate-preloader 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+#preloader:after {
+  animation-delay: -0.5s;
+}
+
+@keyframes animate-preloader {
+  0% {
+    width: 10px;
+    height: 10px;
+    top: calc(50% - 5px);
+    left: calc(50% - 5px);
+    opacity: 1;
+  }
+
+  100% {
+    width: 72px;
+    height: 72px;
+    top: calc(50% - 36px);
+    left: calc(50% - 36px);
+    opacity: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# Scroll Top Button
+--------------------------------------------------------------*/
+.scroll-top {
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  right: 15px;
+  bottom: -15px;
+  z-index: 99999;
+  background-color: var(--accent-color);
+  width: 44px;
+  height: 44px;
+  border-radius: 50px;
+  transition: all 0.4s;
+}
+
+.scroll-top i {
+  font-size: 24px;
+  color: var(--contrast-color);
+  line-height: 0;
+}
+
+.scroll-top:hover {
+  background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
+}
+
+.scroll-top.active {
+  visibility: visible;
+  opacity: 1;
+  bottom: 15px;
+}
+
+/*--------------------------------------------------------------
+# Disable aos animation delay on mobile devices
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs
+--------------------------------------------------------------*/
+.page-title {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 25px 0;
+  position: relative;
+  border-bottom: 1px solid
+    color-mix(in srgb, var(--default-color), transparent 85%);
+}
+
+.page-title h1 {
+  font-size: 24px;
+  font-weight: 400;
+}
+
+.page-title .breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.page-title .breadcrumbs ol li + li {
+  padding-left: 10px;
+}
+
+.page-title .breadcrumbs ol li + li::before {
+  content: "/";
+  display: inline-block;
+  padding-right: 10px;
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+/*--------------------------------------------------------------
+# Global Sections
+--------------------------------------------------------------*/
+section,
+.section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 60px 0;
+  scroll-margin-top: 100px;
+  overflow: clip;
+}
+
+@media (max-width: 991px) {
+  section,
+  .section {
+    scroll-margin-top: 66px;
+  }
+}
+
+/*--------------------------------------------------------------
+# Global Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding-bottom: 60px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2:after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: var(--accent-color);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.section-title p {
+  margin-bottom: 0;
+}

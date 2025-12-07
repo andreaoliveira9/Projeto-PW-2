@@ -1,0 +1,218 @@
+/* Account Page Specific Styles */
+
+/* Account Sections */
+.account-section {
+  padding-top: 120px;
+  padding-bottom: 80px;
+}
+
+.account-section--intro {
+  padding-bottom: 48px;
+}
+
+.account-section--summary {
+  padding-top: 72px;
+  padding-bottom: 72px;
+  background-color: color-mix(
+    in srgb,
+    var(--surface-color) 15%,
+    var(--background-color) 85%
+  );
+}
+
+.account-section--planner {
+  padding-top: 72px;
+  padding-bottom: 96px;
+}
+
+/* Account Badge */
+.account-hero-badge {
+  display: inline-block;
+  padding: 0.45rem 1.6rem;
+  border-radius: 999px;
+  background: color-mix(
+    in srgb,
+    var(--accent-color) 18%,
+    var(--surface-color) 82%
+  );
+  color: var(--accent-color);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+/* Account Navigation */
+.account-nav {
+  justify-content: center;
+}
+
+.account-nav .nav-link {
+  border-radius: 999px;
+  padding: 0.75rem 1.75rem;
+  border: 1px solid color-mix(in srgb, var(--accent-color) 28%, transparent 72%);
+  background-color: color-mix(
+    in srgb,
+    var(--accent-color) 6%,
+    var(--surface-color) 94%
+  );
+  color: var(--nav-color);
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  transition: all 0.3s ease;
+}
+
+.account-nav .nav-link:hover {
+  color: var(--accent-color);
+  border-color: color-mix(in srgb, var(--accent-color) 40%, transparent 60%);
+}
+
+.account-nav .nav-link.active {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+  box-shadow: 0 15px 35px rgba(52, 183, 167, 0.35);
+}
+
+/* Plan Table */
+.plan-table thead.plan-table-head {
+  background: color-mix(
+    in srgb,
+    var(--accent-color) 20%,
+    var(--surface-color) 80%
+  );
+}
+
+.plan-table thead.plan-table-head th {
+  color: var(--heading-color);
+  border-bottom: none;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.plan-table tbody td,
+.plan-table tbody th {
+  color: var(--default-color);
+  border-bottom-color: color-mix(
+    in srgb,
+    var(--accent-color) 15%,
+    transparent 85%
+  );
+}
+
+.plan-table tbody tr:nth-of-type(even) {
+  background-color: color-mix(
+    in srgb,
+    var(--surface-color) 96%,
+    var(--accent-color) 4%
+  );
+}
+
+.plan-table tbody tr:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--surface-color) 82%,
+    var(--accent-color) 18%
+  );
+  color: var(--heading-color);
+}
+
+.plan-table tbody tr:hover th,
+.plan-table tbody tr:hover td {
+  color: var(--heading-color);
+}
+
+/* Dark Mode Adjustments */
+:root:has(#theme-dark:checked) .account-section--summary,
+:root[data-theme="dark"] .account-section--summary,
+:root:has(#theme-dark:checked) .account-section--planner,
+:root[data-theme="dark"] .account-section--planner {
+  background-color: color-mix(
+    in srgb,
+    var(--surface-color) 20%,
+    var(--background-color) 80%
+  );
+}
+
+:root:has(#theme-dark:checked) .plan-table thead.plan-table-head,
+:root[data-theme="dark"] .plan-table thead.plan-table-head {
+  background: color-mix(
+    in srgb,
+    var(--accent-color) 26%,
+    var(--surface-color) 74%
+  );
+}
+
+:root:has(#theme-dark:checked) .plan-table tbody tr:nth-of-type(even),
+:root[data-theme="dark"] .plan-table tbody tr:nth-of-type(even) {
+  background-color: color-mix(
+    in srgb,
+    var(--surface-color) 88%,
+    var(--accent-color) 12%
+  );
+}
+
+/* Auto Theme Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root:has(#theme-auto:checked) .account-section--summary,
+  :root[data-theme="auto"] .account-section--summary,
+  :root:has(#theme-auto:checked) .account-section--planner,
+  :root[data-theme="auto"] .account-section--planner {
+    background-color: color-mix(
+      in srgb,
+      var(--surface-color) 20%,
+      var(--background-color) 80%
+    );
+  }
+
+  :root:has(#theme-auto:checked) .plan-table thead.plan-table-head,
+  :root[data-theme="auto"] .plan-table thead.plan-table-head {
+    background: color-mix(
+      in srgb,
+      var(--accent-color) 26%,
+      var(--surface-color) 74%
+    );
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1199.98px) {
+  .account-section--intro {
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 991.98px) {
+  .account-section {
+    padding-top: 100px;
+  }
+
+  .account-section--summary,
+  .account-section--planner {
+    padding-top: 56px;
+    padding-bottom: 64px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .account-section {
+    padding-top: 80px;
+    padding-bottom: 60px;
+  }
+
+  .account-section--summary,
+  .account-section--planner {
+    padding-top: 48px;
+    padding-bottom: 56px;
+  }
+
+  .account-section--planner {
+    padding-bottom: 64px;
+  }
+
+  .plan-table {
+    min-width: 600px;
+  }
+}
+

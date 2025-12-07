@@ -1,0 +1,46 @@
+name: Deploy MathPath Site
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout código
+        uses: actions/checkout@v4
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Preparar ficheiros do site
+        run: |
+          mkdir -p _site
+          cp -R ./src/assets ./_site/
+          for page in index.html catalog.html contact.html account.html resource.html calculator.html; do
+            cp "./src/${page}" ./_site/
+          done
+
+      - name: Empacotar artefacto
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - name: Fazer deploy
+        id: deployment
+        uses: actions/deploy-pages@v4

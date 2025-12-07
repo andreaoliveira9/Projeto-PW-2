@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MathPath - Plataforma de Recursos de Matemática</title>
+    <meta
+      name="description"
+      content="Plataforma académica estática com recursos de Matemática para alunos do ensino secundário."
+    />
+    <meta
+      name="keywords"
+      content="matematica, secundario, estudo, exercicios, exames"
+    />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.ico" rel="icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+
+    <script>
+      (function () {
+        var storageKey = "mathpath-theme";
+        var allowed = ["auto", "light", "dark"];
+        try {
+          var storedTheme = localStorage.getItem(storageKey);
+          if (allowed.indexOf(storedTheme) !== -1) {
+            document.documentElement.setAttribute("data-theme", storedTheme);
+          }
+        } catch (error) {
+          document.documentElement.setAttribute(
+            "data-theme",
+            document.documentElement.getAttribute("data-theme") || "auto"
+          );
+        }
+      })();
+    </script>
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <link href="assets/css/index.css" rel="stylesheet" />
+
+    <!-- =======================================================
+  * Template Name: Kelly
+  * Template URL: https://bootstrapmade.com/kelly-free-bootstrap-cv-resume-html-template/
+  * Updated: Aug 07 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+  </head>
+
+  <body class="index-page">
+    <header
+      id="header"
+      class="header d-flex align-items-center light-background sticky-top"
+    >
+      <div
+        class="container-fluid position-relative d-flex align-items-center justify-content-between"
+      >
+        <a
+          href="index.html"
+          class="logo d-flex align-items-center me-auto me-xl-0"
+        >
+          <!-- <img src="assets/img/logo.png" alt=""> -->
+          <h1 class="sitename">MathPath</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="index.html" class="active">Início</a></li>
+            <li class="dropdown">
+              <a href="catalog.html"
+                ><span>Recursos</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="catalog.html#recursos-10">10.º Ano</a></li>
+                <li><a href="catalog.html#recursos-11">11.º Ano</a></li>
+                <li><a href="catalog.html#recursos-12">12.º Ano</a></li>
+              </ul>
+            </li>
+            <li><a href="calculator.html">Calculadora</a></li>
+            <li><a href="contact.html">Contactos</a></li>
+            <li class="dropdown mobile-profile d-lg-none">
+              <a href="account.html">
+                <span class="mobile-profile-info">
+                  <i class="bi bi-person-circle"></i>
+                  <span class="mobile-profile-name">André</span>
+                </span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i>
+              </a>
+              <ul>
+                <li>
+                  <a href="account.html">
+                    <i class="bi bi-person"></i>
+                    <span class="mobile-profile-option-label">Perfil</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-danger">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span class="mobile-profile-option-label text-danger"
+                      >Terminar sessão</span
+                    >
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <i class="mobile-nav-toggle d-lg-none bi bi-list"></i>
+        </nav>
+
+        <div class="header-actions d-flex align-items-center gap-3">
+          <div class="header-social-links d-none d-lg-flex">
+            <a href="#" class="twitter" aria-label="MathPath no X"
+              ><i class="bi bi-twitter-x"></i
+            ></a>
+            <a href="#" class="facebook" aria-label="MathPath no Facebook"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" class="instagram" aria-label="MathPath no Instagram"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" class="linkedin" aria-label="MathPath no LinkedIn"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+          </div>
+          <div class="theme-toggle dropdown">
+            <input
+              type="radio"
+              class="theme-radio"
+              name="site-theme"
+              id="theme-auto"
+              checked
+            />
+            <input
+              type="radio"
+              class="theme-radio"
+              name="site-theme"
+              id="theme-light"
+            />
+            <input
+              type="radio"
+              class="theme-radio"
+              name="site-theme"
+              id="theme-dark"
+            />
+            <button
+              class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 theme-toggle__button"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Alterar tema"
+            >
+              <i class="theme-toggle__icon bi bi-circle-half"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end shadow">
+              <label class="dropdown-item" for="theme-auto">
+                <i class="bi bi-laptop"></i>
+                <span>Sistema</span>
+                <i class="bi bi-check2 theme-check" aria-hidden="true"></i>
+              </label>
+              <label class="dropdown-item" for="theme-light">
+                <i class="bi bi-sun"></i>
+                <span>Modo claro</span>
+                <i class="bi bi-check2 theme-check" aria-hidden="true"></i>
+              </label>
+              <label class="dropdown-item" for="theme-dark">
+                <i class="bi bi-moon-stars"></i>
+                <span>Modo escuro</span>
+                <i class="bi bi-check2 theme-check" aria-hidden="true"></i>
+              </label>
+            </div>
+          </div>
+          <div class="dropdown user-menu d-none d-lg-flex">
+            <button
+              class="btn btn-outline-light rounded-pill"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Abrir menu do perfil"
+            >
+              <i class="user-menu__icon bi bi-person-circle"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li>
+                <a class="dropdown-item" href="account.html"
+                  ><i class="bi bi-person me-2"></i>Perfil</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item text-danger" href="#"
+                  ><i class="bi bi-box-arrow-right me-2"></i>Terminar sessão</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Hero Section: apresentação da plataforma -->
+      <section id="hero" class="hero section">
+        <img
+          src="assets/img/index/hero-bg.jpg"
+          alt="Estudantes a colaborar em exercícios de matemática"
+          class="hero-bg hero-bg--light"
+          data-aos="fade-in"
+        />
+        <img
+          src="assets/img/index/hero-bg-dark.jpg"
+          alt="Estudantes a colaborar em exercícios de matemática"
+          class="hero-bg hero-bg--dark"
+        />
+
+        <div
+          class="container text-center"
+          data-aos="zoom-out"
+          data-aos-delay="100"
+        >
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <h1 class="display-4 fw-bold text-uppercase mb-3">
+                Aprende Matemática passo a passo
+              </h1>
+              <p class="lead mb-4">
+                Acede a fichas temáticas, resumos em vídeo e materiais de
+                consulta para modelos matemáticos, estatística, funções e
+                probabilidades do 10.º ao 12.º ano.
+              </p>
+              <div
+                class="hero-cta d-flex flex-column flex-sm-row align-items-center justify-content-center gap-3"
+              >
+                <a
+                  href="catalog.html"
+                  class="btn-get-started px-4 py-2 text-center"
+                  >Explorar Recursos</a
+                >
+                <a
+                  href="account.html"
+                  class="btn btn-outline-light hero-secondary-btn px-4 py-2 text-center"
+                  >Aceder à Área Pessoal</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- /Hero Section -->
+
+      <!-- Intro Section: apresenta a proposta de valor -->
+      <section id="intro" class="section">
+        <div class="container" data-aos="fade-up">
+          <div class="row align-items-center gy-4">
+            <article class="col-lg-6">
+              <h2 class="fw-bold text-uppercase mb-3">
+                Organiza o estudo por temas essenciais
+              </h2>
+              <p class="mb-4">
+                O MathPath reúne fichas, resumos e vídeos alinhados com o
+                catálogo completo: modelos matemáticos para a cidadania,
+                estatística descritiva, funções, geometria analítica, sucessões,
+                probabilidades e análise.
+              </p>
+              <ul class="list-unstyled mb-0">
+                <li class="d-flex align-items-start mb-3">
+                  <i class="bi bi-check-circle-fill text-primary me-3 fs-5"></i>
+                  <span
+                    ><strong>Fichas guiadas</strong> com exercícios passo a
+                    passo sobre eleições, partilha de recursos, vetores,
+                    contagem e derivadas.</span
+                  >
+                </li>
+                <li class="d-flex align-items-start mb-3">
+                  <i class="bi bi-check-circle-fill text-primary me-3 fs-5"></i>
+                  <span
+                    ><strong>Vídeos de revisão</strong> dedicados a estatística,
+                    probabilidades e síntese dos principais tópicos de cada
+                    ano.</span
+                  >
+                </li>
+                <li class="d-flex align-items-start">
+                  <i class="bi bi-check-circle-fill text-primary me-3 fs-5"></i>
+                  <span
+                    ><strong>Materiais de consulta</strong> com resumos de
+                    conceitos, tabelas e ligações ao exame nacional.</span
+                  >
+                </li>
+              </ul>
+            </article>
+            <article class="col-lg-6">
+              <figure
+                class="figure intro-figure mb-0 shadow-sm rounded-4 overflow-hidden"
+              >
+                <img
+                  src="assets/img/index/intro.png"
+                  class="figure-img img-fluid m-0 intro-figure__image"
+                  alt="Resumo de exercícios de matemática com calculadora científica"
+                />
+                <figcaption
+                  class="figure-caption text-center intro-figure__caption py-3 px-4"
+                >
+                  Fichas orientadas para reforçar competências de funções,
+                  trigonometria, probabilidades e muito mais.
+                </figcaption>
+              </figure>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features Section: destaques principais -->
+      <section id="features" class="section light-background">
+        <div class="container" data-aos="fade-up">
+          <header class="section-header text-center mb-5">
+            <h2 class="fw-bold text-uppercase">Coleções organizadas por ano</h2>
+            <p class="text-muted mb-0">
+              Acede rapidamente às fichas, tabelas e vídeos que trabalhas nas
+              aulas de Matemática do 10.º, 11.º e 12.º ano.
+            </p>
+          </header>
+          <div class="row gy-4">
+            <article class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                  <div class="icon mb-3">
+                    <i class="bi bi-journal-text fs-2 text-primary"></i>
+                  </div>
+                  <h3 class="h5">10.º Ano: Modelos e Funções</h3>
+                  <p class="mb-0">
+                    Trabalha modelos matemáticos, estatística descritiva,
+                    gráficos, funções quadráticas e geometria analítica com
+                    fichas guiadas e um vídeo de revisão por tema.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                  <div class="icon mb-3">
+                    <i class="bi bi-diagram-3 fs-2 text-primary"></i>
+                  </div>
+                  <h3 class="h5">11.º Ano: Vetores e Sucessões</h3>
+                  <p class="mb-0">
+                    Revê trigonometria, produto escalar, contagem combinatória,
+                    sucessões e funções polinomiais com exercícios progressivos
+                    e resumo em vídeo.
+                  </p>
+                </div>
+              </div>
+            </article>
+            <article class="col-md-4">
+              <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body p-4">
+                  <div class="icon mb-3">
+                    <i class="bi bi-graph-up-arrow fs-2 text-primary"></i>
+                  </div>
+                  <h3 class="h5">12.º Ano: Probabilidades e Análise</h3>
+                  <p class="mb-0">
+                    Consolida números complexos, probabilidades, distribuições,
+                    exponenciais, logaritmos, limites e derivadas com fichas e
+                    vídeo de síntese.
+                  </p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resources Preview Section: ligação à página de recursos -->
+      <section id="resources-preview" class="section">
+        <div class="container" data-aos="fade-up">
+          <header class="section-header text-center mb-5">
+            <h2 class="fw-bold text-uppercase">Em destaque esta semana</h2>
+            <p class="text-muted mb-0">
+              Atualizamos a biblioteca todas as semanas com materiais orientados
+              para os desafios do momento.
+            </p>
+          </header>
+          <div class="row gy-4">
+            <article class="col-lg-4">
+              <div class="card h-100 border-0 shadow">
+                <img
+                  src="assets/img/index/1.png"
+                  class="card-img-top"
+                  alt="Ficha de modelos matemáticos com gráficos e tabelas"
+                />
+                <div class="card-body">
+                  <span class="badge text-bg-primary mb-3">10.º Ano</span>
+                  <h3 class="h5">Modelos matemáticos para a cidadania</h3>
+                  <p class="mb-3">
+                    Sequência de fichas que aplicam funções a eleições,
+                    partilhas e decisões financeiras, acompanhadas por resumo em
+                    vídeo.
+                  </p>
+                  <ul class="list-unstyled small mb-4">
+                    <li class="mb-2">
+                      <i class="bi bi-dot text-primary me-2"></i>Modelos
+                      matemáticos nas eleições
+                    </li>
+                    <li class="mb-2">
+                      <i class="bi bi-dot text-primary me-2"></i>Partilha justa
+                      de recursos e negociação
+                    </li>
+                    <li>
+                      <i class="bi bi-dot text-primary me-2"></i>Planeamento
+                      financeiro com tabelas comparativas
+                    </li>
+                  </ul>
+                  <a
+                    href="resource.html#funcoes"
+                    class="btn btn-outline-primary w-100"
+                    >Ver fichas e resumo</a
+                  >
+                </div>
+              </div>
+            </article>
+            <article class="col-lg-4">
+              <div class="card h-100 border-0 shadow">
+                <img
+                  src="assets/img/index/2.png"
+                  class="card-img-top"
+                  alt="Caderno com exercícios de sucessões e contagem"
+                />
+                <div class="card-body">
+                  <span class="badge text-bg-success mb-3">11.º Ano</span>
+                  <h3 class="h5">Sucessões e contagem combinatória</h3>
+                  <p class="mb-3">
+                    Fichas progressivas sobre contagem, sucessões e aplicações a
+                    problemas de crescimento, com síntese em vídeo.
+                  </p>
+                  <ul class="list-unstyled small mb-4">
+                    <li class="mb-2">
+                      <i class="bi bi-dot text-primary me-2"></i>Listagens e
+                      árvores de decisão para contagem
+                    </li>
+                    <li class="mb-2">
+                      <i class="bi bi-dot text-primary me-2"></i>Sucessões
+                      aritméticas e geométricas
+                    </li>
+                    <li>
+                      <i class="bi bi-dot text-primary me-2"></i>Resumo em vídeo
+                      com estratégias de resolução
+                    </li>
+                  </ul>
+                  <a
+                    href="resource.html#funcoes"
+                    class="btn btn-outline-primary w-100"
+                    >Explorar materiais</a
+                  >
+                </div>
+              </div>
+            </article>
+            <article class="col-lg-4">
+              <div class="card h-100 border-0 shadow">
+                <img
+                  src="assets/img/index/3.png"
+                  class="card-img-top"
+                  alt="Resumo de probabilidades com gráficos e tabelas"
+                />
+                <div class="card-body">
+                  <span class="badge text-bg-warning mb-3">12.º Ano</span>
+                  <h3 class="h5">Probabilidades e distribuições</h3>
+                  <p class="mb-3">
+                    Conjunto de fichas sobre noções gerais de probabilidade,
+                    condicionadas, combinatória e distribuições, com vídeo de
+                    revisão.
+                  </p>
+                  <ul class="list-unstyled small mb-4">
+                    <li class="mb-2">
+                      <i class="bi bi-dot text-primary me-2"></i>Conjuntos e
+                      propriedades fundamentais
+                    </li>
+                    <li class="mb-2">
+                      <i class="bi bi-dot text-primary me-2"></i>Probabilidade
+                      condicionada com exemplos resolvidos
+                    </li>
+                    <li>
+                      <i class="bi bi-dot text-primary me-2"></i>Distribuição
+                      normal e função massa de probabilidade
+                    </li>
+                  </ul>
+                  <a
+                    href="resource.html#funcoes"
+                    class="btn btn-outline-primary w-100"
+                    >Consultar recursos</a
+                  >
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Testimonials Section: feedback dos alunos -->
+      <section id="testimonials" class="section light-background">
+        <div class="container" data-aos="fade-up">
+          <header class="section-header text-center mb-5">
+            <h2 class="fw-bold text-uppercase">O que dizem os alunos</h2>
+            <p class="text-muted mb-0">
+              Testemunhos centrados nos recursos de Matemática que fazem parte
+              do MathPath.
+            </p>
+          </header>
+          <div class="row gy-4">
+            <article class="col-md-6">
+              <div
+                class="d-flex flex-column flex-sm-row align-items-center align-items-sm-start gap-3 p-4 border rounded-4 shadow-sm h-100"
+              >
+                <img
+                  src="assets/img/index/testimonials-2.jpg"
+                  class="rounded-circle flex-shrink-0"
+                  width="80"
+                  height="80"
+                  alt="Foto de estudante do 12.º ano"
+                />
+                <blockquote class="mb-0">
+                  <p class="mb-2">
+                    “As fichas de modelos matemáticos ajudaram-me a comparar
+                    estratégias de eleições e finanças. O resumo em vídeo
+                    facilitou a revisão na véspera do teste.”
+                  </p>
+                  <footer class="blockquote-footer mt-2">
+                    Maria Silva, 12.º ano
+                  </footer>
+                </blockquote>
+              </div>
+            </article>
+            <article class="col-md-6">
+              <div
+                class="d-flex flex-column flex-sm-row align-items-center align-items-sm-start gap-3 p-4 border rounded-4 shadow-sm h-100"
+              >
+                <img
+                  src="assets/img/index/testimonials-1.jpg"
+                  class="rounded-circle flex-shrink-0"
+                  width="80"
+                  height="80"
+                  alt="Foto de estudante do 11.º ano"
+                />
+                <blockquote class="mb-0">
+                  <p class="mb-2">
+                    “Usei as fichas de contagem e sucessões para preparar a
+                    avaliação. O quadro passo a passo das derivadas ajudou-me a
+                    perceber onde aplicar cada regra.”
+                  </p>
+                  <footer class="blockquote-footer mt-2">
+                    João Costa, 11.º ano
+                  </footer>
+                </blockquote>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Call to Action Section: incentivo final -->
+      <section id="cta" class="section">
+        <div class="container" data-aos="zoom-in">
+          <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+              <h2 class="fw-bold text-uppercase mb-3">
+                Pronto para organizar o teu estudo?
+              </h2>
+              <p class="mb-4">
+                Cria já o teu plano personalizado a partir da área de conta e
+                guarda os recursos favoritos para aceder rapidamente.
+              </p>
+              <a href="account.html" class="btn btn-primary px-4 py-3"
+                >Criar plano de estudo</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="footer light-background">
+      <div class="container">
+        <div class="copyright text-center">
+          <p>
+            © <span>Copyright</span>
+            <strong class="px-1 sitename">MathPath</strong>
+            <span>Todos os direitos reservados<br /></span>
+          </p>
+        </div>
+        <div class="social-links d-flex justify-content-center">
+          <a href="#" aria-label="MathPath no X"
+            ><i class="bi bi-twitter-x"></i
+          ></a>
+          <a href="#" aria-label="MathPath no Facebook"
+            ><i class="bi bi-facebook"></i
+          ></a>
+          <a href="#" aria-label="MathPath no Instagram"
+            ><i class="bi bi-instagram"></i
+          ></a>
+          <a href="#" aria-label="MathPath no LinkedIn"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+        </div>
+        <div class="credits">
+          <!-- All the links in the footer should remain intact. -->
+          <!-- You can delete the links only if you've purchased the pro version. -->
+          <!-- Licensing information: https://bootstrapmade.com/license/ -->
+          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
+          Desenvolvido por
+          <a href="https://bootstrapmade.com/">BootstrapMade</a> Distribuído por
+          <a href="https://themewagon.com">ThemeWagon</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <script src="assets/js/theme.js" defer></script>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

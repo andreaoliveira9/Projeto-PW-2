@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="pt" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MathPath - Recurso</title>
+    <meta
+      name="description"
+      content="Consulta detalhada de um recurso MathPath com visualização integrada e discussão da comunidade."
+    />
+    <meta
+      name="keywords"
+      content="mathpath, recurso, matemática, ficha de trabalho, soluções"
+    />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.ico" rel="icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Raleway:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+
+    <script>
+      (function () {
+        var storageKey = "mathpath-theme";
+        var allowed = ["auto", "light", "dark"];
+        try {
+          var storedTheme = localStorage.getItem(storageKey);
+          if (allowed.indexOf(storedTheme) !== -1) {
+            document.documentElement.setAttribute("data-theme", storedTheme);
+          }
+        } catch (error) {
+          document.documentElement.setAttribute(
+            "data-theme",
+            document.documentElement.getAttribute("data-theme") || "auto"
+          );
+        }
+      })();
+    </script>
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+    <!-- Resource CSS File -->
+    <link href="assets/css/resource.css" rel="stylesheet" />
+  </head>
+
+  <body class="resource-page">
+    <header
+      id="header"
+      class="header d-flex align-items-center light-background sticky-top"
+    >
+      <div
+        class="container-fluid position-relative d-flex align-items-center justify-content-between"
+      >
+        <a
+          href="index.html"
+          class="logo d-flex align-items-center me-auto me-xl-0"
+        >
+          <h1 class="sitename">MathPath</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li class="dropdown">
+              <a href="catalog.html" class="active"
+                ><span>Recursos</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="catalog.html#recursos-10">10.º Ano</a></li>
+                <li><a href="catalog.html#recursos-11">11.º Ano</a></li>
+                <li><a href="catalog.html#recursos-12">12.º Ano</a></li>
+              </ul>
+            </li>
+            <li><a href="calculator.html">Calculadora</a></li>
+            <li><a href="contact.html">Contactos</a></li>
+            <li class="dropdown mobile-profile d-lg-none">
+              <a href="account.html">
+                <span class="mobile-profile-info">
+                  <i class="bi bi-person-circle"></i>
+                  <span class="mobile-profile-name">André</span>
+                </span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i>
+              </a>
+              <ul>
+                <li>
+                  <a href="account.html">
+                    <i class="bi bi-person"></i>
+                    <span class="mobile-profile-option-label">Perfil</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#" class="text-danger">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span class="mobile-profile-option-label text-danger"
+                      >Terminar sessão</span
+                    >
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <i class="mobile-nav-toggle d-lg-none bi bi-list"></i>
+        </nav>
+
+        <div class="header-actions d-flex align-items-center gap-3">
+          <div class="header-social-links d-none d-lg-flex">
+            <a href="#" class="twitter" aria-label="MathPath no X"
+              ><i class="bi bi-twitter-x"></i
+            ></a>
+            <a href="#" class="facebook" aria-label="MathPath no Facebook"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" class="instagram" aria-label="MathPath no Instagram"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" class="linkedin" aria-label="MathPath no LinkedIn"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+          </div>
+          <div class="theme-toggle dropdown">
+            <input
+              type="radio"
+              class="theme-radio"
+              name="site-theme"
+              id="theme-auto"
+              checked
+            />
+            <input
+              type="radio"
+              class="theme-radio"
+              name="site-theme"
+              id="theme-light"
+            />
+            <input
+              type="radio"
+              class="theme-radio"
+              name="site-theme"
+              id="theme-dark"
+            />
+            <button
+              class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 theme-toggle__button"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Alterar tema"
+            >
+              <i class="theme-toggle__icon bi bi-circle-half"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end shadow">
+              <label class="dropdown-item" for="theme-auto">
+                <i class="bi bi-laptop"></i>
+                <span>Sistema</span>
+                <i class="bi bi-check2 theme-check" aria-hidden="true"></i>
+              </label>
+              <label class="dropdown-item" for="theme-light">
+                <i class="bi bi-sun"></i>
+                <span>Modo claro</span>
+                <i class="bi bi-check2 theme-check" aria-hidden="true"></i>
+              </label>
+              <label class="dropdown-item" for="theme-dark">
+                <i class="bi bi-moon-stars"></i>
+                <span>Modo escuro</span>
+                <i class="bi bi-check2 theme-check" aria-hidden="true"></i>
+              </label>
+            </div>
+          </div>
+          <div class="dropdown user-menu d-none d-lg-flex">
+            <button
+              class="btn btn-outline-light rounded-pill"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Abrir menu do perfil"
+            >
+              <i class="user-menu__icon bi bi-person-circle"></i>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+              <li>
+                <a class="dropdown-item" href="account.html"
+                  ><i class="bi bi-person me-2"></i>Perfil</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item text-danger" href="#"
+                  ><i class="bi bi-box-arrow-right me-2"></i>Terminar sessão</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="main" class="main">
+      <section class="resource-hero light-background py-4 border-bottom">
+        <div class="container">
+          <div class="row align-items-center g-3">
+            <div class="col-lg-8">
+              <h1 class="resource-title mb-2">
+                Modelos Matemáticos nas Eleições
+              </h1>
+              <p class="resource-subtitle mb-0 text-muted">
+                Ficha de trabalho · 10.º Ano · Cidadania e Desenvolvimento
+              </p>
+            </div>
+            <div class="col-lg-4 text-lg-end">
+              <span class="badge bg-primary-subtle text-primary rounded-pill">
+                Atualizado há 3 dias
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="resource-content py-5">
+        <div class="container">
+          <div class="row g-4">
+            <div class="col-12">
+              <div class="card resource-viewer h-100">
+                <div class="row g-0 align-items-stretch">
+                  <div class="col-lg-9">
+                    <div class="resource-viewer-pane">
+                      <div class="tab-content" id="resourceTabContent">
+                        <div
+                          class="tab-pane fade show active"
+                          id="resource-worksheet"
+                          role="tabpanel"
+                          aria-labelledby="resource-tab-worksheet"
+                        >
+                          <iframe
+                            src="https://mat.absolutamente.net/compilacoes/mat-a/10/cidadania/eleicoes.pdf#toolbar=0&view=FitH"
+                            title="Ficha de trabalho - Modelos Matemáticos nas Eleições"
+                            loading="lazy"
+                            allowfullscreen
+                          ></iframe>
+                        </div>
+                        <div
+                          class="tab-pane fade"
+                          id="resource-solutions"
+                          role="tabpanel"
+                          aria-labelledby="resource-tab-solutions"
+                        >
+                          <iframe
+                            src="https://mat.absolutamente.net/compilacoes/mat-a/10/cidadania/eleicoes_resol.pdf#toolbar=0&view=FitH"
+                            title="Soluções - Modelos Matemáticos nas Eleições"
+                            loading="lazy"
+                            allowfullscreen
+                          ></iframe>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+                    <aside class="resource-controls h-100">
+                      <div class="resource-controls-body">
+                        <h2 class="h6 text-uppercase text-muted mb-3">
+                          Visualizar
+                        </h2>
+                        <div
+                          class="nav nav-pills flex-column gap-2"
+                          id="resourceTab"
+                          role="tablist"
+                          aria-orientation="vertical"
+                        >
+                          <button
+                            class="nav-link active"
+                            id="resource-tab-worksheet"
+                            data-bs-toggle="pill"
+                            data-bs-target="#resource-worksheet"
+                            type="button"
+                            role="tab"
+                            aria-controls="resource-worksheet"
+                            aria-selected="true"
+                          >
+                            <i class="bi bi-journal-text me-2"></i>
+                            Ficha de trabalho
+                          </button>
+                          <button
+                            class="nav-link"
+                            id="resource-tab-solutions"
+                            data-bs-toggle="pill"
+                            data-bs-target="#resource-solutions"
+                            type="button"
+                            role="tab"
+                            aria-controls="resource-solutions"
+                            aria-selected="false"
+                          >
+                            <i class="bi bi-lightbulb me-2"></i>
+                            Soluções
+                          </button>
+                        </div>
+                      </div>
+                      <div class="resource-downloads"></div>
+                    </aside>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12">
+              <div class="card resource-chat">
+                <div
+                  class="card-header d-flex align-items-center justify-content-between"
+                >
+                  <h2 class="h5 mb-0">Chat da turma</h2>
+                  <span class="text-muted small">Atualizado em tempo real</span>
+                </div>
+                <div class="card-body">
+                  <div class="chat-thread">
+                    <article class="chat-message">
+                      <header class="chat-meta">
+                        <span class="chat-author">André</span>
+                        <time class="chat-time" datetime="2024-09-15T10:03"
+                          >há 12 min</time
+                        >
+                      </header>
+                      <p class="chat-text mb-2">
+                        Na questão 2.b), depois de aplicar o método de Hamilton,
+                        ficou com dúvidas no arredondamento do quociente. Como
+                        fizeram?
+                      </p>
+                      <footer class="chat-footer text-muted small">
+                        5 reações · 3 respostas
+                      </footer>
+                    </article>
+                    <article class="chat-message">
+                      <header class="chat-meta">
+                        <span class="chat-author">Rui</span>
+                        <time class="chat-time" datetime="2024-09-15T10:08"
+                          >há 7 min</time
+                        >
+                      </header>
+                      <p class="chat-text mb-2">
+                        @André eu mantive três casas decimais e só arredondei na
+                        distribuição final. Confere com o enunciado e está
+                        explicado nas soluções.
+                      </p>
+                      <footer class="chat-footer text-muted small">
+                        Sinalizado pelo professor
+                      </footer>
+                    </article>
+                    <article class="chat-message">
+                      <header class="chat-meta">
+                        <span class="chat-author">Carla</span>
+                        <time class="chat-time" datetime="2024-09-15T10:14"
+                          >há 1 min</time
+                        >
+                      </header>
+                      <p class="chat-text mb-2">
+                        Para comparar sistemas eleitorais usei um quadro resumo
+                        que deixei nos materiais partilhados. Pode ajudar!
+                      </p>
+                      <footer class="chat-footer text-muted small">
+                        2 reações
+                      </footer>
+                    </article>
+                    <article class="chat-message">
+                      <header class="chat-meta">
+                        <span class="chat-author">Professor Luís</span>
+                        <time class="chat-time" datetime="2024-09-15T10:15"
+                          >agora mesmo</time
+                        >
+                      </header>
+                      <p class="chat-text mb-2">
+                        Bom trabalho! Recordo que o objetivo é comparar
+                        vantagens e limitações de cada método. Usem o botão de
+                        soluções apenas para validar o vosso raciocínio.
+                      </p>
+                      <footer class="chat-footer text-muted small">
+                        Destacado pelo docente
+                      </footer>
+                    </article>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="footer light-background">
+      <div class="container">
+        <div class="copyright text-center">
+          <p>
+            © <span>Copyright</span>
+            <strong class="px-1 sitename">MathPath</strong>
+            <span>Todos os direitos reservados</span>
+          </p>
+        </div>
+        <div class="social-links d-flex justify-content-center">
+          <a href="#" aria-label="MathPath no X"
+            ><i class="bi bi-twitter-x"></i
+          ></a>
+          <a href="#" aria-label="MathPath no Facebook"
+            ><i class="bi bi-facebook"></i
+          ></a>
+          <a href="#" aria-label="MathPath no Instagram"
+            ><i class="bi bi-instagram"></i
+          ></a>
+          <a href="#" aria-label="MathPath no LinkedIn"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+        </div>
+        <div class="credits">
+          Desenvolvido por
+          <a href="https://bootstrapmade.com/">BootstrapMade</a> Distribuído por
+          <a href="https://themewagon.com">ThemeWagon</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <script src="assets/js/theme.js" defer></script>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
