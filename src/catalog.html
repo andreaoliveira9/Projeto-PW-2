@@ -265,6 +265,56 @@
         </div>
       </section>
 
+      <!-- Search and Filter Section -->
+      <section class="section py-4 bg-light">
+        <div class="container">
+          <div class="row g-3 align-items-end">
+            <div class="col-lg-5">
+              <label for="search-input" class="form-label fw-semibold">
+                <i class="bi bi-search me-2"></i>Pesquisar recursos
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                id="search-input"
+                placeholder="Digite o nome do recurso ou tópico..."
+                aria-label="Pesquisar recursos"
+              />
+            </div>
+            <div class="col-lg-3">
+              <label for="type-filter" class="form-label fw-semibold">
+                <i class="bi bi-filter me-2"></i>Filtrar por tipo
+              </label>
+              <select
+                class="form-select"
+                id="type-filter"
+                aria-label="Filtrar por tipo de recurso"
+              >
+                <option value="todos" selected>Todos os tipos</option>
+                <option value="Ficha de trabalho">Fichas de trabalho</option>
+                <option value="Vídeo">Vídeos</option>
+              </select>
+            </div>
+            <div class="col-lg-4">
+              <label class="form-label fw-semibold invisible">Ações</label>
+              <div class="d-flex align-items-center gap-2">
+                <button
+                  type="button"
+                  class="btn btn-outline-secondary"
+                  id="reset-filters"
+                  aria-label="Limpar filtros"
+                >
+                  <i class="bi bi-x-circle me-1"></i>Limpar
+                </button>
+                <p class="mb-0 text-muted small ms-auto">
+                  <strong id="count-number">0</strong> recursos
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- Resources Catalog Section: tabelas por ano -->
       <section id="recursos" class="section">
         <div class="container" data-aos="fade-up">

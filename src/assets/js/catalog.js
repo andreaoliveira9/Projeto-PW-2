@@ -188,7 +188,112 @@ function setupFavoriteButtons() {
   }
 }
 
+function applyFilters() {
+  let searchQuery = document.getElementById("search-input").value.toLowerCase();
+  let typeFilter = document.getElementById("type-filter").value;
+
+  let allRows = document.querySelectorAll(".catalog-table tbody tr");
+  let visibleCount = 0;
+
+  for (let i = 0; i < allRows.length; i++) {
+    let row = allRows[i];
+    let title = row.querySelector("th").textContent.toLowerCase();
+    let type = row.querySelectorAll("td")[0].textContent;
+
+    let matchesSearch = title.includes(searchQuery);
+    let matchesType = typeFilter === "todos" || type === typeFilter;
+
+    if (matchesSearch && matchesType) {
+      row.style.display = "";
+      visibleCount++;
+    } else {
+      row.style.display = "none";
+    }
+  }
+
+  let accordionItems = document.querySelectorAll(".accordion-item");
+  for (let i = 0; i < accordionItems.length; i++) {
+    let item = accordionItems[i];
+    let visibleRowsInItem = item.querySelectorAll(
+      ".catalog-table tbody tr:not([style*='display: none'])"
+    );
+
+    if (visibleRowsInItem.length === 0) {
+      item.style.display = "none";
+    } else {
+      item.style.display = "";
+    }
+  }
+
+  let yearSections = document.querySelectorAll("[id^='recursos-']");
+  for (let i = 0; i < yearSections.length; i++) {
+    let section = yearSections[i];
+    let visibleItems = section.querySelectorAll(
+      ".accordion-item:not([style*='display: none'])"
+    );
+
+    if (visibleItems.length === 0) {
+      section.style.display = "none";
+    } else {
+      section.style.display = "";
+    }
+  }
+
+  updateResultsCount(visibleCount);
+}
+
+function updateResultsCount(count) {
+  let countElement = document.getElementById("count-number");
+  if (countElement) {
+    countElement.textContent = count;
+  }
+}
+
+function setupSearchAndFilters() {
+  let searchInput = document.getElementById("search-input");
+  let typeFilter = document.getElementById("type-filter");
+  let resetButton = document.getElementById("reset-filters");
+
+  if (searchInput) {
+    searchInput.addEventListener("input", function () {
+      applyFilters();
+    });
+  }
+
+  if (typeFilter) {
+    typeFilter.addEventListener("change", function () {
+      applyFilters();
+    });
+  }
+
+  if (resetButton) {
+    resetButton.addEventListener("click", function () {
+      resetFilters();
+    });
+  }
+
+  let allRows = document.querySelectorAll(".catalog-table tbody tr");
+  updateResultsCount(allRows.length);
+}
+
+function resetFilters() {
+  let searchInput = document.getElementById("search-input");
+  let typeFilter = document.getElementById("type-filter");
+
+  if (searchInput) {
+    searchInput.value = "";
+  }
+
+  if (typeFilter) {
+    typeFilter.value = "todos";
+  }
+
+  applyFilters();
+}
+
 window.addEventListener("load", function () {
   console.log("Iniciando carregamento de recursos...");
-  loadAllResources();
+  loadAllResources().then(function () {
+    setupSearchAndFilters();
+  });
 });
