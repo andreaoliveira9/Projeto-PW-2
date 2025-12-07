@@ -31,10 +31,7 @@ jobs:
       - name: Preparar ficheiros do site
         run: |
           mkdir -p _site
-          cp -R ./src/assets ./_site/
-          for page in index.html catalog.html contact.html account.html resource.html calculator.html; do
-            cp "./src/${page}" ./_site/
-          done
+          cp -r ./src/* ./_site/
 
       - name: Empacotar artefacto
         uses: actions/upload-pages-artifact@v3

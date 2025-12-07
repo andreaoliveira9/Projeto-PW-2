@@ -1,3 +1,8 @@
+// Inicializar EmailJS com a Public Key
+(function () {
+  emailjs.init("MWFq8f7-C_8OX4m1Q");
+})();
+
 function validateName(name) {
   if (name.length < 3) {
     return "O nome deve ter pelo menos 3 caracteres.";
@@ -91,6 +96,10 @@ function validateField(fieldId, validatorFunction, value) {
 function handleFormSubmit(event) {
   event.preventDefault();
 
+  let form = document.getElementById("contact-form");
+  let submitButton = form.querySelector('button[type="submit"]');
+  let originalButtonText = submitButton.innerHTML;
+
   let nameField = document.getElementById("name-field");
   let emailField = document.getElementById("email-field");
   let subjectField = document.getElementById("subject-field");
@@ -115,20 +124,47 @@ function handleFormSubmit(event) {
   );
 
   if (isNameValid && isEmailValid && isSubjectValid && isMessageValid) {
-    let formData = {
+    // Definir estado de loading
+    submitButton.disabled = true;
+    submitButton.innerHTML =
+      '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> A enviar...';
+
+    // Parâmetros para o template do EmailJS
+    let templateParams = {
       name: nameValue,
       email: emailValue,
       subject: subjectValue,
       message: messageValue,
-      timestamp: new Date().toISOString(),
     };
 
-    saveContactMessage(formData);
+    emailjs
+      .send("service_llmgfmk", "template_l7u0kig", templateParams)
+      .then(function (response) {
+        console.log("SUCCESS!", response.status, response.text);
 
-    showSuccessModal();
+        // Guardar localmente como backup
+        let formData = {
+          ...templateParams,
+          timestamp: new Date().toISOString(),
+        };
+        saveContactMessage(formData);
 
-    document.getElementById("contact-form").reset();
-    clearAllValidation();
+        showSuccessModal();
+        form.reset();
+        clearAllValidation();
+      })
+      .catch(function (error) {
+        console.log("FAILED...", error);
+        alert(
+          "Ocorreu um erro ao enviar a mensagem. Por favor, tenta novamente mais tarde.\nDetalhes: " +
+            JSON.stringify(error)
+        );
+      })
+      .finally(function () {
+        // Restaurar botão
+        submitButton.disabled = false;
+        submitButton.innerHTML = originalButtonText;
+      });
   }
 }
 
