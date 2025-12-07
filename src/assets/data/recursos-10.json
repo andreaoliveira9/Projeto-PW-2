@@ -1,0 +1,126 @@
+[
+  {
+    "id": 1,
+    "category": "Modelos matemáticos para a cidadania",
+    "description": "Fichas sobre modelos aplicados a eleições, partilha de recursos e decisões financeiras, com vídeo de síntese.",
+    "resources": [
+      {
+        "id": 101,
+        "title": "Modelos Matemáticos nas Eleições",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 102,
+        "title": "Modelos Matemáticos na Partilha",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 103,
+        "title": "Modelos Financeiros",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 104,
+        "title": "Resumo",
+        "type": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "category": "Estatística",
+    "description": "Fichas e vídeo que ajudam a organizar dados, ler gráficos e rever toda a estatística descritiva.",
+    "resources": [
+      {
+        "id": 201,
+        "title": "Estatística",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 202,
+        "title": "Resumo",
+        "type": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "category": "Funções",
+    "description": "Consolida gráficos de funções com exercícios sobre características, transformações, quadráticas e um resumo em vídeo.",
+    "resources": [
+      {
+        "id": 301,
+        "title": "Gráficos e Características",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 302,
+        "title": "Transformações de Gráficos",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 303,
+        "title": "Função Quadrática",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 304,
+        "title": "Resumo",
+        "type": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "category": "Geometria Analítica",
+    "description": "Explora pontos, retas, círculos, vetores, distâncias e equações através de fichas orientadas e de um vídeo resumo.",
+    "resources": [
+      {
+        "id": 401,
+        "title": "Pontos, Retas e Planos",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 402,
+        "title": "Círculos e Esferas",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 403,
+        "title": "Mediatriz e Plano Mediador",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 404,
+        "title": "Conjuntos de Pontos e Condições",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 405,
+        "title": "Vetores",
+        "type": "Ficha de trabalho",
+        "url": "resource.html#funcoes"
+      },
+      {
+        "id": 406,
+        "title": "Resumo",
+        "type": "Vídeo",
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+      }
+    ]
+  }
+]
