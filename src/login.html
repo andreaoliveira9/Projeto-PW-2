@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="pt-PT" data-theme="auto">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>MathPath - Login</title>
+    <meta
+      name="description"
+      content="Inicia sessão na plataforma MathPath para aceder a recursos exclusivos."
+    />
+    <meta name="keywords" content="login, autenticação, mathpath, matemática" />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.ico" rel="icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+
+    <script>
+      (function () {
+        var storageKey = "mathpath-theme";
+        var allowed = ["auto", "light", "dark"];
+        try {
+          var storedTheme = localStorage.getItem(storageKey);
+          if (allowed.indexOf(storedTheme) !== -1) {
+            document.documentElement.setAttribute("data-theme", storedTheme);
+          }
+        } catch (error) {
+          document.documentElement.setAttribute(
+            "data-theme",
+            document.documentElement.getAttribute("data-theme") || "auto"
+          );
+        }
+      })();
+    </script>
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+  </head>
+
+  <body class="login-page">
+    <header
+      id="header"
+      class="header d-flex align-items-center light-background sticky-top"
+    >
+      <div
+        class="container-fluid position-relative d-flex align-items-center justify-content-between"
+      >
+        <a
+          href="index.html"
+          class="logo d-flex align-items-center me-auto me-xl-0"
+        >
+          <h1 class="sitename">MathPath</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="index.html">Início</a></li>
+            <li class="dropdown">
+              <a href="catalog.html"
+                ><span>Recursos</span>
+                <i class="bi bi-chevron-down toggle-dropdown"></i
+              ></a>
+              <ul>
+                <li><a href="catalog.html#recursos-10">10.º Ano</a></li>
+                <li><a href="catalog.html#recursos-11">11.º Ano</a></li>
+                <li><a href="catalog.html#recursos-12">12.º Ano</a></li>
+              </ul>
+            </li>
+            <li><a href="calculator.html">Calculadora</a></li>
+            <li><a href="contact.html">Contactos</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-lg-none bi bi-list"></i>
+        </nav>
+
+        <div class="header-actions d-flex align-items-center gap-3">
+          <div class="header-social-links d-none d-lg-flex">
+            <a href="#" class="twitter" aria-label="MathPath no X"
+              ><i class="bi bi-twitter-x"></i
+            ></a>
+            <a href="#" class="facebook" aria-label="MathPath no Facebook"
+              ><i class="bi bi-facebook"></i
+            ></a>
+            <a href="#" class="instagram" aria-label="MathPath no Instagram"
+              ><i class="bi bi-instagram"></i
+            ></a>
+            <a href="#" class="linkedin" aria-label="MathPath no LinkedIn"
+              ><i class="bi bi-linkedin"></i
+            ></a>
+          </div>
+          <div class="theme-toggle dropdown">
+            <input
+              type="radio"
+              class="theme-radio"
+              name="site-theme"
+              id="theme-auto"
+              checked
+            />
+            <input
+              type="radio"
+              class="theme-radio"
+              name="site-theme"
+              id="theme-light"
+            />
+            <input
+              type="radio"
+              class="theme-radio"
+              name="site-theme"
+              id="theme-dark"
+            />
+            <button
+              class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 theme-toggle__button"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+              aria-label="Alterar tema"
+            >
+              <i class="theme-toggle__icon bi bi-circle-half"></i>
+            </button>
+            <div class="dropdown-menu dropdown-menu-end shadow">
+              <label class="dropdown-item" for="theme-auto">
+                <i class="bi bi-laptop"></i>
+                <span>Sistema</span>
+                <i class="bi bi-check2 theme-check" aria-hidden="true"></i>
+              </label>
+              <label class="dropdown-item" for="theme-light">
+                <i class="bi bi-sun"></i>
+                <span>Modo claro</span>
+                <i class="bi bi-check2 theme-check" aria-hidden="true"></i>
+              </label>
+              <label class="dropdown-item" for="theme-dark">
+                <i class="bi bi-moon-stars"></i>
+                <span>Modo escuro</span>
+                <i class="bi bi-check2 theme-check" aria-hidden="true"></i>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Login Section -->
+      <section class="section py-5">
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-lg-5 col-md-7">
+              <div class="card shadow-sm" data-aos="fade-up">
+                <div class="card-body p-4">
+                  <div class="text-center mb-4">
+                    <h2 class="h3 mb-2">Bem-vindo de volta!</h2>
+                    <p class="text-muted">
+                      Inicia sessão para aceder aos teus recursos
+                    </p>
+                  </div>
+
+                  <!-- Alert Messages -->
+                  <div id="alert-container"></div>
+
+                  <!-- Login Form -->
+                  <form id="login-form" novalidate>
+                    <div class="mb-3">
+                      <label for="username" class="form-label"
+                        >Nome de utilizador</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="username"
+                        name="username"
+                        required
+                        autocomplete="username"
+                      />
+                      <div class="invalid-feedback">
+                        Por favor, insere o teu nome de utilizador.
+                      </div>
+                    </div>
+
+                    <div class="mb-3">
+                      <label for="password" class="form-label"
+                        >Palavra-passe</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="password"
+                        name="password"
+                        required
+                        autocomplete="current-password"
+                      />
+                      <div class="invalid-feedback">
+                        Por favor, insere a tua palavra-passe.
+                      </div>
+                    </div>
+
+                    <div class="mb-3 form-check">
+                      <input
+                        type="checkbox"
+                        class="form-check-input"
+                        id="remember-me"
+                      />
+                      <label class="form-check-label" for="remember-me">
+                        Lembrar-me
+                      </label>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mb-3">
+                      <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar
+                      sessão
+                    </button>
+                  </form>
+
+                  <hr class="my-4" />
+
+                  <div class="text-center">
+                    <p class="text-muted small mb-2">
+                      <i class="bi bi-info-circle me-1"></i>
+                      Credenciais de teste:
+                    </p>
+                    <div class="alert alert-light py-2">
+                      <small>
+                        <strong>Utilizador:</strong> demo<br />
+                        <strong>Palavra-passe:</strong> demo
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer" class="footer light-background">
+      <div class="container">
+        <div class="copyright text-center">
+          <p>
+            © <span>Copyright</span>
+            <strong class="px-1 sitename">MathPath</strong>
+            <span>Todos os direitos reservados<br /></span>
+          </p>
+        </div>
+        <div class="social-links d-flex justify-content-center">
+          <a href="#" aria-label="MathPath no X"
+            ><i class="bi bi-twitter-x"></i
+          ></a>
+          <a href="#" aria-label="MathPath no Facebook"
+            ><i class="bi bi-facebook"></i
+          ></a>
+          <a href="#" aria-label="MathPath no Instagram"
+            ><i class="bi bi-instagram"></i
+          ></a>
+          <a href="#" aria-label="MathPath no LinkedIn"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+        </div>
+        <div class="credits">
+          Desenvolvido por
+          <a href="https://bootstrapmade.com/">BootstrapMade</a> Distribuído por
+          <a href="https://themewagon.com">ThemeWagon</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <script src="assets/js/theme.js" defer></script>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    <!-- Login JS File -->
+    <script src="assets/js/login.js"></script>
+  </body>
+</html>

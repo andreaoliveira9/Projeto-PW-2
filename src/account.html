@@ -283,13 +283,15 @@
                       width="110"
                     />
                     <div class="mt-3">
-                      <h4 class="mb-1">André Oliveira</h4>
-                      <p class="text-secondary mb-1">
-                        12.º Ano · Ciências e Tecnologias
-                      </p>
-                      <p class="text-muted font-size-sm mb-3">
-                        Escola Secundária Dr. Mário Sacramento · Aveiro
-                      </p>
+                      <h4 class="mb-1" id="profile-name"></h4>
+                      <p
+                        class="text-secondary mb-1"
+                        id="profile-year-course"
+                      ></p>
+                      <p
+                        class="text-muted font-size-sm mb-3"
+                        id="profile-school"
+                      ></p>
                       <button class="btn btn-primary btn-sm px-3">
                         Gerir plano
                       </button>
@@ -304,9 +306,7 @@
                         <i class="bi bi-envelope-paper me-2 text-primary"></i
                         >Email académico
                       </h6>
-                      <span class="text-secondary"
-                        >andre.oliveira@mathpath.pt</span
-                      >
+                      <span class="text-secondary" id="profile-email"></span>
                     </li>
                     <li
                       class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
@@ -315,9 +315,7 @@
                         <i class="bi bi-mortarboard-fill me-2 text-success"></i
                         >Objetivo
                       </h6>
-                      <span class="text-secondary"
-                        >Atingir 20 valores no exame</span
-                      >
+                      <span class="text-secondary" id="profile-goal"></span>
                     </li>
                     <li
                       class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
@@ -326,7 +324,9 @@
                         <i class="bi bi-calendar-week me-2 text-warning"></i
                         >Plano ativo
                       </h6>
-                      <span class="text-secondary">Revisão 2.º Período</span>
+                      <span class="text-secondary" id="profile-plan"
+                        >Revisão 2.º Período</span
+                      >
                     </li>
                     <li
                       class="list-group-item d-flex justify-content-between align-items-center flex-wrap"
@@ -335,7 +335,10 @@
                         <i class="bi bi-clock-history me-2 text-info"></i>Último
                         acesso
                       </h6>
-                      <span class="text-secondary">Há 2 dias</span>
+                      <span
+                        class="text-secondary"
+                        id="profile-last-access"
+                      ></span>
                     </li>
                   </ul>
                 </div>
@@ -360,9 +363,12 @@
                       <h6 class="mb-1 text-uppercase small text-muted">
                         Nome completo
                       </h6>
-                      <p class="mb-0 fw-semibold">André Oliveira</p>
+                      <p class="mb-0 fw-semibold" id="account-name"></p>
                     </div>
-                    <span class="badge text-bg-secondary">12.º Ano</span>
+                    <span
+                      class="badge text-bg-secondary"
+                      id="account-year"
+                    ></span>
                   </li>
                   <li
                     class="list-group-item d-flex justify-content-between align-items-center"
@@ -371,50 +377,30 @@
                       <h6 class="mb-1 text-uppercase small text-muted">
                         Email académico
                       </h6>
-                      <p class="mb-0 fw-semibold">andre.oliveira@mathpath.pt</p>
+                      <p class="mb-0 fw-semibold" id="account-email"></p>
                     </div>
                     <i class="bi bi-envelope-check text-primary fs-5"></i>
                   </li>
                   <li class="list-group-item">
                     <h6 class="mb-1 text-uppercase small text-muted">Escola</h6>
-                    <p class="mb-0">
-                      Escola Secundária Dr. Mário Sacramento · Aveiro
-                    </p>
+                    <p class="mb-0" id="account-school"></p>
                   </li>
                   <li class="list-group-item">
                     <h6 class="mb-1 text-uppercase small text-muted">
                       Área de estudo
                     </h6>
                     <div class="d-flex flex-wrap gap-2">
-                      <span class="badge rounded-pill text-bg-info text-white"
-                        >C. e Tecnologias</span
-                      >
-                      <span class="badge rounded-pill text-bg-light border"
-                        >Apoio exames 12.º</span
-                      >
+                      <span
+                        class="badge rounded-pill text-bg-info text-white"
+                        id="account-course"
+                      ></span>
                     </div>
                   </li>
                   <li class="list-group-item">
                     <h6 class="mb-1 text-uppercase small text-muted">
                       Competências em foco
                     </h6>
-                    <div class="row g-2">
-                      <div class="col-md-4">
-                        <span class="badge w-100 text-bg-primary"
-                          >Probabilidades compostas</span
-                        >
-                      </div>
-                      <div class="col-md-4">
-                        <span class="badge w-100 text-bg-primary"
-                          >Derivadas</span
-                        >
-                      </div>
-                      <div class="col-md-4">
-                        <span class="badge w-100 text-bg-primary"
-                          >Vetores no espaço</span
-                        >
-                      </div>
-                    </div>
+                    <div class="row g-2" id="account-skills"></div>
                   </li>
                 </ul>
                 <div class="card-footer bg-transparent text-end">
@@ -630,5 +616,11 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Account JS File -->
+    <script src="assets/js/account.js"></script>
+
+    <!-- Auth JS File -->
+    <script src="assets/js/auth.js"></script>
   </body>
 </html>

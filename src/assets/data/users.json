@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "username": "andre",
+    "password": "1234",
+    "name": "André Oliveira",
+    "email": "andre.oliveira@mathpath.pt",
+    "year": 12,
+    "school": "Escola Secundária Dr. Mário Sacramento",
+    "course": "Ciências e Tecnologias",
+    "goal": "Atingir 20 valores no exame",
+    "activePlan": "Revisão 2.º Período",
+    "skills": ["Probabilidades compostas", "Derivadas", "Vetores no espaço"]
+  },
+  {
+    "id": 2,
+    "username": "maria",
+    "password": "5678",
+    "name": "Maria Silva",
+    "email": "maria.silva@mathpath.pt",
+    "year": 12,
+    "school": "Escola Secundária de Aveiro",
+    "course": "Ciências e Tecnologias",
+    "goal": "Melhorar em Matemática A",
+    "activePlan": "Preparação Exame Nacional",
+    "skills": ["Funções exponenciais", "Limites", "Integrais"]
+  },
+  {
+    "id": 3,
+    "username": "joao",
+    "password": "9012",
+    "name": "João Costa",
+    "email": "joao.costa@mathpath.pt",
+    "year": 11,
+    "school": "Escola Secundária José Estêvão",
+    "course": "Ciências e Tecnologias",
+    "goal": "Subir a média para 18 valores",
+    "activePlan": "Reforço Trigonometria",
+    "skills": ["Sucessões", "Geometria analítica", "Contagem"]
+  },
+  {
+    "id": 4,
+    "username": "demo",
+    "password": "demo",
+    "name": "Utilizador Demo",
+    "email": "demo@mathpath.pt",
+    "year": 10,
+    "school": "Escola Secundária de Aveiro",
+    "course": "Ciências e Tecnologias",
+    "goal": "Consolidar bases de Matemática",
+    "activePlan": "Revisão Funções",
+    "skills": ["Funções quadráticas", "Estatística", "Geometria"]
+  }
+]
