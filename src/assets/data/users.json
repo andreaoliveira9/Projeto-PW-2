@@ -10,7 +10,33 @@
     "course": "Ciências e Tecnologias",
     "goal": "Atingir 20 valores no exame",
     "activePlan": "Revisão 2.º Período",
-    "skills": ["Probabilidades compostas", "Derivadas", "Vetores no espaço"]
+    "skills": ["Probabilidades compostas", "Derivadas", "Vetores no espaço"],
+    "studyPlan": [
+      {
+        "day": "Segunda",
+        "theme": "Probabilidades",
+        "objective": "Resolver exercícios de exame sobre probabilidade condicionada.",
+        "time": "60 min"
+      },
+      {
+        "day": "Quarta",
+        "theme": "Funções Exponenciais",
+        "objective": "Estudar limites notáveis e assíntotas.",
+        "time": "45 min"
+      },
+      {
+        "day": "Sexta",
+        "theme": "Números Complexos",
+        "objective": "Rever forma trigonométrica e raízes n-ésimas.",
+        "time": "50 min"
+      },
+      {
+        "day": "Sábado",
+        "theme": "Simulador Exame",
+        "objective": "Realizar teste global dos conteúdos de 12.º ano.",
+        "time": "90 min"
+      }
+    ]
   },
   {
     "id": 2,
@@ -23,7 +49,27 @@
     "course": "Ciências e Tecnologias",
     "goal": "Melhorar em Matemática A",
     "activePlan": "Preparação Exame Nacional",
-    "skills": ["Funções exponenciais", "Limites", "Integrais"]
+    "skills": ["Funções exponenciais", "Limites", "Integrais"],
+    "studyPlan": [
+      {
+        "day": "Segunda",
+        "theme": "Funções",
+        "objective": "Fichas de trabalho sobre domínio e contradomínio.",
+        "time": "40 min"
+      },
+      {
+        "day": "Quarta",
+        "theme": "Derivadas",
+        "objective": "Praticar regras de derivação e monotonia.",
+        "time": "50 min"
+      },
+      {
+        "day": "Sexta",
+        "theme": "Geometria",
+        "objective": "Exercícios simples de produto escalar.",
+        "time": "30 min"
+      }
+    ]
   },
   {
     "id": 3,
@@ -36,7 +82,27 @@
     "course": "Ciências e Tecnologias",
     "goal": "Subir a média para 18 valores",
     "activePlan": "Reforço Trigonometria",
-    "skills": ["Sucessões", "Geometria analítica", "Contagem"]
+    "skills": ["Sucessões", "Geometria analítica", "Contagem"],
+    "studyPlan": [
+      {
+        "day": "Terça",
+        "theme": "Trigonometria",
+        "objective": "Memorizar fórmulas e círculo trigonométrico.",
+        "time": "45 min"
+      },
+      {
+        "day": "Quinta",
+        "theme": "Sucessões",
+        "objective": "Resolver problemas de progressão aritmética.",
+        "time": "45 min"
+      },
+      {
+        "day": "Sábado",
+        "theme": "Geometria Analítica",
+        "objective": "Estudar declive e inclinação da reta.",
+        "time": "60 min"
+      }
+    ]
   },
   {
     "id": 4,
@@ -49,6 +115,26 @@
     "course": "Ciências e Tecnologias",
     "goal": "Consolidar bases de Matemática",
     "activePlan": "Revisão Funções",
-    "skills": ["Funções quadráticas", "Estatística", "Geometria"]
+    "skills": ["Funções quadráticas", "Estatística", "Geometria"],
+    "studyPlan": [
+      {
+        "day": "Segunda",
+        "theme": "Funções",
+        "objective": "Introdução às funções afim e quadrática.",
+        "time": "30 min"
+      },
+      {
+        "day": "Quarta",
+        "theme": "Geometria",
+        "objective": "Rever áreas e volumes de sólidos.",
+        "time": "40 min"
+      },
+      {
+        "day": "Sexta",
+        "theme": "Estatística",
+        "objective": "Organizar dados em tabelas de frequências.",
+        "time": "30 min"
+      }
+    ]
   }
 ]

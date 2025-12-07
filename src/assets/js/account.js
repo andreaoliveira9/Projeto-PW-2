@@ -197,6 +197,40 @@ function displayFavorites() {
   }
 }
 
+function loadStudyPlan(userEmail) {
+  let planBody = document.getElementById("study-plan-body");
+  if (!planBody) return;
+
+  fetch("assets/data/users.json")
+    .then((response) => response.json())
+    .then((users) => {
+      let currentUser = users.find((user) => user.email === userEmail);
+
+      if (currentUser && currentUser.studyPlan) {
+        let html = "";
+        currentUser.studyPlan.forEach((item) => {
+          html += `
+            <tr>
+              <th scope="row">${item.day}</th>
+              <td>${item.theme}</td>
+              <td>${item.objective}</td>
+              <td>${item.time}</td>
+            </tr>
+          `;
+        });
+        planBody.innerHTML = html;
+      } else {
+        planBody.innerHTML =
+          '<tr><td colspan="4" class="text-center p-3 text-muted">Plano de estudo não encontrado.</td></tr>';
+      }
+    })
+    .catch((error) => {
+      console.error("Erro ao carregar o plano de estudo:", error);
+      planBody.innerHTML =
+        '<tr><td colspan="4" class="text-center p-3 text-danger">Erro ao carregar o plano de estudo.</td></tr>';
+    });
+}
+
 function initializeAccountPage() {
   let userData = checkAuthentication();
 
@@ -210,6 +244,7 @@ function initializeAccountPage() {
   updateGoalAndPlan(userData);
   updateSkills(userData);
   displayFavorites();
+  loadStudyPlan(userData.email);
 }
 
 window.addEventListener("load", function () {
