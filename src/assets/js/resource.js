@@ -35,7 +35,7 @@ async function loadAllResources() {
       }
     }
   } catch (error) {
-    console.log("Erro ao carregar recursos:", error);
+    console.error("Erro ao carregar recursos:", error);
   }
 
   return resources;
@@ -93,7 +93,7 @@ function updateIframes(resource) {
     solutionsIframe.src = resource.solutionsUrl + "#toolbar=0&view=FitH";
 
     solutionsIframe.addEventListener("load", function () {
-      console.log("Soluções carregadas com sucesso");
+      console.debug("Soluções carregadas");
     });
   } else if (solutionsIframe && !resource.solutionsUrl) {
     let solutionsTab = document.querySelector("#resource-tab-solutions");

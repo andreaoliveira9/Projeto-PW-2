@@ -140,9 +140,6 @@ function handleFormSubmit(event) {
     emailjs
       .send("service_llmgfmk", "template_l7u0kig", templateParams)
       .then(function (response) {
-        console.log("SUCCESS!", response.status, response.text);
-
-        // Guardar localmente como backup
         let formData = {
           ...templateParams,
           timestamp: new Date().toISOString(),
@@ -154,14 +151,12 @@ function handleFormSubmit(event) {
         clearAllValidation();
       })
       .catch(function (error) {
-        console.log("FAILED...", error);
         alert(
           "Ocorreu um erro ao enviar a mensagem. Por favor, tenta novamente mais tarde.\nDetalhes: " +
             JSON.stringify(error)
         );
       })
       .finally(function () {
-        // Restaurar botão
         submitButton.disabled = false;
         submitButton.innerHTML = originalButtonText;
       });

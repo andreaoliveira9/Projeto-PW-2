@@ -119,9 +119,7 @@ function renderCategories(categories, year) {
   let accordionContainer = document.getElementById("accordion-" + year);
 
   if (!accordionContainer) {
-    console.log(
-      "Erro: Container do accordion não encontrado para o ano " + year
-    );
+    console.error("Container do accordion não encontrado para o ano " + year);
     return;
   }
 
@@ -132,7 +130,6 @@ function renderCategories(categories, year) {
   }
 
   accordionContainer.innerHTML = html;
-  console.log("Recursos do " + year + ".º ano carregados com sucesso!");
 }
 
 async function loadYearResources(year) {
@@ -142,18 +139,7 @@ async function loadYearResources(year) {
     let data = await loadData(file);
     renderCategories(data, year);
   } catch (error) {
-    console.log("Erro ao carregar recursos do " + year + ".º ano:", error);
-  }
-}
-
-async function loadYearResources(year) {
-  let file = "assets/data/recursos-" + year + ".json";
-
-  try {
-    let data = await loadData(file);
-    renderCategories(data, year);
-  } catch (error) {
-    console.log("Erro ao carregar recursos do " + year + ".º ano:", error);
+    console.error("Erro ao carregar recursos do " + year + ".º ano:", error);
   }
 }
 
@@ -305,7 +291,6 @@ function resetFilters() {
 }
 
 window.addEventListener("load", function () {
-  console.log("Iniciando carregamento de recursos...");
   loadAllResources().then(function () {
     setupSearchAndFilters();
   });
@@ -318,11 +303,8 @@ if (videoModal) {
     let url = button.getAttribute("data-url");
     let title = button.getAttribute("data-title");
 
-    // Adicionar parâmetros para embed se for YouTube e não tiver
     if (url.includes("youtube.com") || url.includes("youtu.be")) {
       if (!url.includes("embed")) {
-        // Lógica simples de conversão se necessário, ou assumir que o JSON já tem embed ou o user vai corrigir
-        // Mas para garantir:
         let videoId = "";
         if (url.includes("v=")) {
           videoId = url.split("v=")[1].split("&")[0];
@@ -345,7 +327,7 @@ if (videoModal) {
   videoModal.addEventListener("hidden.bs.modal", function () {
     let iframe = videoModal.querySelector("iframe");
     if (iframe) {
-      iframe.src = ""; // Parar vídeo
+      iframe.src = "";
     }
   });
 }
@@ -367,7 +349,7 @@ if (pdfModal) {
   pdfModal.addEventListener("hidden.bs.modal", function () {
     let iframe = pdfModal.querySelector("iframe");
     if (iframe) {
-      iframe.src = ""; // Limpar src ao fechar
+      iframe.src = "";
     }
   });
 }

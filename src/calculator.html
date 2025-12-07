@@ -37,10 +37,10 @@
 
     <script>
       (function () {
-        var storageKey = "mathpath-theme";
-        var allowed = ["auto", "light", "dark"];
+        const storageKey = "mathpath-theme";
+        const allowed = ["auto", "light", "dark"];
         try {
-          var storedTheme = localStorage.getItem(storageKey);
+          const storedTheme = localStorage.getItem(storageKey);
           if (allowed.indexOf(storedTheme) !== -1) {
             document.documentElement.setAttribute("data-theme", storedTheme);
           }
