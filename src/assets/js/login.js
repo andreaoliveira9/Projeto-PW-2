@@ -87,7 +87,7 @@ async function handleLogin(event) {
     showAlert("Login bem-sucedido! A redirecionar...", "success");
 
     setTimeout(function () {
-      window.location.href = "index.html";
+      window.location.href = "account.html";
     }, 1500);
   } else {
     showAlert("Nome de utilizador ou palavra-passe incorretos.", "danger");

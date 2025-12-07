@@ -132,6 +132,58 @@ function updateSkills(userData) {
   }
 }
 
+function displayFavorites() {
+  let favoritesContainer = document.getElementById("favorites-list");
+
+  if (!favoritesContainer) {
+    return;
+  }
+
+  let favorites = getFavorites();
+
+  if (favorites.length === 0) {
+    favoritesContainer.innerHTML =
+      '<p class="text-muted text-center p-4 mb-0">Ainda não tens recursos favoritos. <a href="catalog.html">Explora o catálogo</a> para adicionar!</p>';
+    return;
+  }
+
+  let html = "";
+
+  for (let i = 0; i < favorites.length; i++) {
+    let fav = favorites[i];
+    html +=
+      '<div class="list-group-item d-flex justify-content-between align-items-start">';
+    html += "<div>";
+    html += '<h6 class="mb-1">' + fav.title + "</h6>";
+    html += '<small class="text-muted">' + fav.type + "</small>";
+    html += "</div>";
+    html += "<div>";
+    html +=
+      '<a href="' +
+      fav.url +
+      '" target="_blank" class="btn btn-sm btn-outline-primary me-2">Abrir</a>';
+    html +=
+      '<button class="btn btn-sm btn-outline-danger remove-favorite" data-resource-id="' +
+      fav.id +
+      '" title="Remover dos favoritos">';
+    html += '<i class="bi bi-trash"></i>';
+    html += "</button>";
+    html += "</div>";
+    html += "</div>";
+  }
+
+  favoritesContainer.innerHTML = html;
+
+  let removeButtons = favoritesContainer.querySelectorAll(".remove-favorite");
+  for (let i = 0; i < removeButtons.length; i++) {
+    removeButtons[i].addEventListener("click", function () {
+      let resourceId = this.getAttribute("data-resource-id");
+      removeFromFavorites(resourceId);
+      displayFavorites();
+    });
+  }
+}
+
 function initializeAccountPage() {
   let userData = checkAuthentication();
 
@@ -144,6 +196,7 @@ function initializeAccountPage() {
   updateLastAccess();
   updateGoalAndPlan(userData);
   updateSkills(userData);
+  displayFavorites();
 }
 
 window.addEventListener("load", function () {

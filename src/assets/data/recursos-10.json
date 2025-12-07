@@ -8,25 +8,35 @@
         "id": 101,
         "title": "Modelos Matemáticos nas Eleições",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=101",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/cidadania/eleicoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/cidadania/eleicoes_resol.pdf",
+        "year": "10"
       },
       {
         "id": 102,
         "title": "Modelos Matemáticos na Partilha",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=102",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/cidadania/partilha.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/cidadania/partilha_resol.pdf",
+        "year": "10"
       },
       {
         "id": 103,
         "title": "Modelos Financeiros",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=103",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/cidadania/financeiros.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/cidadania/financeiros_resol.pdf",
+        "year": "10"
       },
       {
         "id": 104,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "10"
       }
     ]
   },
@@ -39,13 +49,17 @@
         "id": 201,
         "title": "Estatística",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=201",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/estatistica/estatistica.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/estatistica/estatistica_resol.pdf",
+        "year": "10"
       },
       {
         "id": 202,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "10"
       }
     ]
   },
@@ -58,25 +72,35 @@
         "id": 301,
         "title": "Gráficos e Características",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=301",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/funcoes/graficos.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/funcoes/graficos_resol.pdf",
+        "year": "10"
       },
       {
         "id": 302,
         "title": "Transformações de Gráficos",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=302",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/funcoes/transformacoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/funcoes/transformacoes_resol.pdf",
+        "year": "10"
       },
       {
         "id": 303,
         "title": "Função Quadrática",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=303",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/funcoes/quadratica.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/funcoes/quadratica_resol.pdf",
+        "year": "10"
       },
       {
         "id": 304,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "10"
       }
     ]
   },
@@ -89,37 +113,53 @@
         "id": 401,
         "title": "Pontos, Retas e Planos",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=401",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/pontos-retas.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/pontos-retas_resol.pdf",
+        "year": "10"
       },
       {
         "id": 402,
         "title": "Círculos e Esferas",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=402",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/circulos.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/circulos_resol.pdf",
+        "year": "10"
       },
       {
         "id": 403,
         "title": "Mediatriz e Plano Mediador",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=403",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/mediatriz.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/mediatriz_resol.pdf",
+        "year": "10"
       },
       {
         "id": 404,
         "title": "Conjuntos de Pontos e Condições",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=404",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/conjuntos.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/conjuntos_resol.pdf",
+        "year": "10"
       },
       {
         "id": 405,
         "title": "Vetores",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=405",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/vetores.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/vetores_resol.pdf",
+        "year": "10"
       },
       {
         "id": 406,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "10"
       }
     ]
   }

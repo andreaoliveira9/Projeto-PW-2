@@ -15,7 +15,7 @@ function isLoggedIn() {
 
 function logout() {
   localStorage.removeItem("mathpath-session");
-  window.location.reload();
+  window.location.href = "index.html";
 }
 
 function updateHeader() {

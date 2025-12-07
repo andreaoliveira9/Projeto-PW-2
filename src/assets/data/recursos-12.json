@@ -5,22 +5,29 @@
     "description": "Fichas sobre operações, forma algébrica e trigonométrica, com vídeo de síntese.",
     "resources": [
       {
-        "id": 101,
+        "id": 2101,
         "title": "Operações com Complexos",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2101",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/operacoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/operacoes_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 102,
+        "id": 2102,
         "title": "Forma Trigonométrica",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2102",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/trigonometrica.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/trigonometrica_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 103,
+        "id": 2103,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "12"
       }
     ]
   },
@@ -30,28 +37,38 @@
     "description": "Conjunto de fichas sobre noções gerais de probabilidade, condicionadas, combinatória e distribuições.",
     "resources": [
       {
-        "id": 201,
+        "id": 2201,
         "title": "Conjuntos e Propriedades",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2201",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/conjuntos.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/conjuntos_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 202,
+        "id": 2202,
         "title": "Probabilidade Condicionada",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2202",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/condicionada.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/condicionada_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 203,
+        "id": 2203,
         "title": "Distribuição Normal",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2203",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/normal.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/normal_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 204,
+        "id": 2204,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "12"
       }
     ]
   },
@@ -61,28 +78,38 @@
     "description": "Explora propriedades, gráficos e aplicações de funções exponenciais e logarítmicas.",
     "resources": [
       {
-        "id": 301,
+        "id": 2301,
         "title": "Função Exponencial",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2301",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/exponencial.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/exponencial_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 302,
+        "id": 2302,
         "title": "Função Logarítmica",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2302",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/logaritmica.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/logaritmica_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 303,
+        "id": 2303,
         "title": "Equações e Inequações",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2303",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/equacoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/equacoes_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 304,
+        "id": 2304,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "12"
       }
     ]
   },
@@ -92,28 +119,38 @@
     "description": "Fichas sobre cálculo de limites, continuidade e aplicações.",
     "resources": [
       {
-        "id": 401,
+        "id": 2401,
         "title": "Limites de Funções",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2401",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/limites.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/limites_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 402,
+        "id": 2402,
         "title": "Continuidade",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2402",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/continuidade.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/continuidade_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 403,
+        "id": 2403,
         "title": "Assíntotas",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2403",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/assintotas.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/assintotas_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 404,
+        "id": 2404,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "12"
       }
     ]
   },
@@ -123,28 +160,38 @@
     "description": "Consolida regras de derivação, aplicações e estudo de funções.",
     "resources": [
       {
-        "id": 501,
+        "id": 2501,
         "title": "Regras de Derivação",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2501",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/regras.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/regras_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 502,
+        "id": 2502,
         "title": "Aplicações das Derivadas",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2502",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/aplicacoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/aplicacoes_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 503,
+        "id": 2503,
         "title": "Estudo de Funções",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=2503",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/estudo.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/estudo_resol.pdf",
+        "year": "12"
       },
       {
-        "id": 504,
+        "id": 2504,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "12"
       }
     ]
   }

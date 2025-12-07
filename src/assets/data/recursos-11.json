@@ -5,22 +5,29 @@
     "description": "Fichas sobre razões trigonométricas, fórmulas e aplicações práticas, com vídeo de síntese.",
     "resources": [
       {
-        "id": 101,
+        "id": 1101,
         "title": "Razões Trigonométricas",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1101",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/trigonometria/razoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/trigonometria/razoes_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 102,
+        "id": 1102,
         "title": "Fórmulas Trigonométricas",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1102",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/trigonometria/formulas.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/trigonometria/formulas_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 103,
+        "id": 1103,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "11"
       }
     ]
   },
@@ -30,28 +37,38 @@
     "description": "Aprofunda vetores, produto escalar, equações de retas e planos no espaço.",
     "resources": [
       {
-        "id": 201,
+        "id": 1201,
         "title": "Vetores no Espaço",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1201",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/vetores.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/vetores_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 202,
+        "id": 1202,
         "title": "Produto Escalar",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1202",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/produto-escalar.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/produto-escalar_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 203,
+        "id": 1203,
         "title": "Equações de Retas e Planos",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1203",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/retas-planos.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/retas-planos_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 204,
+        "id": 1204,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "11"
       }
     ]
   },
@@ -61,28 +78,38 @@
     "description": "Exercícios sobre princípios de contagem, permutações, arranjos e combinações.",
     "resources": [
       {
-        "id": 301,
+        "id": 1301,
         "title": "Princípios de Contagem",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1301",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/contagem/principios.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/contagem/principios_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 302,
+        "id": 1302,
         "title": "Permutações e Arranjos",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1302",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/contagem/permutacoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/contagem/permutacoes_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 303,
+        "id": 1303,
         "title": "Combinações",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1303",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/contagem/combinacoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/contagem/combinacoes_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 304,
+        "id": 1304,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "11"
       }
     ]
   },
@@ -92,28 +119,38 @@
     "description": "Estuda sucessões aritméticas, geométricas, limites e aplicações.",
     "resources": [
       {
-        "id": 401,
+        "id": 1401,
         "title": "Sucessões Aritméticas",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1401",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/sucessoes/aritmeticas.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/sucessoes/aritmeticas_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 402,
+        "id": 1402,
         "title": "Sucessões Geométricas",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1402",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/sucessoes/geometricas.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/sucessoes/geometricas_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 403,
+        "id": 1403,
         "title": "Limites de Sucessões",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1403",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/sucessoes/limites.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/sucessoes/limites_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 404,
+        "id": 1404,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "11"
       }
     ]
   },
@@ -123,22 +160,29 @@
     "description": "Consolida funções polinomiais, raízes, gráficos e aplicações práticas.",
     "resources": [
       {
-        "id": 501,
+        "id": 1501,
         "title": "Funções Polinomiais",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1501",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/polinomiais.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/polinomiais_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 502,
+        "id": 1502,
         "title": "Raízes e Fatorização",
         "type": "Ficha de trabalho",
-        "url": "resource.html#funcoes"
+        "url": "resource.html?id=1502",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/raizes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/raizes_resol.pdf",
+        "year": "11"
       },
       {
-        "id": 503,
+        "id": 1503,
         "title": "Resumo",
         "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s"
+        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
+        "year": "11"
       }
     ]
   }
