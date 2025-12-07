@@ -323,71 +323,24 @@
                   <span class="text-muted small">Atualizado em tempo real</span>
                 </div>
                 <div class="card-body">
-                  <div class="chat-thread">
-                    <article class="chat-message">
-                      <header class="chat-meta">
-                        <span class="chat-author">André</span>
-                        <time class="chat-time" datetime="2024-09-15T10:03"
-                          >há 12 min</time
-                        >
-                      </header>
-                      <p class="chat-text mb-2">
-                        Na questão 2.b), depois de aplicar o método de Hamilton,
-                        ficou com dúvidas no arredondamento do quociente. Como
-                        fizeram?
-                      </p>
-                      <footer class="chat-footer text-muted small">
-                        5 reações · 3 respostas
-                      </footer>
-                    </article>
-                    <article class="chat-message">
-                      <header class="chat-meta">
-                        <span class="chat-author">Rui</span>
-                        <time class="chat-time" datetime="2024-09-15T10:08"
-                          >há 7 min</time
-                        >
-                      </header>
-                      <p class="chat-text mb-2">
-                        @André eu mantive três casas decimais e só arredondei na
-                        distribuição final. Confere com o enunciado e está
-                        explicado nas soluções.
-                      </p>
-                      <footer class="chat-footer text-muted small">
-                        Sinalizado pelo professor
-                      </footer>
-                    </article>
-                    <article class="chat-message">
-                      <header class="chat-meta">
-                        <span class="chat-author">Carla</span>
-                        <time class="chat-time" datetime="2024-09-15T10:14"
-                          >há 1 min</time
-                        >
-                      </header>
-                      <p class="chat-text mb-2">
-                        Para comparar sistemas eleitorais usei um quadro resumo
-                        que deixei nos materiais partilhados. Pode ajudar!
-                      </p>
-                      <footer class="chat-footer text-muted small">
-                        2 reações
-                      </footer>
-                    </article>
-                    <article class="chat-message">
-                      <header class="chat-meta">
-                        <span class="chat-author">Professor Luís</span>
-                        <time class="chat-time" datetime="2024-09-15T10:15"
-                          >agora mesmo</time
-                        >
-                      </header>
-                      <p class="chat-text mb-2">
-                        Bom trabalho! Recordo que o objetivo é comparar
-                        vantagens e limitações de cada método. Usem o botão de
-                        soluções apenas para validar o vosso raciocínio.
-                      </p>
-                      <footer class="chat-footer text-muted small">
-                        Destacado pelo docente
-                      </footer>
-                    </article>
+                  <div class="chat-thread" id="chat-thread">
+                    <!-- Mensagens serão carregadas dinamicamente -->
                   </div>
+                </div>
+                <div class="card-footer">
+                  <form id="chat-form" class="d-flex gap-2">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="chat-message-input"
+                      placeholder="Escreve a tua mensagem..."
+                      required
+                      maxlength="500"
+                    />
+                    <button type="submit" class="btn btn-primary">
+                      <i class="bi bi-send"></i>
+                    </button>
+                  </form>
                 </div>
               </div>
             </div>

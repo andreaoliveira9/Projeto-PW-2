@@ -111,6 +111,133 @@ function showErrorMessage() {
   }
 }
 
+function getChatKey(resourceId) {
+  return "mathpath-chat-" + resourceId;
+}
+
+function getMessages(resourceId) {
+  let key = getChatKey(resourceId);
+  let stored = localStorage.getItem(key);
+
+  if (!stored) {
+    return [];
+  }
+
+  try {
+    return JSON.parse(stored);
+  } catch (error) {
+    return [];
+  }
+}
+
+function saveMessage(resourceId, message) {
+  let messages = getMessages(resourceId);
+  messages.push(message);
+
+  let key = getChatKey(resourceId);
+  localStorage.setItem(key, JSON.stringify(messages));
+}
+
+function formatTimeAgo(timestamp) {
+  let now = Date.now();
+  let diff = now - timestamp;
+
+  let minutes = Math.floor(diff / 60000);
+  let hours = Math.floor(diff / 3600000);
+  let days = Math.floor(diff / 86400000);
+
+  if (minutes < 1) {
+    return "agora mesmo";
+  } else if (minutes < 60) {
+    return "há " + minutes + " min";
+  } else if (hours < 24) {
+    return "há " + hours + " hora" + (hours > 1 ? "s" : "");
+  } else {
+    return "há " + days + " dia" + (days > 1 ? "s" : "");
+  }
+}
+
+function displayMessages(resourceId) {
+  let chatThread = document.getElementById("chat-thread");
+  if (!chatThread) {
+    return;
+  }
+
+  let messages = getMessages(resourceId);
+
+  if (messages.length === 0) {
+    chatThread.innerHTML =
+      '<p class="text-muted text-center p-4 mb-0">Ainda não há mensagens. Sê o primeiro a comentar!</p>';
+    return;
+  }
+
+  let html = "";
+
+  for (let i = 0; i < messages.length; i++) {
+    let msg = messages[i];
+    html += '<article class="chat-message">';
+    html += '<header class="chat-meta">';
+    html += '<span class="chat-author">' + msg.author + "</span>";
+    html +=
+      '<time class="chat-time">' + formatTimeAgo(msg.timestamp) + "</time>";
+    html += "</header>";
+    html += '<p class="chat-text mb-2">' + msg.text + "</p>";
+    html += "</article>";
+  }
+
+  chatThread.innerHTML = html;
+  chatThread.scrollTop = chatThread.scrollHeight;
+}
+
+function handleMessageSubmit(event, resourceId) {
+  event.preventDefault();
+
+  let input = document.getElementById("chat-message-input");
+  if (!input) {
+    return;
+  }
+
+  let text = input.value.trim();
+  if (!text) {
+    return;
+  }
+
+  let session = localStorage.getItem("mathpath-session");
+  let author = "Anónimo";
+
+  if (session) {
+    try {
+      let userData = JSON.parse(session);
+      author = userData.name.split(" ")[0];
+    } catch (error) {
+      author = "Anónimo";
+    }
+  }
+
+  let message = {
+    id: Date.now(),
+    author: author,
+    text: text,
+    timestamp: Date.now(),
+  };
+
+  saveMessage(resourceId, message);
+  displayMessages(resourceId);
+
+  input.value = "";
+}
+
+function setupChat(resourceId) {
+  let chatForm = document.getElementById("chat-form");
+  if (chatForm) {
+    chatForm.addEventListener("submit", function (event) {
+      handleMessageSubmit(event, resourceId);
+    });
+  }
+
+  displayMessages(resourceId);
+}
+
 async function initializeResourcePage() {
   let resourceId = getResourceIdFromUrl();
 
@@ -129,6 +256,7 @@ async function initializeResourcePage() {
 
   updatePageTitle(resource);
   updateIframes(resource);
+  setupChat(resourceId);
 }
 
 window.addEventListener("load", function () {
