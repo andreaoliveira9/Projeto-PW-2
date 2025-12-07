@@ -214,95 +214,360 @@
       <section class="section py-4">
         <div class="container" data-aos="fade-up">
           <div class="section-title text-center mb-4">
-            <h2>Calculadora Gráfica GeoGebra</h2>
+            <h2>Calculadoras Científicas</h2>
             <p class="text-muted">
-              Ferramenta matemática interativa para criar gráficos, geometria,
-              álgebra e muito mais.
+              Ferramentas matemáticas interativas para criar gráficos,
+              geometria, álgebra e muito mais.
             </p>
           </div>
 
-          <div class="alert alert-info mb-4" role="alert">
-            <i class="bi bi-info-circle me-2"></i>
-            Usa a calculadora GeoGebra abaixo para explorar funções, criar
-            construções geométricas e resolver problemas matemáticos de forma
-            interativa.
-          </div>
-
-          <div class="card shadow-sm">
-            <div class="card-body p-0">
-              <div class="calculator-container">
-                <iframe
-                  src="https://www.geogebra.org/classic?lang=pt"
-                  class="calculator-iframe"
-                  title="Calculadora GeoGebra"
-                  loading="lazy"
-                  allowfullscreen
-                ></iframe>
-              </div>
-            </div>
-          </div>
-
-          <div class="mt-4">
-            <div class="card bg-light">
-              <div class="card-body">
-                <h4 class="h6 mb-3">
-                  <i class="bi bi-lightbulb me-2"></i>Dicas de Utilização
-                </h4>
-                <div class="row">
-                  <div class="col-md-6">
-                    <ul class="mb-3">
-                      <li>
-                        <strong>Álgebra:</strong> escreve funções como "f(x) =
-                        x^2 + 3"
-                      </li>
-                      <li>
-                        <strong>Geometria:</strong> usa as ferramentas para
-                        criar pontos, retas e polígonos
-                      </li>
-                      <li>
-                        <strong>Interseções:</strong> clica em "Interseção" para
-                        encontrar pontos de cruzamento
-                      </li>
-                      <li>
-                        <strong>Equações:</strong> escreve "Resolver[x^2 - 4 =
-                        0]"
-                      </li>
-                    </ul>
+          <div class="row justify-content-center">
+            <div class="col-lg-8">
+              <div class="card shadow-sm">
+                <div class="card-body p-4">
+                  <!-- Display -->
+                  <div class="calculator-display mb-3">
+                    <input
+                      type="text"
+                      id="display"
+                      class="form-control form-control-lg text-end"
+                      value="0"
+                      readonly
+                      aria-label="Display da calculadora"
+                    />
                   </div>
-                  <div class="col-md-6">
-                    <ul class="mb-0">
-                      <li>
-                        <strong>Derivadas:</strong> escreve "Derivada[x^3]"
-                      </li>
-                      <li>
-                        <strong>Integrais:</strong> escreve "Integral[sin(x)]"
-                      </li>
-                      <li>
-                        <strong>Vetores:</strong> usa "(2, 3)" para criar
-                        vetores
-                      </li>
-                      <li>
-                        <strong>Ângulos:</strong> usa a ferramenta "Ângulo"
-                        entre objetos
-                      </li>
-                    </ul>
+
+                  <!-- Calculator Buttons -->
+                  <div class="calculator-buttons">
+                    <!-- Row 1: Clear, Delete, Operations -->
+                    <div class="row g-2 mb-2">
+                      <div class="col-3">
+                        <button
+                          class="btn btn-danger w-100"
+                          onclick="clearDisplay()"
+                        >
+                          C
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-warning w-100"
+                          onclick="deleteLast()"
+                        >
+                          ⌫
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-secondary w-100"
+                          onclick="appendOperator('/')"
+                        >
+                          /
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-secondary w-100"
+                          onclick="appendOperator('*')"
+                        >
+                          ×
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Row 2: Numbers 7-9, Minus -->
+                    <div class="row g-2 mb-2">
+                      <div class="col-3">
+                        <button
+                          class="btn btn-light w-100"
+                          onclick="appendNumber('7')"
+                        >
+                          7
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-light w-100"
+                          onclick="appendNumber('8')"
+                        >
+                          8
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-light w-100"
+                          onclick="appendNumber('9')"
+                        >
+                          9
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-secondary w-100"
+                          onclick="appendOperator('-')"
+                        >
+                          -
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Row 3: Numbers 4-6, Plus -->
+                    <div class="row g-2 mb-2">
+                      <div class="col-3">
+                        <button
+                          class="btn btn-light w-100"
+                          onclick="appendNumber('4')"
+                        >
+                          4
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-light w-100"
+                          onclick="appendNumber('5')"
+                        >
+                          5
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-light w-100"
+                          onclick="appendNumber('6')"
+                        >
+                          6
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-secondary w-100"
+                          onclick="appendOperator('+')"
+                        >
+                          +
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Row 4: Numbers 1-3, Equals -->
+                    <div class="row g-2 mb-2">
+                      <div class="col-3">
+                        <button
+                          class="btn btn-light w-100"
+                          onclick="appendNumber('1')"
+                        >
+                          1
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-light w-100"
+                          onclick="appendNumber('2')"
+                        >
+                          2
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-light w-100"
+                          onclick="appendNumber('3')"
+                        >
+                          3
+                        </button>
+                      </div>
+                      <div class="col-3" style="grid-row: span 2">
+                        <button
+                          class="btn btn-primary w-100 h-100"
+                          onclick="calculate()"
+                        >
+                          =
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Row 5: Zero, Decimal, Scientific -->
+                    <div class="row g-2 mb-2">
+                      <div class="col-6">
+                        <button
+                          class="btn btn-light w-100"
+                          onclick="appendNumber('0')"
+                        >
+                          0
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-light w-100"
+                          onclick="appendNumber('.')"
+                        >
+                          .
+                        </button>
+                      </div>
+                    </div>
+
+                    <!-- Row 6: Scientific Functions -->
+                    <div class="row g-2">
+                      <div class="col-3">
+                        <button
+                          class="btn btn-info w-100"
+                          onclick="calculateSquareRoot()"
+                        >
+                          √
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-info w-100"
+                          onclick="calculatePower()"
+                        >
+                          x²
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-info w-100"
+                          onclick="calculatePercentage()"
+                        >
+                          %
+                        </button>
+                      </div>
+                      <div class="col-3">
+                        <button
+                          class="btn btn-info w-100"
+                          onclick="toggleSign()"
+                        >
+                          +/-
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- History Section -->
+              <div class="card shadow-sm mt-4">
+                <div
+                  class="card-header bg-light d-flex justify-content-between align-items-center"
+                >
+                  <h5 class="mb-0">
+                    <i class="bi bi-clock-history me-2"></i>Histórico
+                  </h5>
+                  <button
+                    class="btn btn-sm btn-outline-danger"
+                    onclick="clearHistory()"
+                  >
+                    <i class="bi bi-trash"></i> Limpar
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div id="history" class="history-list">
+                    <p class="text-muted text-center mb-0">
+                      Nenhum cálculo ainda
+                    </p>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="mt-4 text-center">
-            <p class="text-muted small mb-0">
-              <i class="bi bi-box-arrow-up-right me-1"></i>
-              <a
-                href="https://www.geogebra.org/classic?lang=pt"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Abrir GeoGebra em ecrã completo
-              </a>
-            </p>
+          <!-- Divider -->
+          <hr class="my-5" />
+
+          <!-- GeoGebra Calculator Section -->
+          <div class="row justify-content-center">
+            <div class="col-12">
+              <div class="section-title text-center mb-4">
+                <h3>Calculadora Gráfica GeoGebra</h3>
+                <p class="text-muted">
+                  Ferramenta avançada para criar gráficos, geometria e explorar
+                  conceitos matemáticos.
+                </p>
+              </div>
+
+              <div class="alert alert-info mb-4" role="alert">
+                <i class="bi bi-info-circle me-2"></i>
+                Usa a calculadora GeoGebra abaixo para explorar funções, criar
+                construções geométricas e resolver problemas matemáticos de
+                forma interativa.
+              </div>
+
+              <div class="card shadow-sm">
+                <div class="card-body p-0">
+                  <div class="calculator-container">
+                    <iframe
+                      src="https://www.geogebra.org/classic?lang=pt"
+                      class="calculator-iframe"
+                      style="width: 100%; height: 600px; border: none"
+                      title="Calculadora GeoGebra"
+                      loading="lazy"
+                      allowfullscreen
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <div class="card bg-light">
+                  <div class="card-body">
+                    <h4 class="h6 mb-3">
+                      <i class="bi bi-lightbulb me-2"></i>Dicas de Utilização
+                    </h4>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <ul class="mb-3">
+                          <li>
+                            <strong>Álgebra:</strong> escreve funções como "f(x)
+                            = x^2 + 3"
+                          </li>
+                          <li>
+                            <strong>Geometria:</strong> usa as ferramentas para
+                            criar pontos, retas e polígonos
+                          </li>
+                          <li>
+                            <strong>Interseções:</strong> clica em "Interseção"
+                            para encontrar pontos de cruzamento
+                          </li>
+                          <li>
+                            <strong>Equações:</strong> escreve "Resolver[x^2 - 4
+                            = 0]"
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="col-md-6">
+                        <ul class="mb-0">
+                          <li>
+                            <strong>Derivadas:</strong> escreve "Derivada[x^3]"
+                          </li>
+                          <li>
+                            <strong>Integrais:</strong> escreve
+                            "Integral[sin(x)]"
+                          </li>
+                          <li>
+                            <strong>Vetores:</strong> usa "(2, 3)" para criar
+                            vetores
+                          </li>
+                          <li>
+                            <strong>Ângulos:</strong> usa a ferramenta "Ângulo"
+                            entre objetos
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4 text-center">
+                <p class="text-muted small mb-0">
+                  <i class="bi bi-box-arrow-up-right me-1"></i>
+                  <a
+                    href="https://www.geogebra.org/classic?lang=pt"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Abrir GeoGebra em ecrã completo
+                  </a>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -358,5 +623,8 @@
 
     <!-- Main JS File -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Calculator JS File -->
+    <script src="assets/js/calculator.js"></script>
   </body>
 </html>
