@@ -22,10 +22,18 @@ function generateResourceRow(resource, year, categoryIndex) {
 
   if (resource.type === "Vídeo") {
     html +=
-      "<button type='button' class='btn btn-outline-primary btn-sm' data-bs-toggle='modal' data-bs-target='#videoPreviewModal'>Preview</button>";
+      "<button type='button' class='btn btn-outline-primary btn-sm preview-btn' data-bs-toggle='modal' data-bs-target='#videoPreviewModal' data-url='" +
+      resource.url +
+      "' data-title='" +
+      resource.title +
+      "'>Preview</button>";
   } else {
     html +=
-      "<button type='button' class='btn btn-outline-primary btn-sm' data-bs-toggle='modal' data-bs-target='#pdfPreviewModal'>Preview</button>";
+      "<button type='button' class='btn btn-outline-primary btn-sm preview-btn' data-bs-toggle='modal' data-bs-target='#pdfPreviewModal' data-url='" +
+      resource.worksheetUrl +
+      "' data-title='" +
+      resource.title +
+      "'>Preview</button>";
   }
 
   html += "</td>";
@@ -305,12 +313,61 @@ window.addEventListener("load", function () {
 
 let videoModal = document.getElementById("videoPreviewModal");
 if (videoModal) {
+  videoModal.addEventListener("show.bs.modal", function (event) {
+    let button = event.relatedTarget;
+    let url = button.getAttribute("data-url");
+    let title = button.getAttribute("data-title");
+
+    // Adicionar parâmetros para embed se for YouTube e não tiver
+    if (url.includes("youtube.com") || url.includes("youtu.be")) {
+      if (!url.includes("embed")) {
+        // Lógica simples de conversão se necessário, ou assumir que o JSON já tem embed ou o user vai corrigir
+        // Mas para garantir:
+        let videoId = "";
+        if (url.includes("v=")) {
+          videoId = url.split("v=")[1].split("&")[0];
+        } else if (url.includes("youtu.be/")) {
+          videoId = url.split("youtu.be/")[1];
+        }
+        if (videoId) {
+          url = "https://www.youtube.com/embed/" + videoId;
+        }
+      }
+    }
+
+    let modalTitle = videoModal.querySelector(".modal-title");
+    let iframe = videoModal.querySelector("iframe");
+
+    if (modalTitle) modalTitle.textContent = title;
+    if (iframe) iframe.src = url;
+  });
+
   videoModal.addEventListener("hidden.bs.modal", function () {
     let iframe = videoModal.querySelector("iframe");
     if (iframe) {
-      let src = iframe.src;
-      iframe.src = "";
-      iframe.src = src;
+      iframe.src = ""; // Parar vídeo
+    }
+  });
+}
+
+let pdfModal = document.getElementById("pdfPreviewModal");
+if (pdfModal) {
+  pdfModal.addEventListener("show.bs.modal", function (event) {
+    let button = event.relatedTarget;
+    let url = button.getAttribute("data-url");
+    let title = button.getAttribute("data-title");
+
+    let modalTitle = pdfModal.querySelector(".modal-title");
+    let iframe = pdfModal.querySelector("iframe");
+
+    if (modalTitle) modalTitle.textContent = title;
+    if (iframe) iframe.src = url + "#toolbar=0&navpanes=0&scrollbar=0";
+  });
+
+  pdfModal.addEventListener("hidden.bs.modal", function () {
+    let iframe = pdfModal.querySelector("iframe");
+    if (iframe) {
+      iframe.src = ""; // Limpar src ao fechar
     }
   });
 }

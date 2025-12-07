@@ -27,8 +27,8 @@
         "title": "Modelos Financeiros",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=103",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/cidadania/financeiros.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/cidadania/financeiros_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/macs/10/modelos_financeiros.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/macs/10/modelos_financeiros_resol.pdf",
         "year": "10"
       },
       {
@@ -114,8 +114,8 @@
         "title": "Pontos, Retas e Planos",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=401",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/pontos-retas.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/pontos-retas_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria_a/pontos_retas_planos.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria_a/pontos_retas_planos_resol.pdf",
         "year": "10"
       },
       {
@@ -123,8 +123,8 @@
         "title": "Círculos e Esferas",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=402",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/circulos.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/circulos_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria_a/circulos_esferas.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria_a/circulos_esferas_resol.pdf",
         "year": "10"
       },
       {
@@ -132,8 +132,8 @@
         "title": "Mediatriz e Plano Mediador",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=403",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/mediatriz.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/mediatriz_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria_a/mediatriz_plano_mediador.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria_a/mediatriz_plano_mediador_resol.pdf",
         "year": "10"
       },
       {
@@ -141,8 +141,8 @@
         "title": "Conjuntos de Pontos e Condições",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=404",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/conjuntos.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/conjuntos_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria_a/conjuntos_condicoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria_a/conjuntos_condicoes_resol.pdf",
         "year": "10"
       },
       {
@@ -150,8 +150,8 @@
         "title": "Vetores",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=405",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/vetores.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria/vetores_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria_a/vetores.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/10/geometria_a/vetores_resol.pdf",
         "year": "10"
       },
       {

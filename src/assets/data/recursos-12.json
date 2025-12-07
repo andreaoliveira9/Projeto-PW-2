@@ -6,24 +6,42 @@
     "resources": [
       {
         "id": 2101,
-        "title": "Operações com Complexos",
+        "title": "Operações",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=2101",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/operacoes.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/operacoes_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/operac_simplific.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/operac_simplific_resol.pdf",
         "year": "12"
       },
       {
         "id": 2102,
-        "title": "Forma Trigonométrica",
+        "title": "Potências e Raízes",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=2102",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/trigonometrica.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/trigonometrica_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/potencias_raizes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/potencias_raizes_resol.pdf",
         "year": "12"
       },
       {
         "id": 2103,
+        "title": "Conjuntos e Condições",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2103",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/conjuntos_condicoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/conjuntos_condicoes_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2104,
+        "title": "Equações e Problemas",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2104",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/equacoes_problemas.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/complexos/equacoes_problemas_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2105,
         "title": "Resumo",
         "type": "Vídeo",
         "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
@@ -38,33 +56,96 @@
     "resources": [
       {
         "id": 2201,
-        "title": "Conjuntos e Propriedades",
+        "title": "Probabilidades (Noções Gerais)",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=2201",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/conjuntos.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/conjuntos_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/probabilidade.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/probabilidade_resol.pdf",
         "year": "12"
       },
       {
         "id": 2202,
-        "title": "Probabilidade Condicionada",
+        "title": "Conjuntos e Propriedades",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=2202",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/condicionada.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/condicionada_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/conjuntos_propriedades.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/conjuntos_propriedades_resol.pdf",
         "year": "12"
       },
       {
         "id": 2203,
-        "title": "Distribuição Normal",
+        "title": "Probabilidade Condicionada",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=2203",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/prob_condicionada.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/prob_condicionada_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2204,
+        "title": "Cálculo Combinatório - Probabilidades",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2204",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/combinatoria_prob.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/combinatoria_prob_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2205,
+        "title": "Função Massa de Probabilidade",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2205",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/distribuicoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/distribuicoes_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2206,
+        "title": "Distribuição Normal",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2206",
         "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/normal.pdf",
         "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/normal_resol.pdf",
         "year": "12"
       },
       {
-        "id": 2204,
+        "id": 2207,
+        "title": "Demonstrações",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2207",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/demonstracoes.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/demonstracoes_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2208,
+        "title": "Cálculo Combinatório - Contagem",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2208",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/combinatoria_contagem.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/combinatoria_contagem_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2209,
+        "title": "Triângulo de Pascal",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2209",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/triang_pascal.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/triang_pascal_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2210,
+        "title": "Binômio de Newton",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2210",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/binomio_newton.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/probabilidades/binomio_newton_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2211,
         "title": "Resumo",
         "type": "Vídeo",
         "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
@@ -74,120 +155,119 @@
   },
   {
     "id": 3,
-    "category": "Funções Exponenciais e Logarítmicas",
+    "category": "Funções",
     "description": "Explora propriedades, gráficos e aplicações de funções exponenciais e logarítmicas.",
     "resources": [
       {
         "id": 2301,
-        "title": "Função Exponencial",
+        "title": "Exponenciais e Logaritmos",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=2301",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/exponencial.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/exponencial_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/exponenciais_logaritmos.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/exponenciais_logaritmos_resol.pdf",
         "year": "12"
       },
       {
         "id": 2302,
-        "title": "Função Logarítmica",
+        "title": "Exponenciais e Logaritmos - Resolução Gráfica",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=2302",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/logaritmica.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/logaritmica_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/exp_log_resol_grafica.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/exp_log_resol_grafica_resol.pdf",
         "year": "12"
       },
       {
         "id": 2303,
-        "title": "Equações e Inequações",
+        "title": "Limite Segundo Heine",
         "type": "Ficha de trabalho",
         "url": "resource.html?id=2303",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/equacoes.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/equacoes_resol.pdf",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/limite_heine.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/limite_heine_resol.pdf",
         "year": "12"
       },
       {
         "id": 2304,
-        "title": "Resumo",
-        "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
-        "year": "12"
-      }
-    ]
-  },
-  {
-    "id": 4,
-    "category": "Limites e Continuidade",
-    "description": "Fichas sobre cálculo de limites, continuidade e aplicações.",
-    "resources": [
-      {
-        "id": 2401,
-        "title": "Limites de Funções",
+        "title": "Limites e Continuidade",
         "type": "Ficha de trabalho",
-        "url": "resource.html?id=2401",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/limites.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/limites_resol.pdf",
+        "url": "resource.html?id=2304",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/limites_continuidade.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/limites_continuidade_resol.pdf",
         "year": "12"
       },
       {
-        "id": 2402,
-        "title": "Continuidade",
+        "id": 2305,
+        "title": "Teorema de Bolzano",
         "type": "Ficha de trabalho",
-        "url": "resource.html?id=2402",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/continuidade.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/continuidade_resol.pdf",
+        "url": "resource.html?id=2305",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/bolzano.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/bolzano_resol.pdf",
         "year": "12"
       },
       {
-        "id": 2403,
-        "title": "Assíntotas",
+        "id": 2306,
+        "title": "Assintotas",
         "type": "Ficha de trabalho",
-        "url": "resource.html?id=2403",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/assintotas.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/limites/assintotas_resol.pdf",
+        "url": "resource.html?id=2306",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/assintotas.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/assintotas_resol.pdf",
         "year": "12"
       },
       {
-        "id": 2404,
-        "title": "Resumo",
-        "type": "Vídeo",
-        "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
-        "year": "12"
-      }
-    ]
-  },
-  {
-    "id": 5,
-    "category": "Derivadas",
-    "description": "Consolida regras de derivação, aplicações e estudo de funções.",
-    "resources": [
-      {
-        "id": 2501,
-        "title": "Regras de Derivação",
+        "id": 2307,
+        "title": "1º Derivada",
         "type": "Ficha de trabalho",
-        "url": "resource.html?id=2501",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/regras.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/regras_resol.pdf",
+        "url": "resource.html?id=2307",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/1derivada.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/1derivada_resol.pdf",
         "year": "12"
       },
       {
-        "id": 2502,
-        "title": "Aplicações das Derivadas",
+        "id": 2308,
+        "title": "2º Derivada",
         "type": "Ficha de trabalho",
-        "url": "resource.html?id=2502",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/aplicacoes.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/aplicacoes_resol.pdf",
+        "url": "resource.html?id=2308",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/2derivada.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/2derivada_resol.pdf",
         "year": "12"
       },
       {
-        "id": 2503,
-        "title": "Estudo de Funções",
+        "id": 2309,
+        "title": "Funcções Trigonométricas",
         "type": "Ficha de trabalho",
-        "url": "resource.html?id=2503",
-        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/estudo.pdf",
-        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/derivadas/estudo_resol.pdf",
+        "url": "resource.html?id=2309",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/func_trigonometricas.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/func_trigonometricas_resol.pdf",
         "year": "12"
       },
       {
-        "id": 2504,
+        "id": 2310,
+        "title": "Funcções Trigonométricas - Resolução Gráfica",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2310",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/func_trigonometricas_resol_grafica.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/12/funcoes/func_trigonometricas_resol_grafica_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2311,
+        "title": "Definição doNúmero de Euler",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2311",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/matdiscreta/numero_euler.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/matdiscreta/numero_euler_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2312,
+        "title": "Função Composta e Função Inversa",
+        "type": "Ficha de trabalho",
+        "url": "resource.html?id=2312",
+        "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/composta_inversa.pdf",
+        "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/composta_inversa_resol.pdf",
+        "year": "12"
+      },
+      {
+        "id": 2313,
         "title": "Resumo",
         "type": "Vídeo",
         "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
