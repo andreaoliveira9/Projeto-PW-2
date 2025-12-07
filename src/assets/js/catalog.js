@@ -124,7 +124,6 @@ function renderCategories(categories, year) {
   }
 
   accordionContainer.innerHTML = html;
-  setupFavoriteButtons();
   console.log("Recursos do " + year + ".º ano carregados com sucesso!");
 }
 
@@ -154,6 +153,7 @@ async function loadAllResources() {
   await loadYearResources("10");
   await loadYearResources("11");
   await loadYearResources("12");
+  setupFavoriteButtons();
 }
 
 function setupFavoriteButtons() {
@@ -172,15 +172,20 @@ function setupFavoriteButtons() {
 
       let resourceId = this.getAttribute("data-resource-id");
       let row = this.closest("tr");
+      let accordionItem = this.closest(".accordion-item");
+      let categoryHeader = accordionItem.querySelector(".accordion-button");
+
       let title = row.querySelector("th").textContent;
       let type = row.querySelectorAll("td")[0].textContent;
       let url = row.querySelector("a").getAttribute("href");
+      let category = categoryHeader ? categoryHeader.textContent.trim() : "";
 
       let resource = {
         id: resourceId,
         title: title,
         type: type,
         url: url,
+        category: category,
       };
 
       toggleFavorite(resource, this);
@@ -297,3 +302,15 @@ window.addEventListener("load", function () {
     setupSearchAndFilters();
   });
 });
+
+let videoModal = document.getElementById("videoPreviewModal");
+if (videoModal) {
+  videoModal.addEventListener("hidden.bs.modal", function () {
+    let iframe = videoModal.querySelector("iframe");
+    if (iframe) {
+      let src = iframe.src;
+      iframe.src = "";
+      iframe.src = src;
+    }
+  });
+}

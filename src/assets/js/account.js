@@ -152,16 +152,18 @@ function displayFavorites() {
   for (let i = 0; i < favorites.length; i++) {
     let fav = favorites[i];
     html +=
-      '<div class="list-group-item d-flex justify-content-between align-items-start">';
-    html += "<div>";
-    html += '<h6 class="mb-1">' + fav.title + "</h6>";
-    html += '<small class="text-muted">' + fav.type + "</small>";
-    html += "</div>";
-    html += "<div>";
-    html +=
-      '<a href="' +
+      '<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-start favorite-row" style="cursor: pointer;" data-url="' +
       fav.url +
-      '" target="_blank" class="btn btn-sm btn-outline-primary me-2">Abrir</a>';
+      '">';
+    html += "<div class='flex-grow-1'>";
+    html += '<h6 class="mb-1">' + fav.title + "</h6>";
+    html += '<small class="text-muted">' + fav.type;
+    if (fav.category) {
+      html += " · " + fav.category;
+    }
+    html += "</small>";
+    html += "</div>";
+    html += '<div class="d-flex align-items-center">';
     html +=
       '<button class="btn btn-sm btn-outline-danger remove-favorite" data-resource-id="' +
       fav.id +
@@ -174,9 +176,20 @@ function displayFavorites() {
 
   favoritesContainer.innerHTML = html;
 
+  let favoriteRows = favoritesContainer.querySelectorAll(".favorite-row");
+  for (let i = 0; i < favoriteRows.length; i++) {
+    favoriteRows[i].addEventListener("click", function (event) {
+      if (!event.target.closest(".remove-favorite")) {
+        let url = this.getAttribute("data-url");
+        window.open(url, "_blank");
+      }
+    });
+  }
+
   let removeButtons = favoritesContainer.querySelectorAll(".remove-favorite");
   for (let i = 0; i < removeButtons.length; i++) {
-    removeButtons[i].addEventListener("click", function () {
+    removeButtons[i].addEventListener("click", function (event) {
+      event.stopPropagation();
       let resourceId = this.getAttribute("data-resource-id");
       removeFromFavorites(resourceId);
       displayFavorites();
