@@ -178,22 +178,22 @@ function displayFavorites() {
 
   let favoriteRows = favoritesContainer.querySelectorAll(".favorite-row");
   for (let i = 0; i < favoriteRows.length; i++) {
-    favoriteRows[i].addEventListener("click", function (event) {
+    favoriteRows[i].onclick = function (event) {
       if (!event.target.closest(".remove-favorite")) {
         let url = this.getAttribute("data-url");
         window.open(url, "_blank");
       }
-    });
+    };
   }
 
   let removeButtons = favoritesContainer.querySelectorAll(".remove-favorite");
   for (let i = 0; i < removeButtons.length; i++) {
-    removeButtons[i].addEventListener("click", function (event) {
+    removeButtons[i].onclick = function (event) {
       event.stopPropagation();
       let resourceId = this.getAttribute("data-resource-id");
       removeFromFavorites(resourceId);
       displayFavorites();
-    });
+    };
   }
 }
 
@@ -247,6 +247,10 @@ function initializeAccountPage() {
   loadStudyPlan(userData.email);
 }
 
-window.addEventListener("load", function () {
+var oldOnLoadAccount = window.onload;
+window.onload = function () {
+  if (oldOnLoadAccount) {
+    oldOnLoadAccount();
+  }
   initializeAccountPage();
-});
+};

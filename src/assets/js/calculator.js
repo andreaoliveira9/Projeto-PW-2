@@ -199,7 +199,11 @@ function loadHistory() {
   }
 }
 
-window.addEventListener("load", function () {
+var oldOnLoadCalculator = window.onload;
+window.onload = function () {
+  if (oldOnLoadCalculator) {
+    oldOnLoadCalculator();
+  }
   loadHistory();
   updateDisplay();
-});
+};

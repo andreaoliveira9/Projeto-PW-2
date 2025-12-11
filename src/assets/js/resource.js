@@ -92,9 +92,9 @@ function updateIframes(resource) {
   if (solutionsIframe && resource.solutionsUrl) {
     solutionsIframe.src = resource.solutionsUrl + "#toolbar=0&view=FitH";
 
-    solutionsIframe.addEventListener("load", function () {
+    solutionsIframe.onload = function () {
       console.debug("Soluções carregadas");
-    });
+    };
   } else if (solutionsIframe && !resource.solutionsUrl) {
     let solutionsTab = document.querySelector("#resource-tab-solutions");
     if (solutionsTab) {
@@ -230,9 +230,9 @@ function handleMessageSubmit(event, resourceId) {
 function setupChat(resourceId) {
   let chatForm = document.getElementById("chat-form");
   if (chatForm) {
-    chatForm.addEventListener("submit", function (event) {
+    chatForm.onsubmit = function (event) {
       handleMessageSubmit(event, resourceId);
-    });
+    };
   }
 
   displayMessages(resourceId);
@@ -259,6 +259,8 @@ async function initializeResourcePage() {
   setupChat(resourceId);
 }
 
-window.addEventListener("load", function () {
+var oldOnLoadResource = window.onload;
+window.onload = function () {
+  if (oldOnLoadResource) oldOnLoadResource();
   initializeResourcePage();
-});
+};

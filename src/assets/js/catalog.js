@@ -161,7 +161,7 @@ function setupFavoriteButtons() {
       updateFavoriteButton(button, true);
     }
 
-    button.addEventListener("click", function (event) {
+    button.onclick = function (event) {
       event.preventDefault();
 
       let resourceId = this.getAttribute("data-resource-id");
@@ -183,7 +183,7 @@ function setupFavoriteButtons() {
       };
 
       toggleFavorite(resource, this);
-    });
+    };
   }
 }
 
@@ -254,21 +254,21 @@ function setupSearchAndFilters() {
   let resetButton = document.getElementById("reset-filters");
 
   if (searchInput) {
-    searchInput.addEventListener("input", function () {
+    searchInput.oninput = function () {
       applyFilters();
-    });
+    };
   }
 
   if (typeFilter) {
-    typeFilter.addEventListener("change", function () {
+    typeFilter.onchange = function () {
       applyFilters();
-    });
+    };
   }
 
   if (resetButton) {
-    resetButton.addEventListener("click", function () {
+    resetButton.onclick = function () {
       resetFilters();
-    });
+    };
   }
 
   let allRows = document.querySelectorAll(".catalog-table tbody tr");
@@ -290,66 +290,80 @@ function resetFilters() {
   applyFilters();
 }
 
-window.addEventListener("load", function () {
+var oldOnLoadCatalog = window.onload;
+window.onload = function () {
+  if (oldOnLoadCatalog) oldOnLoadCatalog();
+
   loadAllResources().then(function () {
     setupSearchAndFilters();
+    setupPreviewButtons();
+    setupModalCloseHandlers();
   });
-});
+};
 
-let videoModal = document.getElementById("videoPreviewModal");
-if (videoModal) {
-  videoModal.addEventListener("show.bs.modal", function (event) {
-    let button = event.relatedTarget;
-    let url = button.getAttribute("data-url");
-    let title = button.getAttribute("data-title");
+function setupPreviewButtons() {
+  var buttons = document.querySelectorAll(".preview-btn");
+  for (var i = 0; i < buttons.length; i++) {
+    buttons[i].onclick = function () {
+      var url = this.getAttribute("data-url");
+      var title = this.getAttribute("data-title");
+      var target = this.getAttribute("data-bs-target");
 
-    if (url.includes("youtube.com") || url.includes("youtu.be")) {
-      if (!url.includes("embed")) {
-        let videoId = "";
-        if (url.includes("v=")) {
-          videoId = url.split("v=")[1].split("&")[0];
-        } else if (url.includes("youtu.be/")) {
-          videoId = url.split("youtu.be/")[1];
+      if (target === "#videoPreviewModal") {
+        if (url.includes("youtube.com") || url.includes("youtu.be")) {
+          if (!url.includes("embed")) {
+            var videoId = "";
+            if (url.includes("v=")) {
+              videoId = url.split("v=")[1].split("&")[0];
+            } else if (url.includes("youtu.be/")) {
+              videoId = url.split("youtu.be/")[1];
+            }
+            if (videoId) {
+              url = "https://www.youtube.com/embed/" + videoId;
+            }
+          }
         }
-        if (videoId) {
-          url = "https://www.youtube.com/embed/" + videoId;
-        }
+        var modal = document.getElementById("videoPreviewModal");
+        var modalTitle = modal.querySelector(".modal-title");
+        var iframe = modal.querySelector("iframe");
+        if (modalTitle) modalTitle.textContent = title;
+        if (iframe) iframe.src = url;
+      } else if (target === "#pdfPreviewModal") {
+        var modal = document.getElementById("pdfPreviewModal");
+        var modalTitle = modal.querySelector(".modal-title");
+        var iframe = modal.querySelector("iframe");
+        if (modalTitle) modalTitle.textContent = title;
+        if (iframe) iframe.src = url + "#toolbar=0&navpanes=0&scrollbar=0";
       }
-    }
-
-    let modalTitle = videoModal.querySelector(".modal-title");
-    let iframe = videoModal.querySelector("iframe");
-
-    if (modalTitle) modalTitle.textContent = title;
-    if (iframe) iframe.src = url;
-  });
-
-  videoModal.addEventListener("hidden.bs.modal", function () {
-    let iframe = videoModal.querySelector("iframe");
-    if (iframe) {
-      iframe.src = "";
-    }
-  });
+    };
+  }
 }
 
-let pdfModal = document.getElementById("pdfPreviewModal");
-if (pdfModal) {
-  pdfModal.addEventListener("show.bs.modal", function (event) {
-    let button = event.relatedTarget;
-    let url = button.getAttribute("data-url");
-    let title = button.getAttribute("data-title");
+function stopVideo(modal) {
+  var iframe = modal.querySelector("iframe");
+  if (iframe) {
+    iframe.src = "";
+  }
+}
 
-    let modalTitle = pdfModal.querySelector(".modal-title");
-    let iframe = pdfModal.querySelector("iframe");
+function setupModalCloseHandlers() {
+  var modals = document.querySelectorAll(".modal");
+  for (var i = 0; i < modals.length; i++) {
+    var modal = modals[i];
 
-    if (modalTitle) modalTitle.textContent = title;
-    if (iframe) iframe.src = url + "#toolbar=0&navpanes=0&scrollbar=0";
-  });
+    // Handle click on backdrop
+    modal.onclick = function (event) {
+      if (event.target === this) {
+        stopVideo(this);
+      }
+    };
 
-  pdfModal.addEventListener("hidden.bs.modal", function () {
-    let iframe = pdfModal.querySelector("iframe");
-    if (iframe) {
-      iframe.src = "";
+    // Handle click on close buttons
+    var closeButtons = modal.querySelectorAll('[data-bs-dismiss="modal"]');
+    for (var j = 0; j < closeButtons.length; j++) {
+      closeButtons[j].onclick = function () {
+        stopVideo(this.closest(".modal"));
+      };
     }
-  });
+  }
 }

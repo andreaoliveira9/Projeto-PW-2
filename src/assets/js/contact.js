@@ -191,26 +191,26 @@ function setupRealTimeValidation() {
   let subjectField = document.getElementById("subject-field");
   let messageField = document.getElementById("message-field");
 
-  nameField.addEventListener("input", function () {
+  nameField.oninput = function () {
     let value = this.value.trim();
     validateField("name-field", validateName, value);
-  });
+  };
 
-  emailField.addEventListener("input", function () {
+  emailField.oninput = function () {
     let value = this.value.trim();
     validateField("email-field", validateEmail, value);
-  });
+  };
 
-  subjectField.addEventListener("change", function () {
+  subjectField.onchange = function () {
     let value = this.value;
     validateField("subject-field", validateSubject, value);
-  });
+  };
 
-  messageField.addEventListener("input", function () {
+  messageField.oninput = function () {
     let value = this.value.trim();
     validateField("message-field", validateMessage, value);
     updateCharacterCount();
-  });
+  };
 }
 
 function clearAllValidation() {
@@ -255,16 +255,19 @@ function updateCharacterCount() {
   }
 }
 
-window.addEventListener("load", function () {
-  let form = document.getElementById("contact-form");
-  form.addEventListener("submit", handleFormSubmit);
+var oldOnLoadContact = window.onload;
+window.onload = function () {
+  if (oldOnLoadContact) oldOnLoadContact();
 
-  form.addEventListener("reset", function () {
+  let form = document.getElementById("contact-form");
+  form.onsubmit = handleFormSubmit;
+
+  form.onreset = function () {
     setTimeout(function () {
       clearAllValidation();
     }, 0);
-  });
+  };
 
   setupRealTimeValidation();
   updateCharacterCount();
-});
+};

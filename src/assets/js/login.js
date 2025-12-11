@@ -109,24 +109,27 @@ function checkIfAlreadyLoggedIn() {
   }
 }
 
-window.addEventListener("load", function () {
+var oldOnLoadLogin = window.onload;
+window.onload = function () {
+  if (oldOnLoadLogin) oldOnLoadLogin();
+
   checkIfAlreadyLoggedIn();
 
   let form = document.getElementById("login-form");
-  form.addEventListener("submit", handleLogin);
+  form.onsubmit = handleLogin;
 
   let usernameInput = document.getElementById("username");
   let passwordInput = document.getElementById("password");
 
-  usernameInput.addEventListener("input", function () {
+  usernameInput.oninput = function () {
     if (this.value !== "") {
       this.classList.remove("is-invalid");
     }
-  });
+  };
 
-  passwordInput.addEventListener("input", function () {
+  passwordInput.oninput = function () {
     if (this.value !== "") {
       this.classList.remove("is-invalid");
     }
-  });
-});
+  };
+};

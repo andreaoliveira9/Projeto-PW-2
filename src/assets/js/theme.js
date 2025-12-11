@@ -8,12 +8,15 @@
   }
 
   function systemPrefersDark() {
-    return window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return (
+      window.matchMedia &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches
+    );
   }
 
   function iconClassForTheme(value) {
-    var effective = value === "auto" ? (systemPrefersDark() ? "dark" : "light") : value;
+    var effective =
+      value === "auto" ? (systemPrefersDark() ? "dark" : "light") : value;
     if (effective === "dark") {
       return "bi-moon-stars";
     }
@@ -63,13 +66,13 @@
   }
 
   radios.forEach(function (radio) {
-    radio.addEventListener("change", function () {
+    radio.onchange = function () {
       if (!radio.checked) {
         return;
       }
       var selected = radio.id.replace("theme-", "");
       applyTheme(selected);
-    });
+    };
   });
 
   var stored = null;
@@ -96,8 +99,8 @@
       }
     };
 
-    if (typeof mediaQuery.addEventListener === "function") {
-      mediaQuery.addEventListener("change", handleMediaChange);
+    if ("onchange" in mediaQuery) {
+      mediaQuery.onchange = handleMediaChange;
     } else if (typeof mediaQuery.addListener === "function") {
       mediaQuery.addListener(handleMediaChange);
     }

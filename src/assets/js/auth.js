@@ -56,42 +56,42 @@ function updateHeader() {
     '.mobile-profile a[href="account.html"]'
   );
   for (let i = 0; i < mobileProfileLinks.length; i++) {
-    mobileProfileLinks[i].addEventListener("click", function (event) {
+    mobileProfileLinks[i].onclick = function (event) {
       if (!isLoggedIn()) {
         event.preventDefault();
         window.location.href = "login.html";
       }
-    });
+    };
   }
 
   let desktopUserMenuButtons = document.querySelectorAll(".user-menu button");
   for (let i = 0; i < desktopUserMenuButtons.length; i++) {
-    desktopUserMenuButtons[i].addEventListener("click", function (event) {
+    desktopUserMenuButtons[i].onclick = function (event) {
       if (!isLoggedIn()) {
         event.preventDefault();
         window.location.href = "login.html";
       }
-    });
+    };
   }
 
   let profileLinks = document.querySelectorAll('a[href="account.html"]');
   for (let i = 0; i < profileLinks.length; i++) {
-    profileLinks[i].addEventListener("click", function (event) {
+    profileLinks[i].onclick = function (event) {
       if (!isLoggedIn()) {
         event.preventDefault();
         window.location.href = "login.html";
       }
-    });
+    };
   }
 
   let logoutButtons = document.querySelectorAll(
     'a[href="#"].text-danger, a.text-danger[href="#"]'
   );
   for (let i = 0; i < logoutButtons.length; i++) {
-    logoutButtons[i].addEventListener("click", function (event) {
+    logoutButtons[i].onclick = function (event) {
       event.preventDefault();
       logout();
-    });
+    };
   }
 }
 
@@ -116,6 +116,8 @@ function getUserFirstName() {
   return "Visitante";
 }
 
-window.addEventListener("load", function () {
+var oldOnLoadAuth = window.onload;
+window.onload = function () {
+  if (oldOnLoadAuth) oldOnLoadAuth();
   updateHeader();
-});
+};
