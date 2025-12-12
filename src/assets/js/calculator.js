@@ -4,8 +4,7 @@ let operation = "";
 let history = [];
 
 function updateDisplay() {
-  let display = document.getElementById("display");
-  display.value = currentValue;
+  document.getElementById("display").value = currentValue;
 }
 
 function appendNumber(number) {
@@ -21,11 +20,9 @@ function appendOperator(op) {
   if (currentValue === "Erro") {
     return;
   }
-
   if (previousValue !== "") {
     calculate();
   }
-
   operation = op;
   previousValue = currentValue;
   currentValue = "0";
@@ -65,7 +62,6 @@ function calculate() {
   }
 
   result = Math.round(result * 100000000) / 100000000;
-
   addToHistory(expression, result);
 
   currentValue = result.toString();
@@ -92,19 +88,15 @@ function deleteLast() {
 
 function calculateSquareRoot() {
   let num = parseFloat(currentValue);
-
   if (num < 0) {
     currentValue = "Erro";
     updateDisplay();
     addToHistory("√" + num, "Erro: Raiz de número negativo");
     return;
   }
-
   let result = Math.sqrt(num);
   result = Math.round(result * 100000000) / 100000000;
-
   addToHistory("√" + num, result);
-
   currentValue = result.toString();
   updateDisplay();
 }
@@ -112,11 +104,8 @@ function calculateSquareRoot() {
 function calculatePower() {
   let num = parseFloat(currentValue);
   let result = num * num;
-
   result = Math.round(result * 100000000) / 100000000;
-
   addToHistory(num + "²", result);
-
   currentValue = result.toString();
   updateDisplay();
 }
@@ -124,20 +113,15 @@ function calculatePower() {
 function calculatePercentage() {
   let num = parseFloat(currentValue);
   let result = num / 100;
-
   result = Math.round(result * 100000000) / 100000000;
-
   addToHistory(num + "%", result);
-
   currentValue = result.toString();
   updateDisplay();
 }
 
 function toggleSign() {
   let num = parseFloat(currentValue);
-  num = num * -1;
-
-  currentValue = num.toString();
+  currentValue = (num * -1).toString();
   updateDisplay();
 }
 
@@ -147,16 +131,13 @@ function addToHistory(expression, result) {
     result: result,
     timestamp: new Date().toLocaleTimeString("pt-PT"),
   };
-
   history.push(historyItem);
-
   saveHistory();
   displayHistory();
 }
 
 function displayHistory() {
   let historyDiv = document.getElementById("history");
-
   if (history.length === 0) {
     historyDiv.innerHTML =
       '<p class="text-muted text-center mb-0">Nenhum cálculo ainda</p>';
@@ -164,7 +145,6 @@ function displayHistory() {
   }
 
   let html = "";
-
   for (let i = history.length - 1; i >= 0; i--) {
     let item = history[i];
     html += '<div class="history-item p-2 mb-2 border-bottom">';
@@ -181,7 +161,6 @@ function displayHistory() {
     html += "</div>";
     html += "</div>";
   }
-
   historyDiv.innerHTML = html;
 }
 
@@ -197,7 +176,6 @@ function saveHistory() {
 
 function loadHistory() {
   let savedHistory = localStorage.getItem("mathpath-calculator-history");
-
   if (savedHistory) {
     history = JSON.parse(savedHistory);
     displayHistory();

@@ -5,13 +5,11 @@ async function loadData(file) {
 }
 
 async function loadUsers() {
-  let users = await loadData("assets/data/users.json");
-  return users;
+  return await loadData("assets/data/users.json");
 }
 
 function showAlert(message, type) {
   let alertContainer = document.getElementById("alert-container");
-
   let html = "";
   html +=
     '<div class="alert alert-' +
@@ -21,7 +19,6 @@ function showAlert(message, type) {
   html +=
     '<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>';
   html += "</div>";
-
   alertContainer.innerHTML = html;
 }
 
@@ -60,7 +57,6 @@ async function handleLogin() {
   }
 
   let users = await loadUsers();
-
   let user = null;
   for (let i = 0; i < users.length; i++) {
     if (users[i].username === username && users[i].password === password) {
@@ -86,7 +82,6 @@ async function handleLogin() {
     };
 
     localStorage.setItem("mathpath-session", JSON.stringify(sessionData));
-
     showAlert("Login bem-sucedido! A redirecionar...", "success");
 
     setTimeout(function () {
@@ -94,7 +89,6 @@ async function handleLogin() {
     }, 1500);
   } else {
     showAlert("Nome de utilizador ou palavra-passe incorretos.", "danger");
-
     document.getElementById("username").classList.add("is-invalid");
     document.getElementById("password").classList.add("is-invalid");
   }
@@ -102,10 +96,8 @@ async function handleLogin() {
 
 function checkIfAlreadyLoggedIn() {
   let session = localStorage.getItem("mathpath-session");
-
   if (session) {
     let sessionData = JSON.parse(session);
-
     if (sessionData.rememberMe) {
       window.location.href = "index.html";
     }

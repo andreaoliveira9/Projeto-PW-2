@@ -6,52 +6,30 @@ async function loadData(file) {
 
 async function loadAllResources() {
   let resources = [];
-
   try {
-    let json10 = await loadData("assets/data/recursos-10.json");
-
-    for (let i = 0; i < json10.length; i++) {
-      for (let j = 0; j < json10[i].resources.length; j++) {
-        let resource = json10[i].resources[j];
-        resource.category = json10[i].category;
-        resources.push(resource);
-      }
-    }
-
-    let json11 = await loadData("assets/data/recursos-11.json");
-
-    for (let i = 0; i < json11.length; i++) {
-      for (let j = 0; j < json11[i].resources.length; j++) {
-        let resource = json11[i].resources[j];
-        resource.category = json11[i].category;
-        resources.push(resource);
-      }
-    }
-
-    let json12 = await loadData("assets/data/recursos-12.json");
-
-    for (let i = 0; i < json12.length; i++) {
-      for (let j = 0; j < json12[i].resources.length; j++) {
-        let resource = json12[i].resources[j];
-        resource.category = json12[i].category;
-        resources.push(resource);
+    let years = [10, 11, 12];
+    for (let y = 0; y < years.length; y++) {
+      let json = await loadData("assets/data/recursos-" + years[y] + ".json");
+      for (let i = 0; i < json.length; i++) {
+        for (let j = 0; j < json[i].resources.length; j++) {
+          let resource = json[i].resources[j];
+          resource.category = json[i].category;
+          resources.push(resource);
+        }
       }
     }
   } catch (error) {
     console.error("Erro ao carregar recursos:", error);
   }
-
   return resources;
 }
 
 function getResourceIdFromUrl() {
   let params = new URLSearchParams(window.location.search);
   let id = params.get("id");
-
   if (id) {
     return parseInt(id);
   }
-
   return null;
 }
 
@@ -61,22 +39,22 @@ function findResourceById(resources, id) {
       return resources[i];
     }
   }
-
   return null;
 }
 
+function setTextById(id, text) {
+  let element = document.getElementById(id);
+  if (element) {
+    element.textContent = text;
+  }
+}
+
 function updatePageTitle(resource) {
-  let titleElement = document.getElementById("resource-title-text");
-  if (titleElement) {
-    titleElement.textContent = resource.title;
-  }
-
-  let subtitleElement = document.getElementById("resource-subtitle-text");
-  if (subtitleElement) {
-    subtitleElement.textContent =
-      resource.type + " · " + resource.year + ".º Ano · " + resource.category;
-  }
-
+  setTextById("resource-title-text", resource.title);
+  setTextById(
+    "resource-subtitle-text",
+    resource.type + " · " + resource.year + ".º Ano · " + resource.category
+  );
   document.title = "MathPath - " + resource.title;
 }
 
@@ -94,10 +72,6 @@ function updateIframes(resource) {
   let solutionsIframe = document.getElementById("solutions-iframe");
   if (solutionsIframe && resource.solutionsUrl) {
     solutionsIframe.src = resource.solutionsUrl + "#toolbar=0&view=FitH";
-
-    solutionsIframe.onload = function () {
-      console.debug("Soluções carregadas");
-    };
   } else if (solutionsIframe && !resource.solutionsUrl) {
     let solutionsTab = document.getElementById("resource-tab-solutions");
     if (solutionsTab) {
@@ -119,13 +93,10 @@ function getChatKey(resourceId) {
 }
 
 function getMessages(resourceId) {
-  let key = getChatKey(resourceId);
-  let stored = localStorage.getItem(key);
-
+  let stored = localStorage.getItem(getChatKey(resourceId));
   if (!stored) {
     return [];
   }
-
   try {
     return JSON.parse(stored);
   } catch (error) {
@@ -136,9 +107,7 @@ function getMessages(resourceId) {
 function saveMessage(resourceId, message) {
   let messages = getMessages(resourceId);
   messages.push(message);
-
-  let key = getChatKey(resourceId);
-  localStorage.setItem(key, JSON.stringify(messages));
+  localStorage.setItem(getChatKey(resourceId), JSON.stringify(messages));
 }
 
 function formatTimeAgo(timestamp) {
@@ -154,16 +123,10 @@ function formatTimeAgo(timestamp) {
   } else if (minutes < 60) {
     return "há " + minutes + " min";
   } else if (hours < 24) {
-    var plural = "";
-    if (hours > 1) {
-      plural = "s";
-    }
+    let plural = hours > 1 ? "s" : "";
     return "há " + hours + " hora" + plural;
   } else {
-    var plural = "";
-    if (days > 1) {
-      plural = "s";
-    }
+    let plural = days > 1 ? "s" : "";
     return "há " + days + " dia" + plural;
   }
 }
@@ -175,7 +138,6 @@ function displayMessages(resourceId) {
   }
 
   let messages = getMessages(resourceId);
-
   if (messages.length === 0) {
     chatThread.innerHTML =
       '<p class="text-muted text-center p-4 mb-0">Ainda não há mensagens. Sê o primeiro a comentar!</p>';
@@ -183,7 +145,6 @@ function displayMessages(resourceId) {
   }
 
   let html = "";
-
   for (let i = 0; i < messages.length; i++) {
     let msg = messages[i];
     html += '<article class="chat-message">';
@@ -235,17 +196,11 @@ function handleMessageSubmit() {
 
   saveMessage(resourceId, message);
   displayMessages(resourceId);
-
   input.value = "";
-}
-
-function setupChat(resourceId) {
-  displayMessages(resourceId);
 }
 
 async function initializeResourcePage() {
   let resourceId = getResourceIdFromUrl();
-
   if (!resourceId) {
     showErrorMessage();
     return;
@@ -261,7 +216,7 @@ async function initializeResourcePage() {
 
   updatePageTitle(resource);
   updateIframes(resource);
-  setupChat(resourceId);
+  displayMessages(resourceId);
 }
 
 var oldOnLoadResource = window.onload;

@@ -14,28 +14,24 @@ function generateResourceRow(resource, year, categoryIndex) {
       resource.title.replace(/\s+/g, "-").toLowerCase();
   }
 
+  let previewUrl =
+    resource.type === "Vídeo" ? resource.url : resource.worksheetUrl;
+  let previewModal =
+    resource.type === "Vídeo" ? "#videoPreviewModal" : "#pdfPreviewModal";
+
   let html = "";
   html += "<tr>";
   html += "<th scope='row'>" + resource.title + "</th>";
   html += "<td>" + resource.type + "</td>";
   html += "<td>";
-
-  if (resource.type === "Vídeo") {
-    html +=
-      "<button type='button' class='btn btn-outline-primary btn-sm preview-btn' onclick='openPreview(this)' data-bs-toggle='modal' data-bs-target='#videoPreviewModal' data-url='" +
-      resource.url +
-      "' data-title='" +
-      resource.title +
-      "'>Preview</button>";
-  } else {
-    html +=
-      "<button type='button' class='btn btn-outline-primary btn-sm preview-btn' onclick='openPreview(this)' data-bs-toggle='modal' data-bs-target='#pdfPreviewModal' data-url='" +
-      resource.worksheetUrl +
-      "' data-title='" +
-      resource.title +
-      "'>Preview</button>";
-  }
-
+  html +=
+    "<button type='button' class='btn btn-outline-primary btn-sm preview-btn' onclick='openPreview(this)' data-bs-toggle='modal' data-bs-target='" +
+    previewModal +
+    "' data-url='" +
+    previewUrl +
+    "' data-title='" +
+    resource.title +
+    "'>Preview</button>";
   html += "</td>";
   html += "<td>";
   html +=
@@ -75,22 +71,18 @@ function generateResourceTable(resources, year, categoryIndex) {
   html += "</tr>";
   html += "</thead>";
   html += "<tbody>";
-
   for (let i = 0; i < resources.length; i++) {
     html += generateResourceRow(resources[i], year, categoryIndex);
   }
-
   html += "</tbody>";
   html += "</table>";
   html += "</div>";
-
   return html;
 }
 
 function generateAccordionItem(category, index, year) {
-  let html = "";
   let itemId = year + "-" + (index + 1);
-
+  let html = "";
   html += "<div class='accordion-item'>";
   html += "<h3 class='accordion-header' id='heading-" + itemId + "'>";
   html +=
@@ -117,32 +109,26 @@ function generateAccordionItem(category, index, year) {
   html += "</div>";
   html += "</div>";
   html += "</div>";
-
   return html;
 }
 
 function renderCategories(categories, year) {
   let accordionContainer = document.getElementById("accordion-" + year);
-
   if (!accordionContainer) {
     console.error("Container do accordion não encontrado para o ano " + year);
     return;
   }
 
   let html = "";
-
   for (let i = 0; i < categories.length; i++) {
     html += generateAccordionItem(categories[i], i, year);
   }
-
   accordionContainer.innerHTML = html;
 }
 
 async function loadYearResources(year) {
-  let file = "assets/data/recursos-" + year + ".json";
-
   try {
-    let data = await loadData(file);
+    let data = await loadData("assets/data/recursos-" + year + ".json");
     renderCategories(data, year);
   } catch (error) {
     console.error("Erro ao carregar recursos do " + year + ".º ano:", error);
@@ -162,7 +148,7 @@ function updateAllFavoriteButtons() {
     let button = buttons[i];
     let resourceId = button.getAttribute("data-resource-id");
     if (isFavorite(resourceId)) {
-      let icon = button.children[0]; // Assuming icon is first child
+      let icon = button.children[0];
       if (icon) {
         icon.classList.remove("bi-heart");
         icon.classList.add("bi-heart-fill");
@@ -175,16 +161,6 @@ function updateAllFavoriteButtons() {
 
 function toggleFavoriteResource(button) {
   let resourceId = button.getAttribute("data-resource-id");
-  let td = button.parentNode;
-  let tr = td.parentNode;
-
-  let accordionItem;
-  if (tr.closest) {
-    accordionItem = tr.closest(".accordion-item");
-  } else {
-    accordionItem = tr.parentNode.parentNode.parentNode.parentNode.parentNode;
-  }
-
   let title = button.getAttribute("data-title");
   let type = button.getAttribute("data-type");
   let url = button.getAttribute("data-url");
@@ -193,12 +169,7 @@ function toggleFavoriteResource(button) {
   if (button.closest) {
     let item = button.closest(".accordion-item");
     if (item) {
-      let header;
-      if (item.getElementsByClassName) {
-        header = item.getElementsByClassName("accordion-button")[0];
-      } else {
-        header = item.getElementsByClassName("accordion-button")[0];
-      }
+      let header = item.getElementsByClassName("accordion-button")[0];
       if (header) category = header.textContent.trim();
     }
   }
@@ -215,17 +186,13 @@ function toggleFavoriteResource(button) {
 }
 
 function applyFilters() {
-  let searchInput = document.getElementById("search-input");
-  let typeFilter = document.getElementById("type-filter");
-
-  let searchQuery = searchInput.value.toLowerCase();
-  let filterValue = typeFilter.value;
+  let searchQuery = document.getElementById("search-input").value.toLowerCase();
+  let filterValue = document.getElementById("type-filter").value;
 
   let tables = document.getElementsByClassName("catalog-table");
   let visibleCount = 0;
 
   for (let t = 0; t < tables.length; t++) {
-    let rows = tables[t].getElementsByTagName("tr");
     let tbodies = tables[t].getElementsByTagName("tbody");
     if (tbodies.length > 0) {
       let formRows = tbodies[0].getElementsByTagName("tr");
@@ -238,7 +205,6 @@ function applyFilters() {
         if (th && typeTd) {
           let title = th.textContent.toLowerCase();
           let type = typeTd.textContent;
-
           let matchesSearch = title.indexOf(searchQuery) !== -1;
           let matchesType = filterValue === "todos" || type === filterValue;
 
@@ -253,83 +219,55 @@ function applyFilters() {
     }
   }
 
-  let accordionItems = document.getElementsByClassName("accordion-item");
-  for (let i = 0; i < accordionItems.length; i++) {
-    let item = accordionItems[i];
-    for (let j = 0; j < rows.length; j++) {
-      if (
-        rows[j].parentNode.tagName === "TBODY" &&
-        rows[j].style.display !== "none"
-      ) {
-        visible = true;
-        break;
-      }
-    }
-
-    if (visible) {
-      item.style.display = "";
-    } else {
-      item.style.display = "none";
-    }
-  }
-
   let yearIds = ["recursos-10", "recursos-11", "recursos-12"];
-  for (let id of yearIds) {
-    let section = document.getElementById(id);
+  for (let i = 0; i < yearIds.length; i++) {
+    let section = document.getElementById(yearIds[i]);
     if (section) {
-      let visibleParams = false;
+      let visibleItems = false;
       let items = section.getElementsByClassName("accordion-item");
       for (let k = 0; k < items.length; k++) {
-        if (items[k].style.display !== "none") {
-          visibleParams = true;
-          break;
+        let tbodies = items[k].getElementsByTagName("tbody");
+        if (tbodies.length > 0) {
+          let rows = tbodies[0].getElementsByTagName("tr");
+          for (let r = 0; r < rows.length; r++) {
+            if (rows[r].style.display !== "none") {
+              visibleItems = true;
+              break;
+            }
+          }
         }
+        if (visibleItems) break;
       }
-      if (visibleParams) {
-        section.style.display = "";
-      } else {
-        section.style.display = "none";
-      }
+      section.style.display = visibleItems ? "" : "none";
     }
   }
 
-  updateResultsCount(visibleCount);
-}
-
-function updateResultsCount(count) {
   let countElement = document.getElementById("count-number");
   if (countElement) {
-    countElement.textContent = count;
+    countElement.textContent = visibleCount;
   }
 }
 
 function resetFilters() {
   let searchInput = document.getElementById("search-input");
   let typeFilter = document.getElementById("type-filter");
-
-  if (searchInput) {
-    searchInput.value = "";
-  }
-
-  if (typeFilter) {
-    typeFilter.value = "todos";
-  }
-
+  if (searchInput) searchInput.value = "";
+  if (typeFilter) typeFilter.value = "todos";
   applyFilters();
 }
 
 function openPreview(button) {
-  var url = button.getAttribute("data-url");
-  var title = button.getAttribute("data-title");
-  var target = button.getAttribute("data-bs-target");
+  let url = button.getAttribute("data-url");
+  let title = button.getAttribute("data-title");
+  let target = button.getAttribute("data-bs-target");
 
-  var targetId = target.substring(1);
-  var modal = document.getElementById(targetId);
+  let targetId = target.substring(1);
+  let modal = document.getElementById(targetId);
 
   if (target === "#videoPreviewModal") {
     if (url.indexOf("youtube.com") !== -1 || url.indexOf("youtu.be") !== -1) {
       if (url.indexOf("embed") === -1) {
-        var videoId = "";
+        let videoId = "";
         if (url.indexOf("v=") !== -1) {
           videoId = url.split("v=")[1].split("&")[0];
         } else if (url.indexOf("youtu.be/") !== -1) {
@@ -340,35 +278,35 @@ function openPreview(button) {
         }
       }
     }
-    var modalTitle = modal.getElementsByClassName("modal-title")[0];
-    var iframe = modal.getElementsByTagName("iframe")[0];
+    let modalTitle = modal.getElementsByClassName("modal-title")[0];
+    let iframe = modal.getElementsByTagName("iframe")[0];
     if (modalTitle) modalTitle.textContent = title;
     if (iframe) iframe.src = url;
   } else if (target === "#pdfPreviewModal") {
-    var modalTitle = modal.getElementsByClassName("modal-title")[0];
-    var iframe = modal.getElementsByTagName("iframe")[0];
+    let modalTitle = modal.getElementsByClassName("modal-title")[0];
+    let iframe = modal.getElementsByTagName("iframe")[0];
     if (modalTitle) modalTitle.textContent = title;
     if (iframe) iframe.src = url + "#toolbar=0&navpanes=0&scrollbar=0";
   }
 }
 
-function stopVideo(modal) {
-  var iframe = modal.getElementsByTagName("iframe")[0];
-  if (iframe) {
-    iframe.src = "";
-  }
-}
-
 function clearModalIframe(modalId) {
-  var modal = document.getElementById(modalId);
-  if (modal) stopVideo(modal);
+  let modal = document.getElementById(modalId);
+  if (modal) {
+    let iframe = modal.getElementsByTagName("iframe")[0];
+    if (iframe) {
+      iframe.src = "";
+    }
+  }
 }
 
 var oldOnLoadCatalog = window.onload;
 window.onload = function () {
   if (oldOnLoadCatalog) oldOnLoadCatalog();
-
   loadAllResources().then(function () {
-    updateResultsCount(document.getElementsByTagName("tr").length);
+    let countElement = document.getElementById("count-number");
+    if (countElement) {
+      countElement.textContent = document.getElementsByTagName("tr").length;
+    }
   });
 };

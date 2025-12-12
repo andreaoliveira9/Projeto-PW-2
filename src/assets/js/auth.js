@@ -1,16 +1,13 @@
 function getSession() {
   let session = localStorage.getItem("mathpath-session");
-
   if (session) {
     return JSON.parse(session);
   }
-
   return null;
 }
 
 function isLoggedIn() {
-  let session = getSession();
-  return session !== null;
+  return getSession() !== null;
 }
 
 function logout() {
@@ -18,13 +15,7 @@ function logout() {
   window.location.href = "index.html";
 }
 
-function handleProfileClick() {
-  if (!isLoggedIn()) {
-    window.location.href = "login.html";
-  }
-}
-
-function handleUserIconClick() {
+function redirectToLogin() {
   if (!isLoggedIn()) {
     window.location.href = "login.html";
   }
@@ -32,6 +23,7 @@ function handleUserIconClick() {
 
 function updateHeader() {
   let session = getSession();
+
   let mobileNameElements = document.getElementsByClassName(
     "mobile-profile-name"
   );
@@ -51,14 +43,12 @@ function updateHeader() {
     if (session) {
       icon.classList.remove("bi-box-arrow-in-right");
       icon.classList.add("bi-person-circle");
-
       if (button) {
         button.setAttribute("data-bs-toggle", "dropdown");
       }
     } else {
       icon.classList.remove("bi-person-circle");
       icon.classList.add("bi-box-arrow-in-right");
-
       if (button) {
         button.removeAttribute("data-bs-toggle");
       }
@@ -85,22 +75,17 @@ function updateHeader() {
 
 function getUserName() {
   let session = getSession();
-
   if (session) {
     return session.name;
   }
-
   return "Visitante";
 }
 
 function getUserFirstName() {
   let session = getSession();
-
   if (session) {
-    let nameParts = session.name.split(" ");
-    return nameParts[0];
+    return session.name.split(" ")[0];
   }
-
   return "Visitante";
 }
 

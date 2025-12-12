@@ -1,44 +1,35 @@
 function getFavoritesKey() {
   let session = localStorage.getItem("mathpath-session");
-
   if (!session) {
     return null;
   }
-
   let sessionData = JSON.parse(session);
   return "mathpath-favorites-" + sessionData.id;
 }
 
 function getFavorites() {
   let key = getFavoritesKey();
-
   if (!key) {
     return [];
   }
-
   let favorites = localStorage.getItem(key);
-
   if (favorites) {
     return JSON.parse(favorites);
   }
-
   return [];
 }
 
 function saveFavorites(favorites) {
   let key = getFavoritesKey();
-
   if (!key) {
     return false;
   }
-
   localStorage.setItem(key, JSON.stringify(favorites));
   return true;
 }
 
 function addToFavorites(resource) {
   let session = localStorage.getItem("mathpath-session");
-
   if (!session) {
     alert("Por favor, faz login para adicionar favoritos.");
     window.location.href = "login.html";
@@ -46,7 +37,6 @@ function addToFavorites(resource) {
   }
 
   let favorites = getFavorites();
-
   for (let i = 0; i < favorites.length; i++) {
     if (favorites[i].id === resource.id) {
       return false;
@@ -55,7 +45,6 @@ function addToFavorites(resource) {
 
   favorites.push(resource);
   saveFavorites(favorites);
-
   return true;
 }
 
@@ -75,13 +64,11 @@ function removeFromFavorites(resourceId) {
 
 function isFavorite(resourceId) {
   let favorites = getFavorites();
-
   for (let i = 0; i < favorites.length; i++) {
     if (favorites[i].id === resourceId) {
       return true;
     }
   }
-
   return false;
 }
 

@@ -1,133 +1,92 @@
+async function loadData(file) {
+  let response = await fetch(file);
+  let data = await response.json();
+  return data;
+}
+
 function checkAuthentication() {
   let session = localStorage.getItem("mathpath-session");
-
   if (!session) {
     window.location.href = "login.html";
     return null;
   }
-
   return JSON.parse(session);
 }
 
-function updateProfileSummary(userData) {
-  let profileName = document.getElementById("profile-name");
-  if (profileName) {
-    profileName.textContent = userData.name;
-  }
-
-  let profileYearCourse = document.getElementById("profile-year-course");
-  if (profileYearCourse) {
-    profileYearCourse.textContent =
-      userData.year + ".º Ano · " + userData.course;
-  }
-
-  let profileSchool = document.getElementById("profile-school");
-  if (profileSchool) {
-    profileSchool.textContent = userData.school;
-  }
-
-  let profileEmail = document.getElementById("profile-email");
-  if (profileEmail) {
-    profileEmail.textContent = userData.email;
+function setTextById(id, text) {
+  let element = document.getElementById(id);
+  if (element) {
+    element.textContent = text;
   }
 }
 
+function updateProfileSummary(userData) {
+  setTextById("profile-name", userData.name);
+  setTextById(
+    "profile-year-course",
+    userData.year + ".º Ano · " + userData.course
+  );
+  setTextById("profile-school", userData.school);
+  setTextById("profile-email", userData.email);
+}
+
 function updateAccountData(userData) {
-  let accountName = document.getElementById("account-name");
-  if (accountName) {
-    accountName.textContent = userData.name;
-  }
-
-  let accountYear = document.getElementById("account-year");
-  if (accountYear) {
-    accountYear.textContent = userData.year + ".º Ano";
-  }
-
-  let accountEmail = document.getElementById("account-email");
-  if (accountEmail) {
-    accountEmail.textContent = userData.email;
-  }
-
-  let accountSchool = document.getElementById("account-school");
-  if (accountSchool) {
-    accountSchool.textContent = userData.school;
-  }
-
-  let accountCourse = document.getElementById("account-course");
-  if (accountCourse) {
-    accountCourse.textContent = userData.course;
-  }
+  setTextById("account-name", userData.name);
+  setTextById("account-year", userData.year + ".º Ano");
+  setTextById("account-email", userData.email);
+  setTextById("account-school", userData.school);
+  setTextById("account-course", userData.course);
 }
 
 function updateLastAccess() {
   let session = localStorage.getItem("mathpath-session");
-
   if (!session) {
     return;
   }
 
   let sessionData = JSON.parse(session);
-
-  if (sessionData.loginTime) {
-    let loginDate = new Date(sessionData.loginTime);
-    let now = new Date();
-
-    let diffMs = now - loginDate;
-    let diffMins = Math.floor(diffMs / 60000);
-    let diffHours = Math.floor(diffMs / 3600000);
-    let diffDays = Math.floor(diffMs / 86400000);
-
-    let lastAccessText = "";
-
-    if (diffMins < 1) {
-      lastAccessText = "Agora mesmo";
-    } else if (diffMins < 60) {
-      var plural = "";
-      if (diffMins > 1) {
-        plural = "s";
-      }
-      lastAccessText = "Há " + diffMins + " minuto" + plural;
-    } else if (diffHours < 24) {
-      var plural = "";
-      if (diffHours > 1) {
-        plural = "s";
-      }
-      lastAccessText = "Há " + diffHours + " hora" + plural;
-    } else {
-      var plural = "";
-      if (diffDays > 1) {
-        plural = "s";
-      }
-      lastAccessText = "Há " + diffDays + " dia" + plural;
-    }
-
-    let lastAccessElement = document.getElementById("profile-last-access");
-    if (lastAccessElement) {
-      lastAccessElement.textContent = lastAccessText;
-    }
+  if (!sessionData.loginTime) {
+    return;
   }
+
+  let loginDate = new Date(sessionData.loginTime);
+  let now = new Date();
+  let diffMs = now - loginDate;
+  let diffMins = Math.floor(diffMs / 60000);
+  let diffHours = Math.floor(diffMs / 3600000);
+  let diffDays = Math.floor(diffMs / 86400000);
+
+  let lastAccessText = "";
+  if (diffMins < 1) {
+    lastAccessText = "Agora mesmo";
+  } else if (diffMins < 60) {
+    let plural = diffMins > 1 ? "s" : "";
+    lastAccessText = "Há " + diffMins + " minuto" + plural;
+  } else if (diffHours < 24) {
+    let plural = diffHours > 1 ? "s" : "";
+    lastAccessText = "Há " + diffHours + " hora" + plural;
+  } else {
+    let plural = diffDays > 1 ? "s" : "";
+    lastAccessText = "Há " + diffDays + " dia" + plural;
+  }
+
+  setTextById("profile-last-access", lastAccessText);
 }
 
 function updateGoalAndPlan(userData) {
-  let profileGoal = document.getElementById("profile-goal");
-  if (profileGoal && userData.goal) {
-    profileGoal.textContent = userData.goal;
+  if (userData.goal) {
+    setTextById("profile-goal", userData.goal);
   }
-
-  let profilePlan = document.getElementById("profile-plan");
-  if (profilePlan && userData.activePlan) {
-    profilePlan.textContent = userData.activePlan;
+  if (userData.activePlan) {
+    setTextById("profile-plan", userData.activePlan);
   }
 }
 
 function updateSkills(userData) {
   let skillsContainer = document.getElementById("account-skills");
-
   if (!skillsContainer || !userData.skills) {
     return;
   }
-
-  skillsContainer.innerHTML = "";
 
   let html = "";
   for (let i = 0; i < userData.skills.length; i++) {
@@ -150,13 +109,11 @@ function removeFavoriteFromList(resourceId) {
 
 function displayFavorites() {
   let favoritesContainer = document.getElementById("favorites-list");
-
   if (!favoritesContainer) {
     return;
   }
 
   let favorites = getFavorites();
-
   if (favorites.length === 0) {
     favoritesContainer.innerHTML =
       '<p class="text-muted text-center p-4 mb-0">Ainda não tens recursos favoritos. <a href="catalog.html">Explora o catálogo</a> para adicionar!</p>';
@@ -164,7 +121,6 @@ function displayFavorites() {
   }
 
   let html = "";
-
   for (let i = 0; i < favorites.length; i++) {
     let fav = favorites[i];
     html +=
@@ -193,12 +149,6 @@ function displayFavorites() {
   favoritesContainer.innerHTML = html;
 }
 
-async function loadData(file) {
-  let response = await fetch(file);
-  let data = await response.json();
-  return data;
-}
-
 async function renderStudyPlan() {
   let planBody = document.getElementById("study-plan-body");
   if (!planBody) return;
@@ -216,7 +166,6 @@ async function renderStudyPlan() {
   try {
     let users = await loadData("assets/data/users.json");
     let currentUser = null;
-
     for (let i = 0; i < users.length; i++) {
       if (users[i].email === userEmail) {
         currentUser = users[i];
@@ -249,7 +198,6 @@ async function renderStudyPlan() {
 
 function initializeAccountPage() {
   let userData = checkAuthentication();
-
   if (!userData) {
     return;
   }
@@ -260,7 +208,7 @@ function initializeAccountPage() {
   updateGoalAndPlan(userData);
   updateSkills(userData);
   displayFavorites();
-  loadStudyPlan(userData.email);
+  renderStudyPlan();
 }
 
 var oldOnLoadAccount = window.onload;
