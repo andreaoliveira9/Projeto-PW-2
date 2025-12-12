@@ -14,10 +14,15 @@ function generateResourceRow(resource, year, categoryIndex) {
       resource.title.replace(/\s+/g, "-").toLowerCase();
   }
 
-  let previewUrl =
-    resource.type === "Vídeo" ? resource.url : resource.worksheetUrl;
-  let previewModal =
-    resource.type === "Vídeo" ? "#videoPreviewModal" : "#pdfPreviewModal";
+  let previewUrl = "";
+  let previewModal = "";
+  if (resource.type === "Vídeo") {
+    previewUrl = resource.url;
+    previewModal = "#videoPreviewModal";
+  } else {
+    previewUrl = resource.worksheetUrl;
+    previewModal = "#pdfPreviewModal";
+  }
 
   let html = "";
   html += "<tr>";
@@ -238,7 +243,11 @@ function applyFilters() {
         }
         if (visibleItems) break;
       }
-      section.style.display = visibleItems ? "" : "none";
+      if (visibleItems) {
+        section.style.display = "";
+      } else {
+        section.style.display = "none";
+      }
     }
   }
 

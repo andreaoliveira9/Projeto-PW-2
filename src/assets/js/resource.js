@@ -123,10 +123,16 @@ function formatTimeAgo(timestamp) {
   } else if (minutes < 60) {
     return "há " + minutes + " min";
   } else if (hours < 24) {
-    let plural = hours > 1 ? "s" : "";
+    let plural = "";
+    if (hours > 1) {
+      plural = "s";
+    }
     return "há " + hours + " hora" + plural;
   } else {
-    let plural = days > 1 ? "s" : "";
+    let plural = "";
+    if (days > 1) {
+      plural = "s";
+    }
     return "há " + days + " dia" + plural;
   }
 }

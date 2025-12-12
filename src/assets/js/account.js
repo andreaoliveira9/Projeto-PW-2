@@ -60,13 +60,22 @@ function updateLastAccess() {
   if (diffMins < 1) {
     lastAccessText = "Agora mesmo";
   } else if (diffMins < 60) {
-    let plural = diffMins > 1 ? "s" : "";
+    let plural = "";
+    if (diffMins > 1) {
+      plural = "s";
+    }
     lastAccessText = "Há " + diffMins + " minuto" + plural;
   } else if (diffHours < 24) {
-    let plural = diffHours > 1 ? "s" : "";
+    let plural = "";
+    if (diffHours > 1) {
+      plural = "s";
+    }
     lastAccessText = "Há " + diffHours + " hora" + plural;
   } else {
-    let plural = diffDays > 1 ? "s" : "";
+    let plural = "";
+    if (diffDays > 1) {
+      plural = "s";
+    }
     lastAccessText = "Há " + diffDays + " dia" + plural;
   }
 
