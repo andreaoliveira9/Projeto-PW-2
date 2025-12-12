@@ -16,25 +16,25 @@
         "day": "Segunda",
         "theme": "Probabilidades",
         "objective": "Resolver exercícios de exame sobre probabilidade condicionada.",
-        "time": "60 min"
+        "time": 60
       },
       {
         "day": "Quarta",
         "theme": "Funções Exponenciais",
         "objective": "Estudar limites notáveis e assíntotas.",
-        "time": "45 min"
+        "time": 45
       },
       {
         "day": "Sexta",
         "theme": "Números Complexos",
         "objective": "Rever forma trigonométrica e raízes n-ésimas.",
-        "time": "50 min"
+        "time": 50
       },
       {
         "day": "Sábado",
         "theme": "Simulador Exame",
         "objective": "Realizar teste global dos conteúdos de 12.º ano.",
-        "time": "90 min"
+        "time": 90
       }
     ]
   },
@@ -55,19 +55,19 @@
         "day": "Segunda",
         "theme": "Funções",
         "objective": "Fichas de trabalho sobre domínio e contradomínio.",
-        "time": "40 min"
+        "time": 40
       },
       {
         "day": "Quarta",
         "theme": "Derivadas",
         "objective": "Praticar regras de derivação e monotonia.",
-        "time": "50 min"
+        "time": 50
       },
       {
         "day": "Sexta",
         "theme": "Geometria",
         "objective": "Exercícios simples de produto escalar.",
-        "time": "30 min"
+        "time": 30
       }
     ]
   },
@@ -88,19 +88,19 @@
         "day": "Terça",
         "theme": "Trigonometria",
         "objective": "Memorizar fórmulas e círculo trigonométrico.",
-        "time": "45 min"
+        "time": 45
       },
       {
         "day": "Quinta",
         "theme": "Sucessões",
         "objective": "Resolver problemas de progressão aritmética.",
-        "time": "45 min"
+        "time": 45
       },
       {
         "day": "Sábado",
         "theme": "Geometria Analítica",
         "objective": "Estudar declive e inclinação da reta.",
-        "time": "60 min"
+        "time": 60
       }
     ]
   },
@@ -121,19 +121,19 @@
         "day": "Segunda",
         "theme": "Funções",
         "objective": "Introdução às funções afim e quadrática.",
-        "time": "30 min"
+        "time": 30
       },
       {
         "day": "Quarta",
         "theme": "Geometria",
         "objective": "Rever áreas e volumes de sólidos.",
-        "time": "40 min"
+        "time": 40
       },
       {
         "day": "Sexta",
         "theme": "Estatística",
         "objective": "Organizar dados em tabelas de frequências.",
-        "time": "30 min"
+        "time": 30
       }
     ]
   }

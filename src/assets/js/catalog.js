@@ -150,9 +150,9 @@ async function loadYearResources(year) {
 }
 
 async function loadAllResources() {
-  await loadYearResources("10");
-  await loadYearResources("11");
-  await loadYearResources("12");
+  await loadYearResources(10);
+  await loadYearResources(11);
+  await loadYearResources(12);
   updateAllFavoriteButtons();
 }
 

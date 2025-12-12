@@ -216,7 +216,7 @@ function loadStudyPlan(userEmail) {
               <th scope="row">${item.day}</th>
               <td>${item.theme}</td>
               <td>${item.objective}</td>
-              <td>${item.time}</td>
+              <td>${item.time} min</td>
             </tr>
           `;
         });

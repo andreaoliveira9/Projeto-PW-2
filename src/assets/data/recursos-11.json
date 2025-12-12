@@ -11,7 +11,7 @@
         "url": "resource.html?id=1201",
         "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/trigonometria.pdf",
         "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/trigonometria_resol.pdf",
-        "year": "11"
+        "year": 11
       },
       {
         "id": 1202,
@@ -20,7 +20,7 @@
         "url": "resource.html?id=1202",
         "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/produto_escalar.pdf",
         "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/produto_escalar_resol.pdf",
-        "year": "11"
+        "year": 11
       },
       {
         "id": 1203,
@@ -29,7 +29,7 @@
         "url": "resource.html?id=1203",
         "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/declive_inclinacao.pdf",
         "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/declive_inclinacao_resol.pdf",
-        "year": "11"
+        "year": 11
       },
       {
         "id": 1204,
@@ -38,14 +38,14 @@
         "url": "resource.html?id=1204",
         "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/retas_planos.pdf",
         "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/geometria/retas_planos_resol.pdf",
-        "year": "11"
+        "year": 11
       },
       {
         "id": 1205,
         "title": "Resumo",
         "type": "Vídeo",
         "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
-        "year": "11"
+        "year": 11
       }
     ]
   },
@@ -61,7 +61,7 @@
         "url": "resource.html?id=1301",
         "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/matdiscreta/contagem.pdf",
         "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/matdiscreta/contagem_resol.pdf",
-        "year": "11"
+        "year": 11
       },
       {
         "id": 1302,
@@ -70,14 +70,14 @@
         "url": "resource.html?id=1302",
         "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/matdiscreta/sucessoes.pdf",
         "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/matdiscreta/sucessoes_resol.pdf",
-        "year": "11"
+        "year": 11
       },
       {
         "id": 1303,
         "title": "Resumo",
         "type": "Vídeo",
         "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
-        "year": "11"
+        "year": 11
       }
     ]
   },
@@ -93,7 +93,7 @@
         "url": "resource.html?id=1401",
         "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/polinomiais34.pdf",
         "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/polinomiais34_resol.pdf",
-        "year": "11"
+        "year": 11
       },
       {
         "id": 1402,
@@ -102,7 +102,7 @@
         "url": "resource.html?id=1402",
         "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/operacoes.pdf",
         "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/operacoes_resol.pdf",
-        "year": "11"
+        "year": 11
       },
       {
         "id": 1403,
@@ -111,7 +111,7 @@
         "url": "resource.html?id=1403",
         "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/funcoes_racionais.pdf",
         "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/funcoes_racionais_resol.pdf",
-        "year": "11"
+        "year": 11
       },
       {
         "id": 1404,
@@ -120,14 +120,14 @@
         "url": "resource.html?id=1404",
         "worksheetUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/derivada.pdf",
         "solutionsUrl": "https://mat.absolutamente.net/compilacoes/mat-a/11/funcoes/derivada_resol.pdf",
-        "year": "11"
+        "year": 11
       },
       {
         "id": 1405,
         "title": "Resumo",
         "type": "Vídeo",
         "url": "https://www.youtube.com/watch?v=rufqTv6KeYI&t=1s",
-        "year": "11"
+        "year": 11
       }
     ]
   }
