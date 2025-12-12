@@ -38,33 +38,24 @@
     mobileNavToggleBtn.classList.toggle("bi-list");
     mobileNavToggleBtn.classList.toggle("bi-x");
   }
-
-  if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.onclick = mobileNavToogle;
-  }
+  window.mobileNavToogle = mobileNavToogle;
 
   /**
    * Hide mobile nav on same-page/hash links
    */
-  document.querySelectorAll("#navmenu a").forEach((link) => {
-    link.onclick = () => {
-      if (document.querySelector(".mobile-nav-active")) {
-        mobileNavToogle();
-      }
-    };
-  });
+  window.handleNavLinkClick = () => {
+    if (document.querySelector(".mobile-nav-active")) {
+      mobileNavToogle();
+    }
+  };
 
   /**
    * Toggle mobile nav dropdowns
    */
-  document.querySelectorAll(".navmenu .toggle-dropdown").forEach((toggle) => {
-    toggle.onclick = function (e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle("active");
-      this.parentNode.nextElementSibling.classList.toggle("dropdown-active");
-      e.stopImmediatePropagation();
-    };
-  });
+  window.toggleDropdown = function (element) {
+    element.parentNode.classList.toggle("active");
+    element.parentNode.nextElementSibling.classList.toggle("dropdown-active");
+  };
 
   /**
    * Preloader
@@ -84,15 +75,13 @@
         : scrollTop.classList.remove("active");
     }
   }
-  if (scrollTop) {
-    scrollTop.onclick = (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-    };
-  }
+
+  window.scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   // Listeners handled at the end
 

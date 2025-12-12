@@ -24,6 +24,12 @@ function handleProfileClick() {
   }
 }
 
+function handleUserIconClick() {
+  if (!isLoggedIn()) {
+    window.location.href = "login.html";
+  }
+}
+
 function updateHeader() {
   let session = getSession();
   // Using getElementsByClassName as fallback for elements that might not have IDs yet,
@@ -54,7 +60,7 @@ function updateHeader() {
 
       if (button) {
         button.setAttribute("data-bs-toggle", "dropdown");
-        button.onclick = null;
+        // button.onclick is no longer handled here, it's in the HTML: onclick="handleUserIconClick()"
       }
     } else {
       icon.classList.remove("bi-person-circle");
@@ -62,9 +68,7 @@ function updateHeader() {
 
       if (button) {
         button.removeAttribute("data-bs-toggle");
-        button.onclick = function () {
-          window.location.href = "login.html";
-        };
+        // button.onclick is no longer handled here, it's in the HTML: onclick="handleUserIconClick()"
       }
     }
   }

@@ -61,44 +61,10 @@ function applyTheme(value, options) {
   }
 }
 
-function setupThemeListeners() {
-  var autoRadio = document.getElementById("theme-auto");
-  var lightRadio = document.getElementById("theme-light");
-  var darkRadio = document.getElementById("theme-dark");
-
-  if (autoRadio)
-    autoRadio.onclick = function () {
-      applyTheme("auto");
-    };
-  if (lightRadio)
-    lightRadio.onclick = function () {
-      applyTheme("light");
-    };
-  if (darkRadio)
-    darkRadio.onclick = function () {
-      applyTheme("dark");
-    };
-}
-
-// Initial Setup
-(function () {
-  var stored = null;
-  try {
-    stored = localStorage.getItem("mathpath-theme");
-  } catch (error) {}
-
-  if (isValidTheme(stored)) {
-    applyTheme(stored, { skipStorage: true });
-  } else {
-    applyTheme(root.getAttribute("data-theme") || "auto", {
-      skipStorage: true,
-    });
-  }
-
   // Defer listener setup to ensure DOM is ready (though scripts are defer/end of body usually)
   // We can hook into window.onload or just run if elements exist.
   // If elements are in header and script is at end of body, they exist.
-  setupThemeListeners();
+  // setupThemeListeners(); // Removed as we use inline onclick now
 
   if (window.matchMedia) {
     var mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");

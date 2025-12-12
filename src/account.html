@@ -150,18 +150,21 @@
               name="site-theme"
               id="theme-auto"
               checked
+              onclick="applyTheme('auto')"
             />
             <input
               type="radio"
               class="theme-radio"
               name="site-theme"
               id="theme-light"
+              onclick="applyTheme('light')"
             />
             <input
               type="radio"
               class="theme-radio"
               name="site-theme"
               id="theme-dark"
+              onclick="applyTheme('dark')"
             />
             <button
               class="btn btn-outline-light rounded-pill d-flex align-items-center gap-2 theme-toggle__button"
@@ -197,6 +200,7 @@
               data-bs-toggle="dropdown"
               aria-expanded="false"
               aria-label="Abrir menu do perfil"
+              onclick="handleUserIconClick()"
             >
               <i class="user-menu__icon bi bi-person-circle"></i>
             </button>
@@ -521,6 +525,7 @@
       href="#"
       id="scroll-top"
       class="scroll-top d-flex align-items-center justify-content-center"
+      onclick="scrollToTop()"
       ><i class="bi bi-arrow-up-short"></i
     ></a>
 
