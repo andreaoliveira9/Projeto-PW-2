@@ -16,7 +16,7 @@ function checkAuthentication() {
 function setTextById(id, text) {
   let element = document.getElementById(id);
   if (element) {
-    element.textContent = text;
+    element.innerText = text;
   }
 }
 
@@ -160,7 +160,9 @@ function displayFavorites() {
 
 async function renderStudyPlan() {
   let planBody = document.getElementById("study-plan-body");
-  if (!planBody) return;
+  if (!planBody) {
+    return;
+  }
 
   let session = localStorage.getItem("mathpath-session");
   if (!session) {
@@ -172,36 +174,30 @@ async function renderStudyPlan() {
   let userData = JSON.parse(session);
   let userEmail = userData.email;
 
-  try {
-    let users = await loadData("assets/data/users.json");
-    let currentUser = null;
-    for (let i = 0; i < users.length; i++) {
-      if (users[i].email === userEmail) {
-        currentUser = users[i];
-        break;
-      }
+  let users = await loadData("assets/data/users.json");
+  let currentUser = null;
+  for (let i = 0; i < users.length; i++) {
+    if (users[i].email === userEmail) {
+      currentUser = users[i];
+      break;
     }
+  }
 
-    if (currentUser && currentUser.studyPlan) {
-      let html = "";
-      for (let i = 0; i < currentUser.studyPlan.length; i++) {
-        let item = currentUser.studyPlan[i];
-        html += "<tr>";
-        html += '<th scope="row">' + item.day + "</th>";
-        html += "<td>" + item.theme + "</td>";
-        html += "<td>" + item.objective + "</td>";
-        html += "<td>" + item.time + " min</td>";
-        html += "</tr>";
-      }
-      planBody.innerHTML = html;
-    } else {
-      planBody.innerHTML =
-        '<tr><td colspan="4" class="text-center p-3 text-muted">Plano de estudo não encontrado.</td></tr>';
+  if (currentUser && currentUser.studyPlan) {
+    let html = "";
+    for (let i = 0; i < currentUser.studyPlan.length; i++) {
+      let item = currentUser.studyPlan[i];
+      html += "<tr>";
+      html += '<th scope="row">' + item.day + "</th>";
+      html += "<td>" + item.theme + "</td>";
+      html += "<td>" + item.objective + "</td>";
+      html += "<td>" + item.time + " min</td>";
+      html += "</tr>";
     }
-  } catch (error) {
-    console.error("Erro ao carregar o plano de estudo:", error);
+    planBody.innerHTML = html;
+  } else {
     planBody.innerHTML =
-      '<tr><td colspan="4" class="text-center p-3 text-danger">Erro ao carregar o plano de estudo.</td></tr>';
+      '<tr><td colspan="4" class="text-center p-3 text-muted">Plano de estudo não encontrado.</td></tr>';
   }
 }
 

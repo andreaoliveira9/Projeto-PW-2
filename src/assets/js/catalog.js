@@ -120,7 +120,6 @@ function generateAccordionItem(category, index, year) {
 function renderCategories(categories, year) {
   let accordionContainer = document.getElementById("accordion-" + year);
   if (!accordionContainer) {
-    console.error("Container do accordion não encontrado para o ano " + year);
     return;
   }
 
@@ -132,12 +131,8 @@ function renderCategories(categories, year) {
 }
 
 async function loadYearResources(year) {
-  try {
-    let data = await loadData("assets/data/recursos-" + year + ".json");
-    renderCategories(data, year);
-  } catch (error) {
-    console.error("Erro ao carregar recursos do " + year + ".º ano:", error);
-  }
+  let data = await loadData("assets/data/recursos-" + year + ".json");
+  renderCategories(data, year);
 }
 
 async function loadAllResources() {
@@ -164,6 +159,17 @@ function updateAllFavoriteButtons() {
   }
 }
 
+function getParentAccordionItem(element) {
+  let current = element.parentNode;
+  while (current) {
+    if (current.classList && current.classList.contains("accordion-item")) {
+      return current;
+    }
+    current = current.parentNode;
+  }
+  return null;
+}
+
 function toggleFavoriteResource(button) {
   let resourceId = button.getAttribute("data-resource-id");
   let title = button.getAttribute("data-title");
@@ -171,11 +177,11 @@ function toggleFavoriteResource(button) {
   let url = button.getAttribute("data-url");
 
   let category = "";
-  if (button.closest) {
-    let item = button.closest(".accordion-item");
-    if (item) {
-      let header = item.getElementsByClassName("accordion-button")[0];
-      if (header) category = header.textContent.trim();
+  let item = getParentAccordionItem(button);
+  if (item) {
+    let header = item.getElementsByClassName("accordion-button")[0];
+    if (header) {
+      category = header.innerText.trim();
     }
   }
 
@@ -208,8 +214,8 @@ function applyFilters() {
         let typeTd = tds[0];
 
         if (th && typeTd) {
-          let title = th.textContent.toLowerCase();
-          let type = typeTd.textContent;
+          let title = th.innerText.toLowerCase();
+          let type = typeTd.innerText;
           let matchesSearch = title.indexOf(searchQuery) !== -1;
           let matchesType = filterValue === "todos" || type === filterValue;
 
@@ -241,7 +247,9 @@ function applyFilters() {
             }
           }
         }
-        if (visibleItems) break;
+        if (visibleItems) {
+          break;
+        }
       }
       if (visibleItems) {
         section.style.display = "";
@@ -253,15 +261,19 @@ function applyFilters() {
 
   let countElement = document.getElementById("count-number");
   if (countElement) {
-    countElement.textContent = visibleCount;
+    countElement.innerText = visibleCount;
   }
 }
 
 function resetFilters() {
   let searchInput = document.getElementById("search-input");
   let typeFilter = document.getElementById("type-filter");
-  if (searchInput) searchInput.value = "";
-  if (typeFilter) typeFilter.value = "todos";
+  if (searchInput) {
+    searchInput.value = "";
+  }
+  if (typeFilter) {
+    typeFilter.value = "todos";
+  }
   applyFilters();
 }
 
@@ -289,13 +301,21 @@ function openPreview(button) {
     }
     let modalTitle = modal.getElementsByClassName("modal-title")[0];
     let iframe = modal.getElementsByTagName("iframe")[0];
-    if (modalTitle) modalTitle.textContent = title;
-    if (iframe) iframe.src = url;
+    if (modalTitle) {
+      modalTitle.innerText = title;
+    }
+    if (iframe) {
+      iframe.src = url;
+    }
   } else if (target === "#pdfPreviewModal") {
     let modalTitle = modal.getElementsByClassName("modal-title")[0];
     let iframe = modal.getElementsByTagName("iframe")[0];
-    if (modalTitle) modalTitle.textContent = title;
-    if (iframe) iframe.src = url + "#toolbar=0&navpanes=0&scrollbar=0";
+    if (modalTitle) {
+      modalTitle.innerText = title;
+    }
+    if (iframe) {
+      iframe.src = url + "#toolbar=0&navpanes=0&scrollbar=0";
+    }
   }
 }
 
@@ -311,11 +331,13 @@ function clearModalIframe(modalId) {
 
 var oldOnLoadCatalog = window.onload;
 window.onload = function () {
-  if (oldOnLoadCatalog) oldOnLoadCatalog();
+  if (oldOnLoadCatalog) {
+    oldOnLoadCatalog();
+  }
   loadAllResources().then(function () {
     let countElement = document.getElementById("count-number");
     if (countElement) {
-      countElement.textContent = document.getElementsByTagName("tr").length;
+      countElement.innerText = document.getElementsByTagName("tr").length;
     }
   });
 };

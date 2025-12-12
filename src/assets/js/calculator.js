@@ -38,27 +38,22 @@ function calculate() {
   let result = 0;
   let expression = previousValue + " " + operation + " " + currentValue;
 
-  switch (operation) {
-    case "+":
-      result = num1 + num2;
-      break;
-    case "-":
-      result = num1 - num2;
-      break;
-    case "*":
-      result = num1 * num2;
-      break;
-    case "/":
-      if (num2 === 0) {
-        currentValue = "Erro";
-        updateDisplay();
-        addToHistory(expression, "Erro: Divisão por zero");
-        previousValue = "";
-        operation = "";
-        return;
-      }
-      result = num1 / num2;
-      break;
+  if (operation === "+") {
+    result = num1 + num2;
+  } else if (operation === "-") {
+    result = num1 - num2;
+  } else if (operation === "*") {
+    result = num1 * num2;
+  } else if (operation === "/") {
+    if (num2 === 0) {
+      currentValue = "Erro";
+      updateDisplay();
+      addToHistory(expression, "Erro: Divisão por zero");
+      previousValue = "";
+      operation = "";
+      return;
+    }
+    result = num1 / num2;
   }
 
   result = Math.round(result * 100000000) / 100000000;

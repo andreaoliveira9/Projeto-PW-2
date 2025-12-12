@@ -6,20 +6,16 @@ async function loadData(file) {
 
 async function loadAllResources() {
   let resources = [];
-  try {
-    let years = [10, 11, 12];
-    for (let y = 0; y < years.length; y++) {
-      let json = await loadData("assets/data/recursos-" + years[y] + ".json");
-      for (let i = 0; i < json.length; i++) {
-        for (let j = 0; j < json[i].resources.length; j++) {
-          let resource = json[i].resources[j];
-          resource.category = json[i].category;
-          resources.push(resource);
-        }
+  let years = [10, 11, 12];
+  for (let y = 0; y < years.length; y++) {
+    let json = await loadData("assets/data/recursos-" + years[y] + ".json");
+    for (let i = 0; i < json.length; i++) {
+      for (let j = 0; j < json[i].resources.length; j++) {
+        let resource = json[i].resources[j];
+        resource.category = json[i].category;
+        resources.push(resource);
       }
     }
-  } catch (error) {
-    console.error("Erro ao carregar recursos:", error);
   }
   return resources;
 }
@@ -45,7 +41,7 @@ function findResourceById(resources, id) {
 function setTextById(id, text) {
   let element = document.getElementById(id);
   if (element) {
-    element.textContent = text;
+    element.innerText = text;
   }
 }
 
@@ -97,11 +93,11 @@ function getMessages(resourceId) {
   if (!stored) {
     return [];
   }
-  try {
-    return JSON.parse(stored);
-  } catch (error) {
-    return [];
+  let parsed = JSON.parse(stored);
+  if (parsed) {
+    return parsed;
   }
+  return [];
 }
 
 function saveMessage(resourceId, message) {
@@ -169,7 +165,9 @@ function displayMessages(resourceId) {
 
 function handleMessageSubmit() {
   let resourceId = getResourceIdFromUrl();
-  if (!resourceId) return;
+  if (!resourceId) {
+    return;
+  }
 
   let input = document.getElementById("chat-message-input");
   if (!input) {
@@ -185,11 +183,9 @@ function handleMessageSubmit() {
   let author = "Anónimo";
 
   if (session) {
-    try {
-      let userData = JSON.parse(session);
+    let userData = JSON.parse(session);
+    if (userData && userData.name) {
       author = userData.name.split(" ")[0];
-    } catch (error) {
-      author = "Anónimo";
     }
   }
 
@@ -227,6 +223,8 @@ async function initializeResourcePage() {
 
 var oldOnLoadResource = window.onload;
 window.onload = function () {
-  if (oldOnLoadResource) oldOnLoadResource();
+  if (oldOnLoadResource) {
+    oldOnLoadResource();
+  }
   initializeResourcePage();
 };

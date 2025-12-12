@@ -7,14 +7,20 @@
   });
 
   function isValidTheme(value) {
-    return ["auto", "light", "dark"].indexOf(value) !== -1;
+    if (value === "auto" || value === "light" || value === "dark") {
+      return true;
+    }
+    return false;
   }
 
   function systemPrefersDark() {
-    return (
+    if (
       window.matchMedia &&
       window.matchMedia("(prefers-color-scheme: dark)").matches
-    );
+    ) {
+      return true;
+    }
+    return false;
   }
 
   function iconClassForTheme(value) {
@@ -64,9 +70,7 @@
     updateToggleIcon(value);
 
     if (!options || !options.skipStorage) {
-      try {
-        localStorage.setItem("mathpath-theme", value);
-      } catch (error) {}
+      localStorage.setItem("mathpath-theme", value);
     }
   }
 

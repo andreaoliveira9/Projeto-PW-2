@@ -7,7 +7,10 @@ function getSession() {
 }
 
 function isLoggedIn() {
-  return getSession() !== null;
+  if (getSession() !== null) {
+    return true;
+  }
+  return false;
 }
 
 function logout() {
@@ -29,16 +32,16 @@ function updateHeader() {
   );
   if (mobileNameElements.length > 0) {
     if (session) {
-      mobileNameElements[0].textContent = session.name.split(" ")[0];
+      mobileNameElements[0].innerText = session.name.split(" ")[0];
     } else {
-      mobileNameElements[0].textContent = "Entrar";
+      mobileNameElements[0].innerText = "Entrar";
     }
   }
 
   let desktopUserIcons = document.getElementsByClassName("user-menu__icon");
   if (desktopUserIcons.length > 0) {
     let icon = desktopUserIcons[0];
-    let button = icon.closest("button");
+    let button = icon.parentNode;
 
     if (session) {
       icon.classList.remove("bi-box-arrow-in-right");
@@ -50,7 +53,7 @@ function updateHeader() {
       icon.classList.remove("bi-person-circle");
       icon.classList.add("bi-box-arrow-in-right");
       if (button) {
-        button.removeAttribute("data-bs-toggle");
+        button.setAttribute("data-bs-toggle", "");
       }
     }
   }
@@ -91,6 +94,8 @@ function getUserFirstName() {
 
 var oldOnLoadAuth = window.onload;
 window.onload = function () {
-  if (oldOnLoadAuth) oldOnLoadAuth();
+  if (oldOnLoadAuth) {
+    oldOnLoadAuth();
+  }
   updateHeader();
 };

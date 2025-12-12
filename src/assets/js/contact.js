@@ -58,7 +58,7 @@ function showFieldError(fieldId, errorMessage) {
     field.value = val;
   }
 
-  feedbackDiv.textContent = errorMessage;
+  feedbackDiv.innerText = errorMessage;
   feedbackDiv.style.display = "block";
 }
 
@@ -70,7 +70,7 @@ function showFieldSuccess(fieldId) {
   let feedbackDiv =
     field.parentNode.getElementsByClassName("invalid-feedback")[0];
   if (feedbackDiv) {
-    feedbackDiv.textContent = "";
+    feedbackDiv.innerText = "";
     feedbackDiv.style.display = "none";
   }
 }
@@ -200,7 +200,7 @@ function clearAllValidation() {
       let feedbackDiv =
         field.parentNode.getElementsByClassName("invalid-feedback")[0];
       if (feedbackDiv) {
-        feedbackDiv.textContent = "";
+        feedbackDiv.innerText = "";
         feedbackDiv.style.display = "none";
       }
     }
@@ -224,7 +224,7 @@ function updateCharacterCount() {
     messageField.value = val;
   }
 
-  countDiv.textContent = currentLength + " / " + maxLength + " caracteres";
+  countDiv.innerText = currentLength + " / " + maxLength + " caracteres";
   if (currentLength > maxLength) {
     countDiv.classList.add("text-danger");
   } else {
@@ -240,6 +240,8 @@ function onFormReset() {
 
 var oldOnLoadContact = window.onload;
 window.onload = function () {
-  if (oldOnLoadContact) oldOnLoadContact();
+  if (oldOnLoadContact) {
+    oldOnLoadContact();
+  }
   updateCharacterCount();
 };
