@@ -229,7 +229,6 @@ function handleMessageSubmit() {
 }
 
 function setupChat(resourceId) {
-  // Chat form binding is now inline in HTML
   displayMessages(resourceId);
 }
 

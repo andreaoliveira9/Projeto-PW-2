@@ -32,11 +32,6 @@ function handleUserIconClick() {
 
 function updateHeader() {
   let session = getSession();
-  // Using getElementsByClassName as fallback for elements that might not have IDs yet,
-  // or add IDs in HTML. Since I am editing HTML, I will add IDs.
-  // But to be safe and avoid breaking if HTML isn't perfect immediately:
-
-  // Mobile Profile Name
   let mobileNameElements = document.getElementsByClassName(
     "mobile-profile-name"
   );
@@ -48,11 +43,10 @@ function updateHeader() {
     }
   }
 
-  // Desktop User Icon
   let desktopUserIcons = document.getElementsByClassName("user-menu__icon");
   if (desktopUserIcons.length > 0) {
     let icon = desktopUserIcons[0];
-    let button = icon.closest("button"); // Get the button element
+    let button = icon.closest("button");
 
     if (session) {
       icon.classList.remove("bi-box-arrow-in-right");
@@ -60,7 +54,6 @@ function updateHeader() {
 
       if (button) {
         button.setAttribute("data-bs-toggle", "dropdown");
-        // button.onclick is no longer handled here, it's in the HTML: onclick="handleUserIconClick()"
       }
     } else {
       icon.classList.remove("bi-person-circle");
@@ -68,13 +61,10 @@ function updateHeader() {
 
       if (button) {
         button.removeAttribute("data-bs-toggle");
-        // button.onclick is no longer handled here, it's in the HTML: onclick="handleUserIconClick()"
       }
     }
   }
 
-  // Mobile Profile Icon
-  // .mobile-profile-info i
   let mobileProfileInfos = document.getElementsByClassName(
     "mobile-profile-info"
   );
@@ -91,9 +81,6 @@ function updateHeader() {
       }
     }
   }
-
-  // Event listeners for profile links and logout buttons are now handled by inline onclick in HTML.
-  // No need to attach them here.
 }
 
 function getUserName() {

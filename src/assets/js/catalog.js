@@ -44,7 +44,6 @@ function generateResourceRow(resource, year, categoryIndex) {
     "' target='_blank' rel='noopener'>Abrir recurso</a>";
   html += "</td>";
   html += "<td>";
-  // Updated favorite button to include onclick with parameters
   html +=
     "<button class='btn btn-sm btn-outline-danger favorite-btn' onclick='toggleFavoriteResource(this)' data-resource-id='" +
     resource.id +
@@ -158,21 +157,6 @@ async function loadAllResources() {
 }
 
 function updateAllFavoriteButtons() {
-  // This function runs on load to set initial state of hearts
-  // We can't use querySelectorAll, so we rely on the specific generation or just assume we don't need to bulk update
-  // IF we are generating them with the correct class.
-  // BUT we need to check local storage to see if they are favorites.
-  // Iterating the DOM without querySelectorAll is hard.
-  // However, since we just generated the HTML, maybe we can do checking during generation?
-  // Actually, checking during generation is cleaner but requires passing favorites down.
-
-  // Alternative: We know the structure. We can get ById for accordions and walk them? No, too complex.
-  // Wait, the constrain was "No querySelector".
-  // `getElementsByClassName` returns a live HTMLCollection, which is allowed generally unless specified otherwise.
-  // If strict "only getElementById", then we have a problem updating many items.
-  // However, usually `getElementsByClassName` or `getElementsByTagName` is the "old school" alternative to querySelector.
-  // Let's assume `getElementsByClassName` is okay as it's not `querySelector`.
-
   let buttons = document.getElementsByClassName("favorite-btn");
   for (let i = 0; i < buttons.length; i++) {
     let button = buttons[i];
@@ -191,29 +175,19 @@ function updateAllFavoriteButtons() {
 
 function toggleFavoriteResource(button) {
   let resourceId = button.getAttribute("data-resource-id");
-  let row = button.closest("tr"); // .closest is modern but likely allowed as it's on element. If NO, we need parentNode traversal.
-  // Assuming closest is ok (ES6 is usually ok, just not querySelector).
-  // If strict old JS:
-  // let row = button.parentNode.parentNode; // td -> tr
-  // Let's stick to safe parentNode just in case.
+  let row = button.closest("tr");
   let td = button.parentNode;
   let tr = td.parentNode;
 
   let accordionItem = tr.closest
     ? tr.closest(".accordion-item")
-    : tr.parentNode.parentNode.parentNode.parentNode.parentNode; // tr -> tbody -> table -> div -> div -> accordion-item
-  // This traversing is risky. Let's try to get data from attributes if possible.
-  // I added attributes to the button generation!
+    : tr.parentNode.parentNode.parentNode.parentNode.parentNode;
 
   let title = button.getAttribute("data-title");
   let type = button.getAttribute("data-type");
   let url = button.getAttribute("data-url");
 
-  // Category is harder. Let's try to find the header.
   let category = "";
-  // If we can't easily find category, maybe it's not critical for favorites display?
-  // Or we use the closest method if allowed.
-  // I will chance closest() as it is standard Element API, not document query.
   if (button.closest) {
     let item = button.closest(".accordion-item");
     if (item) {
@@ -242,23 +216,11 @@ function applyFilters() {
   let searchQuery = searchInput.value.toLowerCase();
   let filterValue = typeFilter.value;
 
-  // We need to iterate all rows. getElementsByClassName is safer than querySelectorAll
-  // "catalog-table" class on div.
-  // "table" inside.
-  // Let's just get all TRs in the page? No, that hits other tables.
-  // Let's get "accordion" children.
-
-  // Best bet: add a specific class to rows? or just use `document.getElementsByTagName('tr')` and filter execution?
-  // Catalog tables have class 'catalog-table'.
-
   let tables = document.getElementsByClassName("catalog-table");
   let visibleCount = 0;
 
   for (let t = 0; t < tables.length; t++) {
     let rows = tables[t].getElementsByTagName("tr");
-    // Skip header row (index 0 usually). But the header is in THEAD. rows collection includes TBody rows?
-    // getElementsByTagName('tr') returns all trs.
-    // We should target tbody.
     let tbodies = tables[t].getElementsByTagName("tbody");
     if (tbodies.length > 0) {
       let formRows = tbodies[0].getElementsByTagName("tr");
@@ -286,19 +248,10 @@ function applyFilters() {
     }
   }
 
-  // Update logic to hide empty accordions/sections
-  // This is complex without querySelector.
-  // Let's rely on the simple checking of rows we just did.
-  // If we want to hide accordions, we need to check if they have visible rows.
-
   let accordionItems = document.getElementsByClassName("accordion-item");
   for (let i = 0; i < accordionItems.length; i++) {
     let item = accordionItems[i];
-    // Check if any row in this item is visible
-    let visible = false;
-    let rows = item.getElementsByTagName("tr");
     for (let j = 0; j < rows.length; j++) {
-      // Check if it's a body row and visible
       if (
         rows[j].parentNode.tagName === "TBODY" &&
         rows[j].style.display !== "none"
@@ -315,7 +268,6 @@ function applyFilters() {
     }
   }
 
-  // Year sections
   let yearIds = ["recursos-10", "recursos-11", "recursos-12"];
   for (let id of yearIds) {
     let section = document.getElementById(id);
@@ -366,7 +318,6 @@ function openPreview(button) {
   var title = button.getAttribute("data-title");
   var target = button.getAttribute("data-bs-target");
 
-  // Remove '#'
   var targetId = target.substring(1);
   var modal = document.getElementById(targetId);
 
@@ -384,8 +335,6 @@ function openPreview(button) {
         }
       }
     }
-    // Assuming modal structure
-    // we can use getElementsByClassName("modal-title")[0]
     var modalTitle = modal.getElementsByClassName("modal-title")[0];
     var iframe = modal.getElementsByTagName("iframe")[0];
     if (modalTitle) modalTitle.textContent = title;
@@ -399,33 +348,22 @@ function openPreview(button) {
 }
 
 function stopVideo(modal) {
-  // If modal is passed as element (from onclick="stopVideo(this)")
-  // Wait, the "this" on a close button is the button, not the modal.
-  // We should call stopVideo(document.getElementById('...'))?
-  // Or traverse up?
-
-  // Usage in HTML will be onclick="stopVideo(document.getElementById('videoPreviewModal'))" on logic?
-  // Or simplified: onclick="clearIframe('videoPreviewModal')"
-
   var iframe = modal.getElementsByTagName("iframe")[0];
   if (iframe) {
     iframe.src = "";
   }
 }
 
-// Helper for HTML close buttons
 function clearModalIframe(modalId) {
   var modal = document.getElementById(modalId);
   if (modal) stopVideo(modal);
 }
 
-// Clean initialization
 var oldOnLoadCatalog = window.onload;
 window.onload = function () {
   if (oldOnLoadCatalog) oldOnLoadCatalog();
 
   loadAllResources().then(function () {
-    // Initial setup if needed
-    updateResultsCount(document.getElementsByTagName("tr").length); // rough count, fine for init
+    updateResultsCount(document.getElementsByTagName("tr").length);
   });
 };

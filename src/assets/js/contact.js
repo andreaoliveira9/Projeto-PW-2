@@ -1,4 +1,3 @@
-// Inicializar EmailJS com a Public Key
 (function () {
   emailjs.init("MWFq8f7-C_8OX4m1Q");
 })();
@@ -55,7 +54,6 @@ function showFieldError(fieldId, errorMessage) {
   field.classList.remove("is-valid");
   field.classList.add("is-invalid");
 
-  // Replaced querySelector with getElementsByClassName
   let feedbackDiv =
     field.parentNode.getElementsByClassName("invalid-feedback")[0];
 
@@ -75,7 +73,6 @@ function showFieldSuccess(fieldId) {
   field.classList.remove("is-invalid");
   field.classList.add("is-valid");
 
-  // Replaced querySelector with getElementsByClassName
   let feedbackDiv =
     field.parentNode.getElementsByClassName("invalid-feedback")[0];
 
@@ -97,7 +94,6 @@ function validateField(fieldId, validatorFunction, value) {
   }
 }
 
-// Global wrappers for HTML event handlers
 function onInputName(input) {
   validateField("name-field", validateName, input.value.trim());
 }
@@ -117,14 +113,8 @@ function onInputMessage(input) {
 
 function handleFormSubmit() {
   let form = document.getElementById("contact-form");
-  // Replaced querySelector for button with getElementById (requires ID update in HTML)
-  // Or simply get by type if no ID:
-  // let submitButton = form.getElementsByTagName("button")[0]; // Risky if multiple buttons
-  // Safest: add ID "contact-submit-btn" in HTML.
-  // Fallback if ID is missing (handled in HTML update)
   let submitButton = document.getElementById("contact-submit-btn");
   if (!submitButton) {
-    // Fallback
     let btns = form.getElementsByTagName("button");
     for (let i = 0; i < btns.length; i++) {
       if (btns[i].type === "submit") {
@@ -160,12 +150,6 @@ function handleFormSubmit() {
   );
 
   if (isNameValid && isEmailValid && isSubjectValid && isMessageValid) {
-    // Definir estado de loading
-    submitButton.disabled = true;
-    submitButton.innerHTML =
-      '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> A enviar...';
-
-    // Parâmetros para o template do EmailJS
     let templateParams = {
       name: nameValue,
       email: emailValue,
@@ -277,6 +261,5 @@ var oldOnLoadContact = window.onload;
 window.onload = function () {
   if (oldOnLoadContact) oldOnLoadContact();
 
-  // Initial call to set character count
   updateCharacterCount();
 };

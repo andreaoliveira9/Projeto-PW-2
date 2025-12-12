@@ -161,7 +161,6 @@ function displayFavorites() {
 
   for (let i = 0; i < favorites.length; i++) {
     let fav = favorites[i];
-    // Inline onclick for row and button
     html +=
       '<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-start favorite-row" style="cursor: pointer;" onclick="openFavoriteUrl(\'' +
       fav.url +
