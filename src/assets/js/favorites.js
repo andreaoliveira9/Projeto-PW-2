@@ -1,6 +1,6 @@
 function getFavoritesKey() {
   let session = localStorage.getItem("mathpath-session");
-  if (!session) {
+  if (session == null) {
     return null;
   }
   let sessionData = JSON.parse(session);
@@ -9,11 +9,11 @@ function getFavoritesKey() {
 
 function getFavorites() {
   let key = getFavoritesKey();
-  if (!key) {
+  if (key == null) {
     return [];
   }
   let favorites = localStorage.getItem(key);
-  if (favorites) {
+  if (favorites != null) {
     return JSON.parse(favorites);
   }
   return [];
@@ -21,7 +21,7 @@ function getFavorites() {
 
 function saveFavorites(favorites) {
   let key = getFavoritesKey();
-  if (!key) {
+  if (key == null) {
     return false;
   }
   localStorage.setItem(key, JSON.stringify(favorites));
@@ -30,7 +30,7 @@ function saveFavorites(favorites) {
 
 function addToFavorites(resource) {
   let session = localStorage.getItem("mathpath-session");
-  if (!session) {
+  if (session == null) {
     alert("Por favor, faz login para adicionar favoritos.");
     window.location.href = "login.html";
     return false;
@@ -53,7 +53,7 @@ function removeFromFavorites(resourceId) {
   let newFavorites = [];
 
   for (let i = 0; i < favorites.length; i++) {
-    if (favorites[i].id !== resourceId) {
+    if (favorites[i].id != resourceId) {
       newFavorites.push(favorites[i]);
     }
   }
@@ -73,13 +73,13 @@ function isFavorite(resourceId) {
 }
 
 function toggleFavorite(resource, button) {
-  if (isFavorite(resource.id)) {
+  if (isFavorite(resource.id) == true) {
     removeFromFavorites(resource.id);
     updateFavoriteButton(button, false);
     return false;
   } else {
     let added = addToFavorites(resource);
-    if (added) {
+    if (added == true) {
       updateFavoriteButton(button, true);
       return true;
     }
@@ -90,7 +90,7 @@ function toggleFavorite(resource, button) {
 function updateFavoriteButton(button, isFav) {
   let icon = button.getElementsByTagName("i")[0];
 
-  if (isFav) {
+  if (isFav == true) {
     icon.classList.remove("bi-heart");
     icon.classList.add("bi-heart-fill");
     button.classList.add("active");

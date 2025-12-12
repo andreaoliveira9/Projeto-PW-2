@@ -6,7 +6,7 @@ async function loadData(file) {
 
 function checkAuthentication() {
   let session = localStorage.getItem("mathpath-session");
-  if (!session) {
+  if (session == null) {
     window.location.href = "login.html";
     return null;
   }
@@ -15,7 +15,7 @@ function checkAuthentication() {
 
 function setTextById(id, text) {
   let element = document.getElementById(id);
-  if (element) {
+  if (element != null) {
     element.innerText = text;
   }
 }
@@ -40,12 +40,12 @@ function updateAccountData(userData) {
 
 function updateLastAccess() {
   let session = localStorage.getItem("mathpath-session");
-  if (!session) {
+  if (session == null) {
     return;
   }
 
   let sessionData = JSON.parse(session);
-  if (!sessionData.loginTime) {
+  if (sessionData.loginTime == null) {
     return;
   }
 
@@ -83,17 +83,17 @@ function updateLastAccess() {
 }
 
 function updateGoalAndPlan(userData) {
-  if (userData.goal) {
+  if (userData.goal != null) {
     setTextById("profile-goal", userData.goal);
   }
-  if (userData.activePlan) {
+  if (userData.activePlan != null) {
     setTextById("profile-plan", userData.activePlan);
   }
 }
 
 function updateSkills(userData) {
   let skillsContainer = document.getElementById("account-skills");
-  if (!skillsContainer || !userData.skills) {
+  if (skillsContainer == null || userData.skills == null) {
     return;
   }
 
@@ -118,7 +118,7 @@ function removeFavoriteFromList(resourceId) {
 
 function displayFavorites() {
   let favoritesContainer = document.getElementById("favorites-list");
-  if (!favoritesContainer) {
+  if (favoritesContainer == null) {
     return;
   }
 
@@ -139,7 +139,7 @@ function displayFavorites() {
     html += "<div class='flex-grow-1'>";
     html += '<h6 class="mb-1">' + fav.title + "</h6>";
     html += '<small class="text-muted">' + fav.type;
-    if (fav.category) {
+    if (fav.category != null) {
       html += " · " + fav.category;
     }
     html += "</small>";
@@ -160,12 +160,12 @@ function displayFavorites() {
 
 async function renderStudyPlan() {
   let planBody = document.getElementById("study-plan-body");
-  if (!planBody) {
+  if (planBody == null) {
     return;
   }
 
   let session = localStorage.getItem("mathpath-session");
-  if (!session) {
+  if (session == null) {
     planBody.innerHTML =
       '<tr><td colspan="4" class="text-center p-3 text-muted">Por favor, faz login para veres o teu plano de estudo.</td></tr>';
     return;
@@ -183,7 +183,7 @@ async function renderStudyPlan() {
     }
   }
 
-  if (currentUser && currentUser.studyPlan) {
+  if (currentUser != null && currentUser.studyPlan != null) {
     let html = "";
     for (let i = 0; i < currentUser.studyPlan.length; i++) {
       let item = currentUser.studyPlan[i];
@@ -203,7 +203,7 @@ async function renderStudyPlan() {
 
 function initializeAccountPage() {
   let userData = checkAuthentication();
-  if (!userData) {
+  if (userData == null) {
     return;
   }
 
@@ -218,7 +218,7 @@ function initializeAccountPage() {
 
 var oldOnLoadAccount = window.onload;
 window.onload = function () {
-  if (oldOnLoadAccount) {
+  if (oldOnLoadAccount != null) {
     oldOnLoadAccount();
   }
   initializeAccountPage();

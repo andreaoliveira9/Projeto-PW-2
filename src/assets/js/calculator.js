@@ -171,7 +171,7 @@ function saveHistory() {
 
 function loadHistory() {
   let savedHistory = localStorage.getItem("mathpath-calculator-history");
-  if (savedHistory) {
+  if (savedHistory != null) {
     history = JSON.parse(savedHistory);
     displayHistory();
   }
@@ -179,7 +179,7 @@ function loadHistory() {
 
 var oldOnLoadCalculator = window.onload;
 window.onload = function () {
-  if (oldOnLoadCalculator) {
+  if (oldOnLoadCalculator != null) {
     oldOnLoadCalculator();
   }
   loadHistory();

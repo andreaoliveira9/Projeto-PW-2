@@ -2,9 +2,11 @@
   var storedTheme = localStorage.getItem("mathpath-theme");
   var root = document.documentElement;
 
-  applyTheme(storedTheme || "auto", {
-    skipStorage: true,
-  });
+  if (storedTheme != null) {
+    applyTheme(storedTheme, { skipStorage: true });
+  } else {
+    applyTheme("auto", { skipStorage: true });
+  }
 
   function isValidTheme(value) {
     if (value === "auto" || value === "light" || value === "dark") {
@@ -15,8 +17,8 @@
 
   function systemPrefersDark() {
     if (
-      window.matchMedia &&
-      window.matchMedia("(prefers-color-scheme: dark)").matches
+      window.matchMedia != null &&
+      window.matchMedia("(prefers-color-scheme: dark)").matches == true
     ) {
       return true;
     }
@@ -26,7 +28,7 @@
   function iconClassForTheme(value) {
     var effective = value;
     if (value === "auto") {
-      if (systemPrefersDark()) {
+      if (systemPrefersDark() == true) {
         effective = "dark";
       } else {
         effective = "light";
@@ -54,7 +56,7 @@
   }
 
   function applyTheme(value, options) {
-    if (!isValidTheme(value)) {
+    if (isValidTheme(value) == false) {
       value = "auto";
     }
 
@@ -63,23 +65,26 @@
     }
 
     var radio = document.getElementById("theme-" + value);
-    if (radio && !radio.checked) {
+    if (radio != null && radio.checked == false) {
       radio.checked = true;
     }
 
     updateToggleIcon(value);
 
-    if (!options || !options.skipStorage) {
+    if (options == null || options.skipStorage == false) {
       localStorage.setItem("mathpath-theme", value);
     }
   }
 
   window.applyTheme = applyTheme;
 
-  if (window.matchMedia) {
+  if (window.matchMedia != null) {
     var mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
     var handleMediaChange = function () {
-      var current = root.getAttribute("data-theme") || "auto";
+      var current = root.getAttribute("data-theme");
+      if (current == null) {
+        current = "auto";
+      }
       if (current === "auto") {
         updateToggleIcon("auto");
       }

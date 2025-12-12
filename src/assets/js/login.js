@@ -51,7 +51,7 @@ async function handleLogin() {
   let password = document.getElementById("password").value;
   let rememberMe = document.getElementById("remember-me").checked;
 
-  if (!validateForm(username, password)) {
+  if (validateForm(username, password) == false) {
     showAlert("Por favor, preenche todos os campos.", "danger");
     return;
   }
@@ -65,7 +65,7 @@ async function handleLogin() {
     }
   }
 
-  if (user) {
+  if (user != null) {
     let sessionData = {
       id: user.id,
       username: user.username,
@@ -96,9 +96,9 @@ async function handleLogin() {
 
 function checkIfAlreadyLoggedIn() {
   let session = localStorage.getItem("mathpath-session");
-  if (session) {
+  if (session != null) {
     let sessionData = JSON.parse(session);
-    if (sessionData.rememberMe) {
+    if (sessionData.rememberMe == true) {
       window.location.href = "index.html";
     }
   }
@@ -112,6 +112,8 @@ function clearValidation(input) {
 
 var oldOnLoadLogin = window.onload;
 window.onload = function () {
-  if (oldOnLoadLogin) oldOnLoadLogin();
+  if (oldOnLoadLogin != null) {
+    oldOnLoadLogin();
+  }
   checkIfAlreadyLoggedIn();
 };

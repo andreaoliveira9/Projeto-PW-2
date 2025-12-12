@@ -5,7 +5,7 @@ async function loadData(file) {
 }
 
 function generateResourceRow(resource, year, categoryIndex) {
-  if (!resource.id) {
+  if (resource.id == null) {
     resource.id =
       year +
       "-" +
@@ -119,7 +119,7 @@ function generateAccordionItem(category, index, year) {
 
 function renderCategories(categories, year) {
   let accordionContainer = document.getElementById("accordion-" + year);
-  if (!accordionContainer) {
+  if (accordionContainer == null) {
     return;
   }
 
@@ -147,9 +147,9 @@ function updateAllFavoriteButtons() {
   for (let i = 0; i < buttons.length; i++) {
     let button = buttons[i];
     let resourceId = button.getAttribute("data-resource-id");
-    if (isFavorite(resourceId)) {
+    if (isFavorite(resourceId) == true) {
       let icon = button.children[0];
-      if (icon) {
+      if (icon != null) {
         icon.classList.remove("bi-heart");
         icon.classList.add("bi-heart-fill");
       }
@@ -161,8 +161,11 @@ function updateAllFavoriteButtons() {
 
 function getParentAccordionItem(element) {
   let current = element.parentNode;
-  while (current) {
-    if (current.classList && current.classList.contains("accordion-item")) {
+  while (current != null) {
+    if (
+      current.classList != null &&
+      current.classList.contains("accordion-item") == true
+    ) {
       return current;
     }
     current = current.parentNode;
@@ -178,9 +181,9 @@ function toggleFavoriteResource(button) {
 
   let category = "";
   let item = getParentAccordionItem(button);
-  if (item) {
+  if (item != null) {
     let header = item.getElementsByClassName("accordion-button")[0];
-    if (header) {
+    if (header != null) {
       category = header.innerText.trim();
     }
   }
@@ -213,13 +216,13 @@ function applyFilters() {
         let tds = row.getElementsByTagName("td");
         let typeTd = tds[0];
 
-        if (th && typeTd) {
+        if (th != null && typeTd != null) {
           let title = th.innerText.toLowerCase();
           let type = typeTd.innerText;
-          let matchesSearch = title.indexOf(searchQuery) !== -1;
+          let matchesSearch = title.indexOf(searchQuery) != -1;
           let matchesType = filterValue === "todos" || type === filterValue;
 
-          if (matchesSearch && matchesType) {
+          if (matchesSearch == true && matchesType == true) {
             row.style.display = "";
             visibleCount++;
           } else {
@@ -233,7 +236,7 @@ function applyFilters() {
   let yearIds = ["recursos-10", "recursos-11", "recursos-12"];
   for (let i = 0; i < yearIds.length; i++) {
     let section = document.getElementById(yearIds[i]);
-    if (section) {
+    if (section != null) {
       let visibleItems = false;
       let items = section.getElementsByClassName("accordion-item");
       for (let k = 0; k < items.length; k++) {
@@ -241,17 +244,17 @@ function applyFilters() {
         if (tbodies.length > 0) {
           let rows = tbodies[0].getElementsByTagName("tr");
           for (let r = 0; r < rows.length; r++) {
-            if (rows[r].style.display !== "none") {
+            if (rows[r].style.display != "none") {
               visibleItems = true;
               break;
             }
           }
         }
-        if (visibleItems) {
+        if (visibleItems == true) {
           break;
         }
       }
-      if (visibleItems) {
+      if (visibleItems == true) {
         section.style.display = "";
       } else {
         section.style.display = "none";
@@ -260,7 +263,7 @@ function applyFilters() {
   }
 
   let countElement = document.getElementById("count-number");
-  if (countElement) {
+  if (countElement != null) {
     countElement.innerText = visibleCount;
   }
 }
@@ -268,10 +271,10 @@ function applyFilters() {
 function resetFilters() {
   let searchInput = document.getElementById("search-input");
   let typeFilter = document.getElementById("type-filter");
-  if (searchInput) {
+  if (searchInput != null) {
     searchInput.value = "";
   }
-  if (typeFilter) {
+  if (typeFilter != null) {
     typeFilter.value = "todos";
   }
   applyFilters();
@@ -286,34 +289,34 @@ function openPreview(button) {
   let modal = document.getElementById(targetId);
 
   if (target === "#videoPreviewModal") {
-    if (url.indexOf("youtube.com") !== -1 || url.indexOf("youtu.be") !== -1) {
+    if (url.indexOf("youtube.com") != -1 || url.indexOf("youtu.be") != -1) {
       if (url.indexOf("embed") === -1) {
         let videoId = "";
-        if (url.indexOf("v=") !== -1) {
+        if (url.indexOf("v=") != -1) {
           videoId = url.split("v=")[1].split("&")[0];
-        } else if (url.indexOf("youtu.be/") !== -1) {
+        } else if (url.indexOf("youtu.be/") != -1) {
           videoId = url.split("youtu.be/")[1];
         }
-        if (videoId) {
+        if (videoId != "") {
           url = "https://www.youtube.com/embed/" + videoId;
         }
       }
     }
     let modalTitle = modal.getElementsByClassName("modal-title")[0];
     let iframe = modal.getElementsByTagName("iframe")[0];
-    if (modalTitle) {
+    if (modalTitle != null) {
       modalTitle.innerText = title;
     }
-    if (iframe) {
+    if (iframe != null) {
       iframe.src = url;
     }
   } else if (target === "#pdfPreviewModal") {
     let modalTitle = modal.getElementsByClassName("modal-title")[0];
     let iframe = modal.getElementsByTagName("iframe")[0];
-    if (modalTitle) {
+    if (modalTitle != null) {
       modalTitle.innerText = title;
     }
-    if (iframe) {
+    if (iframe != null) {
       iframe.src = url + "#toolbar=0&navpanes=0&scrollbar=0";
     }
   }
@@ -321,9 +324,9 @@ function openPreview(button) {
 
 function clearModalIframe(modalId) {
   let modal = document.getElementById(modalId);
-  if (modal) {
+  if (modal != null) {
     let iframe = modal.getElementsByTagName("iframe")[0];
-    if (iframe) {
+    if (iframe != null) {
       iframe.src = "";
     }
   }
@@ -331,12 +334,12 @@ function clearModalIframe(modalId) {
 
 var oldOnLoadCatalog = window.onload;
 window.onload = function () {
-  if (oldOnLoadCatalog) {
+  if (oldOnLoadCatalog != null) {
     oldOnLoadCatalog();
   }
   loadAllResources().then(function () {
     let countElement = document.getElementById("count-number");
-    if (countElement) {
+    if (countElement != null) {
       countElement.innerText = document.getElementsByTagName("tr").length;
     }
   });

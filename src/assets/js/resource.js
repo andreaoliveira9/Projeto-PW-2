@@ -23,7 +23,7 @@ async function loadAllResources() {
 function getResourceIdFromUrl() {
   let params = new URLSearchParams(window.location.search);
   let id = params.get("id");
-  if (id) {
+  if (id != null) {
     return parseInt(id);
   }
   return null;
@@ -40,7 +40,7 @@ function findResourceById(resources, id) {
 
 function setTextById(id, text) {
   let element = document.getElementById(id);
-  if (element) {
+  if (element != null) {
     element.innerText = text;
   }
 }
@@ -61,16 +61,16 @@ function updateIframes(resource) {
   }
 
   let worksheetIframe = document.getElementById("worksheet-iframe");
-  if (worksheetIframe && resource.worksheetUrl) {
+  if (worksheetIframe != null && resource.worksheetUrl != null) {
     worksheetIframe.src = resource.worksheetUrl + "#toolbar=0&view=FitH";
   }
 
   let solutionsIframe = document.getElementById("solutions-iframe");
-  if (solutionsIframe && resource.solutionsUrl) {
+  if (solutionsIframe != null && resource.solutionsUrl != null) {
     solutionsIframe.src = resource.solutionsUrl + "#toolbar=0&view=FitH";
-  } else if (solutionsIframe && !resource.solutionsUrl) {
+  } else if (solutionsIframe != null && resource.solutionsUrl == null) {
     let solutionsTab = document.getElementById("resource-tab-solutions");
-    if (solutionsTab) {
+    if (solutionsTab != null) {
       solutionsTab.style.display = "none";
     }
   }
@@ -78,7 +78,7 @@ function updateIframes(resource) {
 
 function showErrorMessage() {
   let main = document.getElementById("main");
-  if (main) {
+  if (main != null) {
     main.innerHTML =
       '<section class="py-5"><div class="container text-center"><h1>Recurso não encontrado</h1><p class="text-muted">O recurso que procuras não existe ou foi removido.</p><a href="catalog.html" class="btn btn-primary">Voltar ao catálogo</a></div></section>';
   }
@@ -90,11 +90,11 @@ function getChatKey(resourceId) {
 
 function getMessages(resourceId) {
   let stored = localStorage.getItem(getChatKey(resourceId));
-  if (!stored) {
+  if (stored == null) {
     return [];
   }
   let parsed = JSON.parse(stored);
-  if (parsed) {
+  if (parsed != null) {
     return parsed;
   }
   return [];
@@ -135,7 +135,7 @@ function formatTimeAgo(timestamp) {
 
 function displayMessages(resourceId) {
   let chatThread = document.getElementById("chat-thread");
-  if (!chatThread) {
+  if (chatThread == null) {
     return;
   }
 
@@ -165,26 +165,26 @@ function displayMessages(resourceId) {
 
 function handleMessageSubmit() {
   let resourceId = getResourceIdFromUrl();
-  if (!resourceId) {
+  if (resourceId == null) {
     return;
   }
 
   let input = document.getElementById("chat-message-input");
-  if (!input) {
+  if (input == null) {
     return;
   }
 
   let text = input.value.trim();
-  if (!text) {
+  if (text === "") {
     return;
   }
 
   let session = localStorage.getItem("mathpath-session");
   let author = "Anónimo";
 
-  if (session) {
+  if (session != null) {
     let userData = JSON.parse(session);
-    if (userData && userData.name) {
+    if (userData != null && userData.name != null) {
       author = userData.name.split(" ")[0];
     }
   }
@@ -203,7 +203,7 @@ function handleMessageSubmit() {
 
 async function initializeResourcePage() {
   let resourceId = getResourceIdFromUrl();
-  if (!resourceId) {
+  if (resourceId == null) {
     showErrorMessage();
     return;
   }
@@ -211,7 +211,7 @@ async function initializeResourcePage() {
   let resources = await loadAllResources();
   let resource = findResourceById(resources, resourceId);
 
-  if (!resource) {
+  if (resource == null) {
     showErrorMessage();
     return;
   }
@@ -223,7 +223,7 @@ async function initializeResourcePage() {
 
 var oldOnLoadResource = window.onload;
 window.onload = function () {
-  if (oldOnLoadResource) {
+  if (oldOnLoadResource != null) {
     oldOnLoadResource();
   }
   initializeResourcePage();

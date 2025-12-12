@@ -17,7 +17,7 @@ function validateEmail(email) {
     return "Por favor, insere o teu email.";
   }
   let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!emailPattern.test(email)) {
+  if (emailPattern.test(email) == false) {
     return "Por favor, insere um email válido.";
   }
   return "";
@@ -47,7 +47,7 @@ function showFieldError(fieldId, errorMessage) {
 
   let feedbackDiv =
     field.parentNode.getElementsByClassName("invalid-feedback")[0];
-  if (!feedbackDiv) {
+  if (feedbackDiv == null) {
     field.parentNode.innerHTML += '<div class="invalid-feedback"></div>';
     field = document.getElementById(fieldId);
     feedbackDiv =
@@ -69,7 +69,7 @@ function showFieldSuccess(fieldId) {
 
   let feedbackDiv =
     field.parentNode.getElementsByClassName("invalid-feedback")[0];
-  if (feedbackDiv) {
+  if (feedbackDiv != null) {
     feedbackDiv.innerText = "";
     feedbackDiv.style.display = "none";
   }
@@ -105,7 +105,7 @@ function onInputMessage(input) {
 function handleFormSubmit() {
   let form = document.getElementById("contact-form");
   let submitButton = document.getElementById("contact-submit-btn");
-  if (!submitButton) {
+  if (submitButton == null) {
     let btns = form.getElementsByTagName("button");
     for (let i = 0; i < btns.length; i++) {
       if (btns[i].type === "submit") {
@@ -133,7 +133,12 @@ function handleFormSubmit() {
     validateMessage(messageValue)
   );
 
-  if (isNameValid && isEmailValid && isSubjectValid && isMessageValid) {
+  if (
+    isNameValid == true &&
+    isEmailValid == true &&
+    isSubjectValid == true &&
+    isMessageValid == true
+  ) {
     let templateParams = {
       name: nameValue,
       email: emailValue,
@@ -172,7 +177,7 @@ function handleFormSubmit() {
 function saveContactMessage(formData) {
   let messages = localStorage.getItem("mathpath-contact-messages");
   let messagesList = [];
-  if (messages) {
+  if (messages != null) {
     messagesList = JSON.parse(messages);
   }
   messagesList.push(formData);
@@ -184,7 +189,7 @@ function saveContactMessage(formData) {
 
 function showSuccessModal() {
   let modalElement = document.getElementById("success-modal");
-  if (typeof bootstrap !== "undefined" && modalElement) {
+  if (typeof bootstrap !== "undefined" && modalElement != null) {
     let modal = new bootstrap.Modal(modalElement);
     modal.show();
   }
@@ -194,12 +199,12 @@ function clearAllValidation() {
   let fields = ["name-field", "email-field", "subject-field", "message-field"];
   for (let i = 0; i < fields.length; i++) {
     let field = document.getElementById(fields[i]);
-    if (field) {
+    if (field != null) {
       field.classList.remove("is-valid");
       field.classList.remove("is-invalid");
       let feedbackDiv =
         field.parentNode.getElementsByClassName("invalid-feedback")[0];
-      if (feedbackDiv) {
+      if (feedbackDiv != null) {
         feedbackDiv.innerText = "";
         feedbackDiv.style.display = "none";
       }
@@ -213,7 +218,7 @@ function updateCharacterCount() {
   let maxLength = 500;
 
   let countDiv = document.getElementById("char-count");
-  if (!countDiv) {
+  if (countDiv == null) {
     messageField.parentNode.innerHTML +=
       '<div id="char-count" class="form-text"></div>';
     messageField = document.getElementById("message-field");
@@ -240,7 +245,7 @@ function onFormReset() {
 
 var oldOnLoadContact = window.onload;
 window.onload = function () {
-  if (oldOnLoadContact) {
+  if (oldOnLoadContact != null) {
     oldOnLoadContact();
   }
   updateCharacterCount();
