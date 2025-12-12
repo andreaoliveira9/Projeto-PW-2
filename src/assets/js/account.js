@@ -132,6 +132,16 @@ function updateSkills(userData) {
   }
 }
 
+function openFavoriteUrl(url) {
+  window.open(url, "_blank");
+}
+
+function removeFavoriteFromList(resourceId, event) {
+  if (event) event.stopPropagation();
+  removeFromFavorites(resourceId);
+  displayFavorites();
+}
+
 function displayFavorites() {
   let favoritesContainer = document.getElementById("favorites-list");
 
@@ -151,10 +161,11 @@ function displayFavorites() {
 
   for (let i = 0; i < favorites.length; i++) {
     let fav = favorites[i];
+    // Inline onclick for row and button
     html +=
-      '<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-start favorite-row" style="cursor: pointer;" data-url="' +
+      '<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-start favorite-row" style="cursor: pointer;" onclick="openFavoriteUrl(\'' +
       fav.url +
-      '">';
+      "')\">";
     html += "<div class='flex-grow-1'>";
     html += '<h6 class="mb-1">' + fav.title + "</h6>";
     html += '<small class="text-muted">' + fav.type;
@@ -165,9 +176,9 @@ function displayFavorites() {
     html += "</div>";
     html += '<div class="d-flex align-items-center">';
     html +=
-      '<button class="btn btn-sm btn-outline-danger remove-favorite" data-resource-id="' +
+      '<button class="btn btn-sm btn-outline-danger remove-favorite" onclick="removeFavoriteFromList(\'' +
       fav.id +
-      '" title="Remover dos favoritos">';
+      '\', event)" title="Remover dos favoritos">';
     html += '<i class="bi bi-trash"></i>';
     html += "</button>";
     html += "</div>";
@@ -175,26 +186,6 @@ function displayFavorites() {
   }
 
   favoritesContainer.innerHTML = html;
-
-  let favoriteRows = favoritesContainer.querySelectorAll(".favorite-row");
-  for (let i = 0; i < favoriteRows.length; i++) {
-    favoriteRows[i].onclick = function (event) {
-      if (!event.target.closest(".remove-favorite")) {
-        let url = this.getAttribute("data-url");
-        window.open(url, "_blank");
-      }
-    };
-  }
-
-  let removeButtons = favoritesContainer.querySelectorAll(".remove-favorite");
-  for (let i = 0; i < removeButtons.length; i++) {
-    removeButtons[i].onclick = function (event) {
-      event.stopPropagation();
-      let resourceId = this.getAttribute("data-resource-id");
-      removeFromFavorites(resourceId);
-      displayFavorites();
-    };
-  }
 }
 
 function loadStudyPlan(userEmail) {

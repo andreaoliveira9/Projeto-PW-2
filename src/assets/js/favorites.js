@@ -101,7 +101,7 @@ function toggleFavorite(resource, button) {
 }
 
 function updateFavoriteButton(button, isFav) {
-  let icon = button.querySelector("i");
+  let icon = button.getElementsByTagName("i")[0];
 
   if (isFav) {
     icon.classList.remove("bi-heart");

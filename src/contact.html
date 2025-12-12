@@ -287,6 +287,8 @@
                 action="#success-modal"
                 data-aos="fade-up"
                 data-aos-delay="200"
+                onsubmit="handleFormSubmit(event)"
+                onreset="onFormReset()"
               >
                 <div class="row gy-4">
                   <div class="col-md-6">
@@ -297,6 +299,7 @@
                       id="name-field"
                       class="form-control"
                       required=""
+                      oninput="onInputName(this)"
                     />
                   </div>
 
@@ -308,6 +311,7 @@
                       name="email"
                       id="email-field"
                       required=""
+                      oninput="onInputEmail(this)"
                     />
                   </div>
 
@@ -318,6 +322,7 @@
                       name="subject"
                       id="subject-field"
                       required=""
+                      onchange="onChangeSubject(this)"
                     >
                       <option value="" disabled selected>
                         Seleciona o motivo do contacto
@@ -338,11 +343,16 @@
                       id="message-field"
                       placeholder="Explica-nos como podemos ajudar-te."
                       required=""
+                      oninput="onInputMessage(this)"
                     ></textarea>
                   </div>
 
                   <div class="col-md-12 text-center">
-                    <button type="submit" class="btn btn-accent px-4">
+                    <button
+                      type="submit"
+                      class="btn btn-accent px-4"
+                      id="contact-submit-btn"
+                    >
                       Enviar mensagem
                     </button>
                     <button type="reset" class="btn btn-secondary px-4">

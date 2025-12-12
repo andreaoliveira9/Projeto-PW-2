@@ -109,27 +109,14 @@ function checkIfAlreadyLoggedIn() {
   }
 }
 
+function clearValidation(input) {
+  if (input.value !== "") {
+    input.classList.remove("is-invalid");
+  }
+}
+
 var oldOnLoadLogin = window.onload;
 window.onload = function () {
   if (oldOnLoadLogin) oldOnLoadLogin();
-
   checkIfAlreadyLoggedIn();
-
-  let form = document.getElementById("login-form");
-  form.onsubmit = handleLogin;
-
-  let usernameInput = document.getElementById("username");
-  let passwordInput = document.getElementById("password");
-
-  usernameInput.oninput = function () {
-    if (this.value !== "") {
-      this.classList.remove("is-invalid");
-    }
-  };
-
-  passwordInput.oninput = function () {
-    if (this.value !== "") {
-      this.classList.remove("is-invalid");
-    }
-  };
 };

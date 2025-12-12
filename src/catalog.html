@@ -279,6 +279,7 @@
                 id="search-input"
                 placeholder="Digite o nome do recurso ou tópico..."
                 aria-label="Pesquisar recursos"
+                oninput="applyFilters()"
               />
             </div>
             <div class="col-lg-3">
@@ -289,6 +290,7 @@
                 class="form-select"
                 id="type-filter"
                 aria-label="Filtrar por tipo de recurso"
+                onchange="applyFilters()"
               >
                 <option value="todos" selected>Todos os tipos</option>
                 <option value="Ficha de trabalho">Fichas de trabalho</option>
@@ -303,6 +305,7 @@
                   class="btn btn-outline-secondary"
                   id="reset-filters"
                   aria-label="Limpar filtros"
+                  onclick="resetFilters()"
                 >
                   <i class="bi bi-x-circle me-1"></i>Limpar
                 </button>

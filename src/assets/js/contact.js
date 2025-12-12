@@ -55,7 +55,9 @@ function showFieldError(fieldId, errorMessage) {
   field.classList.remove("is-valid");
   field.classList.add("is-invalid");
 
-  let feedbackDiv = field.parentNode.querySelector(".invalid-feedback");
+  // Replaced querySelector with getElementsByClassName
+  let feedbackDiv =
+    field.parentNode.getElementsByClassName("invalid-feedback")[0];
 
   if (!feedbackDiv) {
     feedbackDiv = document.createElement("div");
@@ -73,7 +75,9 @@ function showFieldSuccess(fieldId) {
   field.classList.remove("is-invalid");
   field.classList.add("is-valid");
 
-  let feedbackDiv = field.parentNode.querySelector(".invalid-feedback");
+  // Replaced querySelector with getElementsByClassName
+  let feedbackDiv =
+    field.parentNode.getElementsByClassName("invalid-feedback")[0];
 
   if (feedbackDiv) {
     feedbackDiv.textContent = "";
@@ -93,11 +97,45 @@ function validateField(fieldId, validatorFunction, value) {
   }
 }
 
+// Global wrappers for HTML event handlers
+function onInputName(input) {
+  validateField("name-field", validateName, input.value.trim());
+}
+
+function onInputEmail(input) {
+  validateField("email-field", validateEmail, input.value.trim());
+}
+
+function onChangeSubject(input) {
+  validateField("subject-field", validateSubject, input.value);
+}
+
+function onInputMessage(input) {
+  validateField("message-field", validateMessage, input.value.trim());
+  updateCharacterCount();
+}
+
 function handleFormSubmit(event) {
   event.preventDefault();
 
   let form = document.getElementById("contact-form");
-  let submitButton = form.querySelector('button[type="submit"]');
+  // Replaced querySelector for button with getElementById (requires ID update in HTML)
+  // Or simply get by type if no ID:
+  // let submitButton = form.getElementsByTagName("button")[0]; // Risky if multiple buttons
+  // Safest: add ID "contact-submit-btn" in HTML.
+  // Fallback if ID is missing (handled in HTML update)
+  let submitButton = document.getElementById("contact-submit-btn");
+  if (!submitButton) {
+    // Fallback
+    let btns = form.getElementsByTagName("button");
+    for (let i = 0; i < btns.length; i++) {
+      if (btns[i].type === "submit") {
+        submitButton = btns[i];
+        break;
+      }
+    }
+  }
+
   let originalButtonText = submitButton.innerHTML;
 
   let nameField = document.getElementById("name-field");
@@ -181,36 +219,11 @@ function saveContactMessage(formData) {
 }
 
 function showSuccessModal() {
-  let modal = new bootstrap.Modal(document.getElementById("success-modal"));
-  modal.show();
-}
-
-function setupRealTimeValidation() {
-  let nameField = document.getElementById("name-field");
-  let emailField = document.getElementById("email-field");
-  let subjectField = document.getElementById("subject-field");
-  let messageField = document.getElementById("message-field");
-
-  nameField.oninput = function () {
-    let value = this.value.trim();
-    validateField("name-field", validateName, value);
-  };
-
-  emailField.oninput = function () {
-    let value = this.value.trim();
-    validateField("email-field", validateEmail, value);
-  };
-
-  subjectField.onchange = function () {
-    let value = this.value;
-    validateField("subject-field", validateSubject, value);
-  };
-
-  messageField.oninput = function () {
-    let value = this.value.trim();
-    validateField("message-field", validateMessage, value);
-    updateCharacterCount();
-  };
+  let modalElement = document.getElementById("success-modal");
+  if (typeof bootstrap !== "undefined" && modalElement) {
+    let modal = new bootstrap.Modal(modalElement);
+    modal.show();
+  }
 }
 
 function clearAllValidation() {
@@ -223,7 +236,8 @@ function clearAllValidation() {
       field.classList.remove("is-valid");
       field.classList.remove("is-invalid");
 
-      let feedbackDiv = field.parentNode.querySelector(".invalid-feedback");
+      let feedbackDiv =
+        field.parentNode.getElementsByClassName("invalid-feedback")[0];
       if (feedbackDiv) {
         feedbackDiv.textContent = "";
         feedbackDiv.style.display = "none";
@@ -255,19 +269,16 @@ function updateCharacterCount() {
   }
 }
 
+function onFormReset() {
+  setTimeout(function () {
+    clearAllValidation();
+  }, 0);
+}
+
 var oldOnLoadContact = window.onload;
 window.onload = function () {
   if (oldOnLoadContact) oldOnLoadContact();
 
-  let form = document.getElementById("contact-form");
-  form.onsubmit = handleFormSubmit;
-
-  form.onreset = function () {
-    setTimeout(function () {
-      clearAllValidation();
-    }, 0);
-  };
-
-  setupRealTimeValidation();
+  // Initial call to set character count
   updateCharacterCount();
 };

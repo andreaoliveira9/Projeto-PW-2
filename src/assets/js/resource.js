@@ -63,12 +63,12 @@ function findResourceById(resources, id) {
 }
 
 function updatePageTitle(resource) {
-  let titleElement = document.querySelector(".resource-title");
+  let titleElement = document.getElementById("resource-title-text");
   if (titleElement) {
     titleElement.textContent = resource.title;
   }
 
-  let subtitleElement = document.querySelector(".resource-subtitle");
+  let subtitleElement = document.getElementById("resource-subtitle-text");
   if (subtitleElement) {
     subtitleElement.textContent =
       resource.type + " · " + resource.year + ".º Ano · " + resource.category;
@@ -83,12 +83,12 @@ function updateIframes(resource) {
     return;
   }
 
-  let worksheetIframe = document.querySelector("#resource-worksheet iframe");
+  let worksheetIframe = document.getElementById("worksheet-iframe");
   if (worksheetIframe && resource.worksheetUrl) {
     worksheetIframe.src = resource.worksheetUrl + "#toolbar=0&view=FitH";
   }
 
-  let solutionsIframe = document.querySelector("#resource-solutions iframe");
+  let solutionsIframe = document.getElementById("solutions-iframe");
   if (solutionsIframe && resource.solutionsUrl) {
     solutionsIframe.src = resource.solutionsUrl + "#toolbar=0&view=FitH";
 
@@ -96,7 +96,7 @@ function updateIframes(resource) {
       console.debug("Soluções carregadas");
     };
   } else if (solutionsIframe && !resource.solutionsUrl) {
-    let solutionsTab = document.querySelector("#resource-tab-solutions");
+    let solutionsTab = document.getElementById("resource-tab-solutions");
     if (solutionsTab) {
       solutionsTab.style.display = "none";
     }
@@ -104,7 +104,7 @@ function updateIframes(resource) {
 }
 
 function showErrorMessage() {
-  let main = document.querySelector("main");
+  let main = document.getElementById("main");
   if (main) {
     main.innerHTML =
       '<section class="py-5"><div class="container text-center"><h1>Recurso não encontrado</h1><p class="text-muted">O recurso que procuras não existe ou foi removido.</p><a href="catalog.html" class="btn btn-primary">Voltar ao catálogo</a></div></section>';
@@ -189,8 +189,11 @@ function displayMessages(resourceId) {
   chatThread.scrollTop = chatThread.scrollHeight;
 }
 
-function handleMessageSubmit(event, resourceId) {
+function handleMessageSubmit(event) {
   event.preventDefault();
+
+  let resourceId = getResourceIdFromUrl();
+  if (!resourceId) return;
 
   let input = document.getElementById("chat-message-input");
   if (!input) {
@@ -228,13 +231,7 @@ function handleMessageSubmit(event, resourceId) {
 }
 
 function setupChat(resourceId) {
-  let chatForm = document.getElementById("chat-form");
-  if (chatForm) {
-    chatForm.onsubmit = function (event) {
-      handleMessageSubmit(event, resourceId);
-    };
-  }
-
+  // Chat form binding is now inline in HTML
   displayMessages(resourceId);
 }
 

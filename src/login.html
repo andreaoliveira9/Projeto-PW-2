@@ -174,7 +174,11 @@
                   <div id="alert-container"></div>
 
                   <!-- Login Form -->
-                  <form id="login-form" novalidate>
+                  <form
+                    id="login-form"
+                    novalidate
+                    onsubmit="handleLogin(event)"
+                  >
                     <div class="mb-3">
                       <label for="username" class="form-label"
                         >Nome de utilizador</label
@@ -186,6 +190,7 @@
                         name="username"
                         required
                         autocomplete="username"
+                        oninput="clearValidation(this)"
                       />
                       <div class="invalid-feedback">
                         Por favor, insere o teu nome de utilizador.
@@ -203,6 +208,7 @@
                         name="password"
                         required
                         autocomplete="current-password"
+                        oninput="clearValidation(this)"
                       />
                       <div class="invalid-feedback">
                         Por favor, insere a tua palavra-passe.

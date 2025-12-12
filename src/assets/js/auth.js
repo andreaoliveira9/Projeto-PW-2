@@ -13,86 +13,85 @@ function isLoggedIn() {
   return session !== null;
 }
 
-function logout() {
+function logout(event) {
+  if (event) event.preventDefault();
   localStorage.removeItem("mathpath-session");
   window.location.href = "index.html";
 }
 
+function handleProfileClick(event) {
+  if (!isLoggedIn()) {
+    event.preventDefault();
+    window.location.href = "login.html";
+  }
+}
+
 function updateHeader() {
   let session = getSession();
+  // Using getElementsByClassName as fallback for elements that might not have IDs yet,
+  // or add IDs in HTML. Since I am editing HTML, I will add IDs.
+  // But to be safe and avoid breaking if HTML isn't perfect immediately:
 
-  let mobileProfileName = document.querySelector(".mobile-profile-name");
-  if (mobileProfileName) {
-    if (session) {
-      mobileProfileName.textContent = session.name.split(" ")[0];
-    } else {
-      mobileProfileName.textContent = "Entrar";
-    }
-  }
-
-  let desktopUserIcon = document.querySelector(".user-menu__icon");
-  if (desktopUserIcon) {
-    if (session) {
-      desktopUserIcon.classList.remove("bi-box-arrow-in-right");
-      desktopUserIcon.classList.add("bi-person-circle");
-    } else {
-      desktopUserIcon.classList.remove("bi-person-circle");
-      desktopUserIcon.classList.add("bi-box-arrow-in-right");
-    }
-  }
-
-  let mobileProfileIcon = document.querySelector(".mobile-profile-info i");
-  if (mobileProfileIcon) {
-    if (session) {
-      mobileProfileIcon.classList.remove("bi-box-arrow-in-right");
-      mobileProfileIcon.classList.add("bi-person-circle");
-    } else {
-      mobileProfileIcon.classList.remove("bi-person-circle");
-      mobileProfileIcon.classList.add("bi-box-arrow-in-right");
-    }
-  }
-
-  let mobileProfileLinks = document.querySelectorAll(
-    '.mobile-profile a[href="account.html"]'
+  // Mobile Profile Name
+  let mobileNameElements = document.getElementsByClassName(
+    "mobile-profile-name"
   );
-  for (let i = 0; i < mobileProfileLinks.length; i++) {
-    mobileProfileLinks[i].onclick = function (event) {
-      if (!isLoggedIn()) {
-        event.preventDefault();
-        window.location.href = "login.html";
-      }
-    };
+  if (mobileNameElements.length > 0) {
+    if (session) {
+      mobileNameElements[0].textContent = session.name.split(" ")[0];
+    } else {
+      mobileNameElements[0].textContent = "Entrar";
+    }
   }
 
-  let desktopUserMenuButtons = document.querySelectorAll(".user-menu button");
-  for (let i = 0; i < desktopUserMenuButtons.length; i++) {
-    desktopUserMenuButtons[i].onclick = function (event) {
-      if (!isLoggedIn()) {
-        event.preventDefault();
-        window.location.href = "login.html";
+  // Desktop User Icon
+  let desktopUserIcons = document.getElementsByClassName("user-menu__icon");
+  if (desktopUserIcons.length > 0) {
+    let icon = desktopUserIcons[0];
+    let button = icon.closest("button"); // Get the button element
+
+    if (session) {
+      icon.classList.remove("bi-box-arrow-in-right");
+      icon.classList.add("bi-person-circle");
+
+      if (button) {
+        button.setAttribute("data-bs-toggle", "dropdown");
+        button.onclick = null;
       }
-    };
+    } else {
+      icon.classList.remove("bi-person-circle");
+      icon.classList.add("bi-box-arrow-in-right");
+
+      if (button) {
+        button.removeAttribute("data-bs-toggle");
+        button.onclick = function () {
+          window.location.href = "login.html";
+        };
+      }
+    }
   }
 
-  let profileLinks = document.querySelectorAll('a[href="account.html"]');
-  for (let i = 0; i < profileLinks.length; i++) {
-    profileLinks[i].onclick = function (event) {
-      if (!isLoggedIn()) {
-        event.preventDefault();
-        window.location.href = "login.html";
-      }
-    };
-  }
-
-  let logoutButtons = document.querySelectorAll(
-    'a[href="#"].text-danger, a.text-danger[href="#"]'
+  // Mobile Profile Icon
+  // .mobile-profile-info i
+  let mobileProfileInfos = document.getElementsByClassName(
+    "mobile-profile-info"
   );
-  for (let i = 0; i < logoutButtons.length; i++) {
-    logoutButtons[i].onclick = function (event) {
-      event.preventDefault();
-      logout();
-    };
+  if (mobileProfileInfos.length > 0) {
+    let icons = mobileProfileInfos[0].getElementsByTagName("i");
+    if (icons.length > 0) {
+      let icon = icons[0];
+      if (session) {
+        icon.classList.remove("bi-box-arrow-in-right");
+        icon.classList.add("bi-person-circle");
+      } else {
+        icon.classList.remove("bi-person-circle");
+        icon.classList.add("bi-box-arrow-in-right");
+      }
+    }
   }
+
+  // Event listeners for profile links and logout buttons are now handled by inline onclick in HTML.
+  // No need to attach them here.
 }
 
 function getUserName() {
