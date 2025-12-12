@@ -1,9 +1,14 @@
+async function loadData(file) {
+  let response = await fetch(file);
+  let data = await response.json();
+  return data;
+}
+
 async function loadAllResources() {
   let resources = [];
 
   try {
-    let data10 = await fetch("assets/data/recursos-10.json");
-    let json10 = await data10.json();
+    let json10 = await loadData("assets/data/recursos-10.json");
 
     for (let i = 0; i < json10.length; i++) {
       for (let j = 0; j < json10[i].resources.length; j++) {
@@ -13,8 +18,7 @@ async function loadAllResources() {
       }
     }
 
-    let data11 = await fetch("assets/data/recursos-11.json");
-    let json11 = await data11.json();
+    let json11 = await loadData("assets/data/recursos-11.json");
 
     for (let i = 0; i < json11.length; i++) {
       for (let j = 0; j < json11[i].resources.length; j++) {
@@ -24,8 +28,7 @@ async function loadAllResources() {
       }
     }
 
-    let data12 = await fetch("assets/data/recursos-12.json");
-    let json12 = await data12.json();
+    let json12 = await loadData("assets/data/recursos-12.json");
 
     for (let i = 0; i < json12.length; i++) {
       for (let j = 0; j < json12[i].resources.length; j++) {

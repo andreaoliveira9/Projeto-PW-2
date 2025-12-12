@@ -193,38 +193,58 @@ function displayFavorites() {
   favoritesContainer.innerHTML = html;
 }
 
-function loadStudyPlan(userEmail) {
+async function loadData(file) {
+  let response = await fetch(file);
+  let data = await response.json();
+  return data;
+}
+
+async function renderStudyPlan() {
   let planBody = document.getElementById("study-plan-body");
   if (!planBody) return;
 
-  fetch("assets/data/users.json")
-    .then((response) => response.json())
-    .then((users) => {
-      let currentUser = users.find((user) => user.email === userEmail);
+  let session = localStorage.getItem("mathpath-session");
+  if (!session) {
+    planBody.innerHTML =
+      '<tr><td colspan="4" class="text-center p-3 text-muted">Por favor, faz login para veres o teu plano de estudo.</td></tr>';
+    return;
+  }
 
-      if (currentUser && currentUser.studyPlan) {
-        let html = "";
-        currentUser.studyPlan.forEach((item) => {
-          html += `
-            <tr>
-              <th scope="row">${item.day}</th>
-              <td>${item.theme}</td>
-              <td>${item.objective}</td>
-              <td>${item.time} min</td>
-            </tr>
-          `;
-        });
-        planBody.innerHTML = html;
-      } else {
-        planBody.innerHTML =
-          '<tr><td colspan="4" class="text-center p-3 text-muted">Plano de estudo não encontrado.</td></tr>';
+  let userData = JSON.parse(session);
+  let userEmail = userData.email;
+
+  try {
+    let users = await loadData("assets/data/users.json");
+    let currentUser = null;
+
+    for (let i = 0; i < users.length; i++) {
+      if (users[i].email === userEmail) {
+        currentUser = users[i];
+        break;
       }
-    })
-    .catch((error) => {
-      console.error("Erro ao carregar o plano de estudo:", error);
+    }
+
+    if (currentUser && currentUser.studyPlan) {
+      let html = "";
+      for (let i = 0; i < currentUser.studyPlan.length; i++) {
+        let item = currentUser.studyPlan[i];
+        html += "<tr>";
+        html += '<th scope="row">' + item.day + "</th>";
+        html += "<td>" + item.theme + "</td>";
+        html += "<td>" + item.objective + "</td>";
+        html += "<td>" + item.time + " min</td>";
+        html += "</tr>";
+      }
+      planBody.innerHTML = html;
+    } else {
       planBody.innerHTML =
-        '<tr><td colspan="4" class="text-center p-3 text-danger">Erro ao carregar o plano de estudo.</td></tr>';
-    });
+        '<tr><td colspan="4" class="text-center p-3 text-muted">Plano de estudo não encontrado.</td></tr>';
+    }
+  } catch (error) {
+    console.error("Erro ao carregar o plano de estudo:", error);
+    planBody.innerHTML =
+      '<tr><td colspan="4" class="text-center p-3 text-danger">Erro ao carregar o plano de estudo.</td></tr>';
+  }
 }
 
 function initializeAccountPage() {

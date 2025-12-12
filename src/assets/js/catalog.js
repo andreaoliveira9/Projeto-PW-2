@@ -175,7 +175,6 @@ function updateAllFavoriteButtons() {
 
 function toggleFavoriteResource(button) {
   let resourceId = button.getAttribute("data-resource-id");
-  let row = button.closest("tr");
   let td = button.parentNode;
   let tr = td.parentNode;
 
@@ -195,8 +194,8 @@ function toggleFavoriteResource(button) {
     let item = button.closest(".accordion-item");
     if (item) {
       let header;
-      if (item.querySelector) {
-        header = item.querySelector(".accordion-button");
+      if (item.getElementsByClassName) {
+        header = item.getElementsByClassName("accordion-button")[0];
       } else {
         header = item.getElementsByClassName("accordion-button")[0];
       }

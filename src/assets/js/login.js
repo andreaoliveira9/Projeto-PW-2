@@ -1,6 +1,11 @@
+async function loadData(file) {
+  let response = await fetch(file);
+  let data = await response.json();
+  return data;
+}
+
 async function loadUsers() {
-  let response = await fetch("assets/data/users.json");
-  let users = await response.json();
+  let users = await loadData("assets/data/users.json");
   return users;
 }
 
