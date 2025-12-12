@@ -24,6 +24,12 @@ function redirectToLogin() {
   }
 }
 
+function handleUserIconClick() {
+  if (isLoggedIn() == false) {
+    window.location.href = "login.html";
+  }
+}
+
 function updateHeader() {
   let session = getSession();
 

@@ -139,6 +139,10 @@ function handleFormSubmit() {
     isSubjectValid == true &&
     isMessageValid == true
   ) {
+    submitButton.disabled = true;
+    submitButton.innerHTML =
+      '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>A enviar...';
+
     let templateParams = {
       name: nameValue,
       email: emailValue,

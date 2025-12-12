@@ -237,24 +237,28 @@ function applyFilters() {
   for (let i = 0; i < yearIds.length; i++) {
     let section = document.getElementById(yearIds[i]);
     if (section != null) {
-      let visibleItems = false;
+      let visibleInSection = false;
       let items = section.getElementsByClassName("accordion-item");
       for (let k = 0; k < items.length; k++) {
+        let visibleInItem = false;
         let tbodies = items[k].getElementsByTagName("tbody");
         if (tbodies.length > 0) {
           let rows = tbodies[0].getElementsByTagName("tr");
           for (let r = 0; r < rows.length; r++) {
             if (rows[r].style.display != "none") {
-              visibleItems = true;
+              visibleInItem = true;
+              visibleInSection = true;
               break;
             }
           }
         }
-        if (visibleItems == true) {
-          break;
+        if (visibleInItem == true) {
+          items[k].style.display = "";
+        } else {
+          items[k].style.display = "none";
         }
       }
-      if (visibleItems == true) {
+      if (visibleInSection == true) {
         section.style.display = "";
       } else {
         section.style.display = "none";
