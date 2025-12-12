@@ -179,9 +179,12 @@ function toggleFavoriteResource(button) {
   let td = button.parentNode;
   let tr = td.parentNode;
 
-  let accordionItem = tr.closest
-    ? tr.closest(".accordion-item")
-    : tr.parentNode.parentNode.parentNode.parentNode.parentNode;
+  let accordionItem;
+  if (tr.closest) {
+    accordionItem = tr.closest(".accordion-item");
+  } else {
+    accordionItem = tr.parentNode.parentNode.parentNode.parentNode.parentNode;
+  }
 
   let title = button.getAttribute("data-title");
   let type = button.getAttribute("data-type");
@@ -191,9 +194,12 @@ function toggleFavoriteResource(button) {
   if (button.closest) {
     let item = button.closest(".accordion-item");
     if (item) {
-      let header = item.querySelector
-        ? item.querySelector(".accordion-button")
-        : item.getElementsByClassName("accordion-button")[0];
+      let header;
+      if (item.querySelector) {
+        header = item.querySelector(".accordion-button");
+      } else {
+        header = item.getElementsByClassName("accordion-button")[0];
+      }
       if (header) category = header.textContent.trim();
     }
   }

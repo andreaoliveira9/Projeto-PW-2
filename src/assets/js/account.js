@@ -82,11 +82,23 @@ function updateLastAccess() {
     if (diffMins < 1) {
       lastAccessText = "Agora mesmo";
     } else if (diffMins < 60) {
-      lastAccessText = "Há " + diffMins + " minuto" + (diffMins > 1 ? "s" : "");
+      var plural = "";
+      if (diffMins > 1) {
+        plural = "s";
+      }
+      lastAccessText = "Há " + diffMins + " minuto" + plural;
     } else if (diffHours < 24) {
-      lastAccessText = "Há " + diffHours + " hora" + (diffHours > 1 ? "s" : "");
+      var plural = "";
+      if (diffHours > 1) {
+        plural = "s";
+      }
+      lastAccessText = "Há " + diffHours + " hora" + plural;
     } else {
-      lastAccessText = "Há " + diffDays + " dia" + (diffDays > 1 ? "s" : "");
+      var plural = "";
+      if (diffDays > 1) {
+        plural = "s";
+      }
+      lastAccessText = "Há " + diffDays + " dia" + plural;
     }
 
     let lastAccessElement = document.getElementById("profile-last-access");

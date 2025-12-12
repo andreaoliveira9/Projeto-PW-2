@@ -18,8 +18,15 @@
   }
 
   function iconClassForTheme(value) {
-    var effective =
-      value === "auto" ? (systemPrefersDark() ? "dark" : "light") : value;
+    var effective = value;
+    if (value === "auto") {
+      if (systemPrefersDark()) {
+        effective = "dark";
+      } else {
+        effective = "light";
+      }
+    }
+
     if (effective === "dark") {
       return "bi-moon-stars";
     }
