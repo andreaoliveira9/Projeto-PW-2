@@ -129,27 +129,21 @@ function updateSkills(userData) {
 
   skillsContainer.innerHTML = "";
 
+  let html = "";
   for (let i = 0; i < userData.skills.length; i++) {
-    let skill = userData.skills[i];
-
-    let colDiv = document.createElement("div");
-    colDiv.classList.add("col-md-4");
-
-    let badge = document.createElement("span");
-    badge.classList.add("badge", "w-100", "text-bg-primary");
-    badge.textContent = skill;
-
-    colDiv.appendChild(badge);
-    skillsContainer.appendChild(colDiv);
+    html +=
+      '<div class="col-md-4"><span class="badge w-100 text-bg-primary">' +
+      userData.skills[i] +
+      "</span></div>";
   }
+  skillsContainer.innerHTML = html;
 }
 
 function openFavoriteUrl(url) {
   window.open(url, "_blank");
 }
 
-function removeFavoriteFromList(resourceId, event) {
-  if (event) event.stopPropagation();
+function removeFavoriteFromList(resourceId) {
   removeFromFavorites(resourceId);
   displayFavorites();
 }
@@ -189,7 +183,7 @@ function displayFavorites() {
     html +=
       '<button class="btn btn-sm btn-outline-danger remove-favorite" onclick="removeFavoriteFromList(\'' +
       fav.id +
-      '\', event)" title="Remover dos favoritos">';
+      '\')" title="Remover dos favoritos">';
     html += '<i class="bi bi-trash"></i>';
     html += "</button>";
     html += "</div>";

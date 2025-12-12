@@ -58,9 +58,16 @@ function showFieldError(fieldId, errorMessage) {
     field.parentNode.getElementsByClassName("invalid-feedback")[0];
 
   if (!feedbackDiv) {
-    feedbackDiv = document.createElement("div");
-    feedbackDiv.classList.add("invalid-feedback");
-    field.parentNode.appendChild(feedbackDiv);
+    field.parentNode.innerHTML += '<div class="invalid-feedback"></div>';
+    field = document.getElementById(fieldId); // Re-query input after DOM update
+    feedbackDiv =
+      field.parentNode.getElementsByClassName("invalid-feedback")[0];
+    field.focus(); // Restore focus
+
+    // Restore cursor position if needed (basic restore to end)
+    let val = field.value;
+    field.value = "";
+    field.value = val;
   }
 
   feedbackDiv.textContent = errorMessage;
@@ -82,9 +89,7 @@ function showFieldSuccess(fieldId) {
   }
 }
 
-function validateField(fieldId, validatorFunction, value) {
-  let errorMessage = validatorFunction(value);
-
+function validateField(fieldId, errorMessage) {
   if (errorMessage !== "") {
     showFieldError(fieldId, errorMessage);
     return false;
@@ -95,19 +100,19 @@ function validateField(fieldId, validatorFunction, value) {
 }
 
 function onInputName(input) {
-  validateField("name-field", validateName, input.value.trim());
+  validateField("name-field", validateName(input.value.trim()));
 }
 
 function onInputEmail(input) {
-  validateField("email-field", validateEmail, input.value.trim());
+  validateField("email-field", validateEmail(input.value.trim()));
 }
 
 function onChangeSubject(input) {
-  validateField("subject-field", validateSubject, input.value);
+  validateField("subject-field", validateSubject(input.value));
 }
 
 function onInputMessage(input) {
-  validateField("message-field", validateMessage, input.value.trim());
+  validateField("message-field", validateMessage(input.value.trim()));
   updateCharacterCount();
 }
 
@@ -136,17 +141,15 @@ function handleFormSubmit() {
   let subjectValue = subjectField.value;
   let messageValue = messageField.value.trim();
 
-  let isNameValid = validateField("name-field", validateName, nameValue);
-  let isEmailValid = validateField("email-field", validateEmail, emailValue);
+  let isNameValid = validateField("name-field", validateName(nameValue));
+  let isEmailValid = validateField("email-field", validateEmail(emailValue));
   let isSubjectValid = validateField(
     "subject-field",
-    validateSubject,
-    subjectValue
+    validateSubject(subjectValue)
   );
   let isMessageValid = validateField(
     "message-field",
-    validateMessage,
-    messageValue
+    validateMessage(messageValue)
   );
 
   if (isNameValid && isEmailValid && isSubjectValid && isMessageValid) {
@@ -236,10 +239,16 @@ function updateCharacterCount() {
   let countDiv = document.getElementById("char-count");
 
   if (!countDiv) {
-    countDiv = document.createElement("div");
-    countDiv.id = "char-count";
-    countDiv.classList.add("form-text");
-    messageField.parentNode.appendChild(countDiv);
+    messageField.parentNode.innerHTML +=
+      '<div id="char-count" class="form-text"></div>';
+    messageField = document.getElementById("message-field"); // Re-query
+    countDiv = document.getElementById("char-count");
+    messageField.focus(); // Restore focus
+
+    // Restore cursor
+    let val = messageField.value;
+    messageField.value = "";
+    messageField.value = val;
   }
 
   countDiv.textContent = currentLength + " / " + maxLength + " caracteres";
