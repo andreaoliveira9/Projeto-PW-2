@@ -115,9 +115,7 @@ function onInputMessage(input) {
   updateCharacterCount();
 }
 
-function handleFormSubmit(event) {
-  event.preventDefault();
-
+function handleFormSubmit() {
   let form = document.getElementById("contact-form");
   // Replaced querySelector for button with getElementById (requires ID update in HTML)
   // Or simply get by type if no ID:

@@ -46,7 +46,7 @@ function generateResourceRow(resource, year, categoryIndex) {
   html += "<td>";
   // Updated favorite button to include onclick with parameters
   html +=
-    "<button class='btn btn-sm btn-outline-danger favorite-btn' onclick='toggleFavoriteResource(this, event)' data-resource-id='" +
+    "<button class='btn btn-sm btn-outline-danger favorite-btn' onclick='toggleFavoriteResource(this)' data-resource-id='" +
     resource.id +
     "' data-title='" +
     resource.title +
@@ -189,9 +189,7 @@ function updateAllFavoriteButtons() {
   }
 }
 
-function toggleFavoriteResource(button, event) {
-  event.preventDefault();
-
+function toggleFavoriteResource(button) {
   let resourceId = button.getAttribute("data-resource-id");
   let row = button.closest("tr"); // .closest is modern but likely allowed as it's on element. If NO, we need parentNode traversal.
   // Assuming closest is ok (ES6 is usually ok, just not querySelector).

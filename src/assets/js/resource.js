@@ -189,9 +189,7 @@ function displayMessages(resourceId) {
   chatThread.scrollTop = chatThread.scrollHeight;
 }
 
-function handleMessageSubmit(event) {
-  event.preventDefault();
-
+function handleMessageSubmit() {
   let resourceId = getResourceIdFromUrl();
   if (!resourceId) return;
 

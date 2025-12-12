@@ -174,11 +174,7 @@
                   <div id="alert-container"></div>
 
                   <!-- Login Form -->
-                  <form
-                    id="login-form"
-                    novalidate
-                    onsubmit="handleLogin(event)"
-                  >
+                  <form id="login-form" novalidate>
                     <div class="mb-3">
                       <label for="username" class="form-label"
                         >Nome de utilizador</label
@@ -226,7 +222,11 @@
                       </label>
                     </div>
 
-                    <button type="submit" class="btn btn-primary w-100 mb-3">
+                    <button
+                      type="button"
+                      class="btn btn-primary w-100 mb-3"
+                      onclick="handleLogin()"
+                    >
                       <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar
                       sessão
                     </button>

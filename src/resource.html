@@ -106,7 +106,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="text-danger" onclick="logout(event)">
+                  <a href="#" class="text-danger" onclick="logout()">
                     <i class="bi bi-box-arrow-right"></i>
                     <span class="mobile-profile-option-label text-danger"
                       >Terminar sessão</span
@@ -201,10 +201,7 @@
                 >
               </li>
               <li>
-                <a
-                  class="dropdown-item text-danger"
-                  href="#"
-                  onclick="logout(event)"
+                <a class="dropdown-item text-danger" href="#" onclick="logout()"
                   ><i class="bi bi-box-arrow-right me-2"></i>Terminar sessão</a
                 >
               </li>
@@ -339,11 +336,7 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <form
-                    id="chat-form"
-                    class="d-flex gap-2"
-                    onsubmit="handleMessageSubmit(event)"
-                  >
+                  <form id="chat-form" class="d-flex gap-2">
                     <input
                       type="text"
                       class="form-control"
@@ -352,7 +345,11 @@
                       required
                       maxlength="500"
                     />
-                    <button type="submit" class="btn btn-primary">
+                    <button
+                      type="button"
+                      class="btn btn-primary"
+                      onclick="handleMessageSubmit()"
+                    >
                       <i class="bi bi-send"></i>
                     </button>
                   </form>

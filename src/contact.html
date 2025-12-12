@@ -207,7 +207,7 @@
               </li>
               <li><hr class="dropdown-divider" /></li>
               <li>
-                <a class="dropdown-item text-danger" href="#"
+                <a class="dropdown-item text-danger" href="#" onclick="logout()"
                   ><i class="bi bi-box-arrow-right me-2"></i>Terminar sessão</a
                 >
               </li>
@@ -287,7 +287,6 @@
                 action="#success-modal"
                 data-aos="fade-up"
                 data-aos-delay="200"
-                onsubmit="handleFormSubmit(event)"
                 onreset="onFormReset()"
               >
                 <div class="row gy-4">
@@ -349,9 +348,10 @@
 
                   <div class="col-md-12 text-center">
                     <button
-                      type="submit"
+                      type="button"
                       class="btn btn-accent px-4"
                       id="contact-submit-btn"
+                      onclick="handleFormSubmit()"
                     >
                       Enviar mensagem
                     </button>

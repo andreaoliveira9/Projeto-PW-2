@@ -44,9 +44,7 @@ function validateForm(username, password) {
   return isValid;
 }
 
-async function handleLogin(event) {
-  event.preventDefault();
-
+async function handleLogin() {
   let username = document.getElementById("username").value;
   let password = document.getElementById("password").value;
   let rememberMe = document.getElementById("remember-me").checked;

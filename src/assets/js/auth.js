@@ -13,15 +13,13 @@ function isLoggedIn() {
   return session !== null;
 }
 
-function logout(event) {
-  if (event) event.preventDefault();
+function logout() {
   localStorage.removeItem("mathpath-session");
   window.location.href = "index.html";
 }
 
-function handleProfileClick(event) {
+function handleProfileClick() {
   if (!isLoggedIn()) {
-    event.preventDefault();
     window.location.href = "login.html";
   }
 }
