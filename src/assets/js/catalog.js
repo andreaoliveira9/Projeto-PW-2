@@ -4,7 +4,7 @@ async function loadData(file) {
   return data;
 }
 
-function generateResourceRow(resource, year, categoryIndex) {
+function createResourceRow(resource, year, categoryIndex) {
   if (resource.id == null) {
     resource.id =
       year +
@@ -24,97 +24,74 @@ function generateResourceRow(resource, year, categoryIndex) {
     previewModal = "#pdfPreviewModal";
   }
 
-  let html = "";
-  html += "<tr>";
-  html += "<th scope='row'>" + resource.title + "</th>";
-  html += "<td>" + resource.type + "</td>";
-  html += "<td>";
-  html +=
-    "<button type='button' class='btn btn-outline-primary btn-sm preview-btn' onclick='openPreview(this)' data-bs-toggle='modal' data-bs-target='" +
-    previewModal +
-    "' data-url='" +
-    previewUrl +
-    "' data-title='" +
-    resource.title +
-    "'>Preview</button>";
-  html += "</td>";
-  html += "<td>";
-  html +=
-    "<a class='fw-semibold' href='" +
-    resource.url +
-    "' target='_blank' rel='noopener'>Abrir recurso</a>";
-  html += "</td>";
-  html += "<td>";
-  html +=
-    "<button class='btn btn-sm btn-outline-danger favorite-btn' onclick='toggleFavoriteResource(this)' data-resource-id='" +
-    resource.id +
-    "' data-title='" +
-    resource.title +
-    "' data-type='" +
-    resource.type +
-    "' data-url='" +
-    resource.url +
-    "' title='Adicionar aos favoritos'>";
-  html += "<i class='bi bi-heart'></i>";
-  html += "</button>";
-  html += "</td>";
-  html += "</tr>";
+  let template = document.getElementById("template-resource-row");
+  let clone = template.content.cloneNode(true);
 
-  return html;
+  // Get the first child (the tr) from the DocumentFragment
+  let row = clone.children[0];
+  row.getElementsByClassName("resource-title")[0].innerText = resource.title;
+  row.getElementsByClassName("resource-type")[0].innerText = resource.type;
+
+  let previewBtn = row.getElementsByClassName("preview-btn")[0];
+  previewBtn.setAttribute("data-bs-target", previewModal);
+  previewBtn.setAttribute("data-url", previewUrl);
+  previewBtn.setAttribute("data-title", resource.title);
+
+  let resourceLink = row.getElementsByClassName("resource-link")[0];
+  resourceLink.setAttribute("href", resource.url);
+
+  let favoriteBtn = row.getElementsByClassName("favorite-btn")[0];
+  favoriteBtn.setAttribute("data-resource-id", resource.id);
+  favoriteBtn.setAttribute("data-title", resource.title);
+  favoriteBtn.setAttribute("data-type", resource.type);
+  favoriteBtn.setAttribute("data-url", resource.url);
+
+  return clone;
 }
 
-function generateResourceTable(resources, year, categoryIndex) {
-  let html = "";
-  html += "<div class='table-responsive catalog-table'>";
-  html += "<table class='table align-middle mb-0'>";
-  html += "<thead>";
-  html += "<tr>";
-  html += "<th scope='col'>Tópico</th>";
-  html += "<th scope='col'>Tipo</th>";
-  html += "<th scope='col'>Pré-visualizar</th>";
-  html += "<th></th>";
-  html += "</tr>";
-  html += "</thead>";
-  html += "<tbody>";
+function createResourceTable(resources, year, categoryIndex) {
+  let template = document.getElementById("template-resource-table");
+  let clone = template.content.cloneNode(true);
+
+  // Get the first child (the table-responsive div) from the DocumentFragment
+  let tableDiv = clone.children[0];
+  let tbody = tableDiv.getElementsByTagName("tbody")[0];
   for (let i = 0; i < resources.length; i++) {
-    html += generateResourceRow(resources[i], year, categoryIndex);
+    let rowClone = createResourceRow(resources[i], year, categoryIndex);
+    tbody.appendChild(rowClone);
   }
-  html += "</tbody>";
-  html += "</table>";
-  html += "</div>";
-  return html;
+
+  return clone;
 }
 
-function generateAccordionItem(category, index, year) {
+function createAccordionItem(category, index, year) {
   let itemId = year + "-" + (index + 1);
-  let html = "";
-  html += "<div class='accordion-item'>";
-  html += "<h3 class='accordion-header' id='heading-" + itemId + "'>";
-  html +=
-    "<button class='accordion-button collapsed' type='button' data-bs-toggle='collapse' data-bs-target='#collapse-" +
-    itemId +
-    "' aria-expanded='false' aria-controls='collapse-" +
-    itemId +
-    "'>";
-  html += category.category;
-  html += "</button>";
-  html += "</h3>";
-  html +=
-    "<div id='collapse-" +
-    itemId +
-    "' class='accordion-collapse collapse' data-bs-parent='#accordion-" +
-    year +
-    "'>";
-  html += "<div class='accordion-body'>";
-  html +=
-    "<p class='text-muted small fw-semibold mb-3'>" +
-    category.description +
-    "</p>";
-  html += generateResourceTable(category.resources, year, index);
-  html += "</div>";
-  html += "</div>";
-  html += "</div>";
-  return html;
+
+  let template = document.getElementById("template-accordion-item");
+  let clone = template.content.cloneNode(true);
+
+  // Get the first child (the accordion-item div) from the DocumentFragment
+  let item = clone.children[0];
+  let header = item.getElementsByClassName("accordion-header")[0];
+  header.setAttribute("id", "heading-" + itemId);
+
+  let button = item.getElementsByClassName("accordion-button")[0];
+  button.setAttribute("data-bs-target", "#collapse-" + itemId);
+  button.setAttribute("aria-controls", "collapse-" + itemId);
+  button.innerText = category.category;
+
+  let collapse = item.getElementsByClassName("accordion-collapse")[0];
+  collapse.setAttribute("id", "collapse-" + itemId);
+  collapse.setAttribute("data-bs-parent", "#accordion-" + year);
+
+  let description = item.getElementsByClassName("category-description")[0];
+  description.innerText = category.description;
+
+  let body = item.getElementsByClassName("accordion-body")[0];
+  let tableClone = createResourceTable(category.resources, year, index);
+  body.appendChild(tableClone);
+
+  return clone;
 }
 
 function renderCategories(categories, year) {
@@ -123,11 +100,11 @@ function renderCategories(categories, year) {
     return;
   }
 
-  let html = "";
+  accordionContainer.innerHTML = "";
   for (let i = 0; i < categories.length; i++) {
-    html += generateAccordionItem(categories[i], i, year);
+    let itemClone = createAccordionItem(categories[i], i, year);
+    accordionContainer.appendChild(itemClone);
   }
-  accordionContainer.innerHTML = html;
 }
 
 async function loadYearResources(year) {
@@ -281,7 +258,38 @@ function resetFilters() {
   if (typeFilter != null) {
     typeFilter.value = "todos";
   }
-  applyFilters();
+
+  // Restore all rows visibility
+  let rows = document.getElementsByTagName("tr");
+  for (let i = 0; i < rows.length; i++) {
+    rows[i].style.display = "";
+  }
+
+  // Restore all accordion items visibility
+  let items = document.getElementsByClassName("accordion-item");
+  for (let i = 0; i < items.length; i++) {
+    items[i].style.display = "";
+  }
+
+  // Restore all sections visibility
+  let yearIds = ["recursos-10", "recursos-11", "recursos-12"];
+  for (let i = 0; i < yearIds.length; i++) {
+    let section = document.getElementById(yearIds[i]);
+    if (section != null) {
+      section.style.display = "";
+    }
+  }
+
+  // Update count
+  let tbodyRows = 0;
+  let tbodies = document.getElementsByTagName("tbody");
+  for (let i = 0; i < tbodies.length; i++) {
+    tbodyRows = tbodyRows + tbodies[i].getElementsByTagName("tr").length;
+  }
+  let countElement = document.getElementById("count-number");
+  if (countElement != null) {
+    countElement.innerText = tbodyRows;
+  }
 }
 
 function openPreview(button) {

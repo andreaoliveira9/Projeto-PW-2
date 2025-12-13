@@ -340,7 +340,11 @@
                   </div>
                 </div>
                 <div class="card-footer">
-                  <form id="chat-form" class="d-flex gap-2">
+                  <form
+                    id="chat-form"
+                    class="d-flex gap-2"
+                    onsubmit="handleMessageSubmit(); return false;"
+                  >
                     <input
                       type="text"
                       class="form-control"
@@ -349,11 +353,7 @@
                       required
                       maxlength="500"
                     />
-                    <button
-                      type="button"
-                      class="btn btn-primary"
-                      onclick="handleMessageSubmit()"
-                    >
+                    <button type="submit" class="btn btn-primary">
                       <i class="bi bi-send"></i>
                     </button>
                   </form>

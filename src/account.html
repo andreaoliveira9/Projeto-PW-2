@@ -125,7 +125,10 @@
               </ul>
             </li>
           </ul>
-          <i class="mobile-nav-toggle d-lg-none bi bi-list"></i>
+          <i
+            class="mobile-nav-toggle d-lg-none bi bi-list"
+            onclick="mobileNavToogle()"
+          ></i>
         </nav>
 
         <div class="header-actions d-flex align-items-center gap-3">
@@ -531,6 +534,27 @@
 
     <!-- Preloader -->
     <div id="preloader"></div>
+
+    <!-- Templates -->
+    <template id="template-favorite-item">
+      <div
+        class="list-group-item list-group-item-action d-flex justify-content-between align-items-start favorite-row"
+        style="cursor: pointer"
+      >
+        <div class="flex-grow-1">
+          <h6 class="mb-1 favorite-title"></h6>
+          <small class="text-muted favorite-meta"></small>
+        </div>
+        <div class="d-flex align-items-center">
+          <button
+            class="btn btn-sm btn-outline-danger remove-favorite"
+            title="Remover dos favoritos"
+          >
+            <i class="bi bi-trash"></i>
+          </button>
+        </div>
+      </div>
+    </template>
 
     <script src="assets/js/theme.js" defer></script>
 

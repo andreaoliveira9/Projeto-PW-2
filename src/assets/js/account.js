@@ -4,6 +4,13 @@ async function loadData(file) {
   return data;
 }
 
+function setTextById(id, text) {
+  let element = document.getElementById(id);
+  if (element != null) {
+    element.innerText = text;
+  }
+}
+
 function checkAuthentication() {
   let session = localStorage.getItem("mathpath-session");
   if (session == null) {
@@ -13,80 +20,60 @@ function checkAuthentication() {
   return JSON.parse(session);
 }
 
-function setTextById(id, text) {
-  let element = document.getElementById(id);
-  if (element != null) {
-    element.innerText = text;
+function formatLoginTime(isoString) {
+  if (isoString == null) {
+    return "—";
   }
+  let date = new Date(isoString);
+  let day = date.getDate();
+  let month = date.getMonth() + 1;
+  let year = date.getFullYear();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+
+  if (day < 10) {
+    day = "0" + day;
+  }
+  if (month < 10) {
+    month = "0" + month;
+  }
+  if (hours < 10) {
+    hours = "0" + hours;
+  }
+  if (minutes < 10) {
+    minutes = "0" + minutes;
+  }
+
+  return day + "/" + month + "/" + year + " às " + hours + ":" + minutes;
 }
 
 function updateProfileSummary(userData) {
   setTextById("profile-name", userData.name);
-  setTextById(
-    "profile-year-course",
-    userData.year + ".º Ano · " + userData.course
-  );
-  setTextById("profile-school", userData.school);
   setTextById("profile-email", userData.email);
+  setTextById("profile-school", userData.school);
+  setTextById("profile-last-access", formatLoginTime(userData.loginTime));
+
+  let yearCourse = document.getElementById("profile-year-course");
+  if (yearCourse != null) {
+    yearCourse.innerText = userData.year + ".º Ano · " + userData.course;
+  }
+
+  setTextById("profile-goal", userData.goal);
 }
 
-function updateAccountData(userData) {
+function updateAccountDetails(userData) {
   setTextById("account-name", userData.name);
-  setTextById("account-year", userData.year + ".º Ano");
   setTextById("account-email", userData.email);
   setTextById("account-school", userData.school);
   setTextById("account-course", userData.course);
-}
 
-function updateLastAccess() {
-  let session = localStorage.getItem("mathpath-session");
-  if (session == null) {
-    return;
+  let yearBadge = document.getElementById("account-year");
+  if (yearBadge != null) {
+    yearBadge.innerText = userData.year + ".º Ano";
   }
 
-  let sessionData = JSON.parse(session);
-  if (sessionData.loginTime == null) {
-    return;
-  }
-
-  let loginDate = new Date(sessionData.loginTime);
-  let now = new Date();
-  let diffMs = now - loginDate;
-  let diffMins = Math.floor(diffMs / 60000);
-  let diffHours = Math.floor(diffMs / 3600000);
-  let diffDays = Math.floor(diffMs / 86400000);
-
-  let lastAccessText = "";
-  if (diffMins < 1) {
-    lastAccessText = "Agora mesmo";
-  } else if (diffMins < 60) {
-    let plural = "";
-    if (diffMins > 1) {
-      plural = "s";
-    }
-    lastAccessText = "Há " + diffMins + " minuto" + plural;
-  } else if (diffHours < 24) {
-    let plural = "";
-    if (diffHours > 1) {
-      plural = "s";
-    }
-    lastAccessText = "Há " + diffHours + " hora" + plural;
-  } else {
-    let plural = "";
-    if (diffDays > 1) {
-      plural = "s";
-    }
-    lastAccessText = "Há " + diffDays + " dia" + plural;
-  }
-
-  setTextById("profile-last-access", lastAccessText);
-}
-
-function updateGoalAndPlan(userData) {
-  if (userData.goal != null) {
-    setTextById("profile-goal", userData.goal);
-  }
-  if (userData.activePlan != null) {
+  let planLabel = document.getElementById("profile-plan");
+  if (planLabel != null && userData.activePlan != null) {
     setTextById("profile-plan", userData.activePlan);
   }
 }
@@ -99,10 +86,12 @@ function updateSkills(userData) {
 
   let html = "";
   for (let i = 0; i < userData.skills.length; i++) {
+    html += '<div class="col-md-4">';
     html +=
-      '<div class="col-md-4"><span class="badge w-100 text-bg-primary">' +
+      '<span class="badge w-100 text-bg-primary">' +
       userData.skills[i] +
-      "</span></div>";
+      "</span>";
+    html += "</div>";
   }
   skillsContainer.innerHTML = html;
 }
@@ -112,6 +101,7 @@ function openFavoriteUrl(url) {
 }
 
 function removeFavoriteFromList(resourceId) {
+  event.stopPropagation();
   removeFromFavorites(resourceId);
   displayFavorites();
 }
@@ -129,33 +119,32 @@ function displayFavorites() {
     return;
   }
 
-  let html = "";
+  let template = document.getElementById("template-favorite-item");
+  favoritesContainer.innerHTML = "";
+
   for (let i = 0; i < favorites.length; i++) {
     let fav = favorites[i];
-    html +=
-      '<div class="list-group-item list-group-item-action d-flex justify-content-between align-items-start favorite-row" style="cursor: pointer;" onclick="openFavoriteUrl(\'' +
-      fav.url +
-      "')\">";
-    html += "<div class='flex-grow-1'>";
-    html += '<h6 class="mb-1">' + fav.title + "</h6>";
-    html += '<small class="text-muted">' + fav.type;
-    if (fav.category != null) {
-      html += " · " + fav.category;
-    }
-    html += "</small>";
-    html += "</div>";
-    html += '<div class="d-flex align-items-center">';
-    html +=
-      '<button class="btn btn-sm btn-outline-danger remove-favorite" onclick="removeFavoriteFromList(\'' +
-      fav.id +
-      '\')" title="Remover dos favoritos">';
-    html += '<i class="bi bi-trash"></i>';
-    html += "</button>";
-    html += "</div>";
-    html += "</div>";
-  }
+    let clone = template.content.cloneNode(true);
 
-  favoritesContainer.innerHTML = html;
+    let item = clone.children[0];
+    item.setAttribute("onclick", "openFavoriteUrl('" + fav.url + "')");
+
+    item.getElementsByClassName("favorite-title")[0].innerText = fav.title;
+
+    let metaText = fav.type;
+    if (fav.category != null) {
+      metaText = metaText + " · " + fav.category;
+    }
+    item.getElementsByClassName("favorite-meta")[0].innerText = metaText;
+
+    let removeBtn = item.getElementsByClassName("remove-favorite")[0];
+    removeBtn.setAttribute(
+      "onclick",
+      "removeFavoriteFromList('" + fav.id + "')"
+    );
+
+    favoritesContainer.appendChild(clone);
+  }
 }
 
 async function renderStudyPlan() {
@@ -208,9 +197,7 @@ function initializeAccountPage() {
   }
 
   updateProfileSummary(userData);
-  updateAccountData(userData);
-  updateLastAccess();
-  updateGoalAndPlan(userData);
+  updateAccountDetails(userData);
   updateSkills(userData);
   displayFavorites();
   renderStudyPlan();
