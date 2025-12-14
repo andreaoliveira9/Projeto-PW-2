@@ -37,18 +37,9 @@
 
     <script>
       (function () {
-        const storageKey = "mathpath-theme";
-        const allowed = ["auto", "light", "dark"];
-        try {
-          const storedTheme = localStorage.getItem(storageKey);
-          if (allowed.indexOf(storedTheme) !== -1) {
-            document.documentElement.setAttribute("data-theme", storedTheme);
-          }
-        } catch (error) {
-          document.documentElement.setAttribute(
-            "data-theme",
-            document.documentElement.getAttribute("data-theme") || "auto"
-          );
+        const theme = localStorage.getItem("mathpath-theme");
+        if (theme && ["auto", "light", "dark"].includes(theme)) {
+          document.documentElement.setAttribute("data-theme", theme);
         }
       })();
     </script>
@@ -105,7 +96,7 @@
                   <i class="bi bi-person-circle"></i>
                   <span class="mobile-profile-name"></span>
                 </span>
-                <i class="bi bi-chevron-down toggle-dropdown" onclick="event.preventDefault(); toggleDropdown(this)"></i>
+                <i class="bi bi-chevron-down toggle-dropdown" onclick="toggleDropdown(this); return false;"></i>
               </a>
               <ul>
                 <li>
