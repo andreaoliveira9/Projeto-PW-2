@@ -94,9 +94,9 @@
               <a href="account.html">
                 <span class="mobile-profile-info">
                   <i class="bi bi-person-circle"></i>
-                  <span class="mobile-profile-name">André</span>
+                  <span class="mobile-profile-name"></span>
                 </span>
-                <i class="bi bi-chevron-down toggle-dropdown"></i>
+                <i class="bi bi-chevron-down toggle-dropdown" onclick="event.preventDefault(); toggleDropdown(this)"></i>
               </a>
               <ul>
                 <li>
@@ -186,7 +186,7 @@
           </div>
           <div class="dropdown user-menu d-none d-lg-flex">
             <button
-              class="btn btn-outline-light rounded-pill"
+              class="btn btn-outline-light rounded-pill d-flex align-items-center px-3 py-2"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -194,6 +194,7 @@
               onclick="handleUserIconClick()"
             >
               <i class="user-menu__icon bi bi-person-circle"></i>
+              <span class="user-menu__name ms-2" style="display: none;"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end shadow">
               <li>
@@ -617,6 +618,7 @@
     <!-- Preloader -->
     <div id="preloader"></div>
 
+    <script src="assets/js/utils.js"></script>
     <script src="assets/js/theme.js" defer></script>
 
     <!-- Vendor JS Files -->

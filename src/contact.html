@@ -84,37 +84,37 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="index.html">Início</a></li>
+            <li><a href="index.html" onclick="handleNavLinkClick()">Início</a></li>
             <li class="dropdown">
-              <a href="catalog.html"
+              <a href="catalog.html" onclick="handleNavLinkClick()"
                 ><span>Recursos</span>
-                <i class="bi bi-chevron-down toggle-dropdown"></i
+                <i class="bi bi-chevron-down toggle-dropdown" onclick="toggleDropdown(this)"></i
               ></a>
               <ul>
-                <li><a href="catalog.html#recursos-10">10.º Ano</a></li>
-                <li><a href="catalog.html#recursos-11">11.º Ano</a></li>
-                <li><a href="catalog.html#recursos-12">12.º Ano</a></li>
+                <li><a href="catalog.html#recursos-10" onclick="handleNavLinkClick()">10.º Ano</a></li>
+                <li><a href="catalog.html#recursos-11" onclick="handleNavLinkClick()">11.º Ano</a></li>
+                <li><a href="catalog.html#recursos-12" onclick="handleNavLinkClick()">12.º Ano</a></li>
               </ul>
             </li>
-            <li><a href="calculator.html">Calculadora</a></li>
-            <li><a href="contact.html" class="active">Contactos</a></li>
+            <li><a href="calculator.html" onclick="handleNavLinkClick()">Calculadora</a></li>
+            <li><a href="contact.html" class="active" onclick="handleNavLinkClick()">Contactos</a></li>
             <li class="dropdown mobile-profile d-lg-none">
               <a href="account.html">
                 <span class="mobile-profile-info">
                   <i class="bi bi-person-circle"></i>
-                  <span class="mobile-profile-name">André</span>
+                  <span class="mobile-profile-name"></span>
                 </span>
-                <i class="bi bi-chevron-down toggle-dropdown"></i>
+                <i class="bi bi-chevron-down toggle-dropdown" onclick="event.preventDefault(); toggleDropdown(this)"></i>
               </a>
               <ul>
                 <li>
-                  <a href="account.html">
+                  <a href="account.html" onclick="handleNavLinkClick()">
                     <i class="bi bi-person"></i>
                     <span class="mobile-profile-option-label">Perfil</span>
                   </a>
                 </li>
                 <li>
-                  <a href="#" class="text-danger">
+                  <a href="#" class="text-danger" onclick="logout()">
                     <i class="bi bi-box-arrow-right"></i>
                     <span class="mobile-profile-option-label text-danger"
                       >Terminar sessão</span
@@ -124,7 +124,7 @@
               </ul>
             </li>
           </ul>
-          <i class="mobile-nav-toggle d-lg-none bi bi-list"></i>
+          <i class="mobile-nav-toggle d-lg-none bi bi-list" onclick="mobileNavToogle()"></i>
         </nav>
 
         <div class="header-actions d-flex align-items-center gap-3">
@@ -194,7 +194,7 @@
           </div>
           <div class="dropdown user-menu d-none d-lg-flex">
             <button
-              class="btn btn-outline-light rounded-pill"
+              class="btn btn-outline-light rounded-pill d-flex align-items-center px-3 py-2"
               type="button"
               data-bs-toggle="dropdown"
               aria-expanded="false"
@@ -202,6 +202,7 @@
               onclick="handleUserIconClick()"
             >
               <i class="user-menu__icon bi bi-person-circle"></i>
+              <span class="user-menu__name ms-2" style="display: none;"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end shadow">
               <li>
@@ -432,6 +433,7 @@
       </div>
     </div>
 
+    <script src="assets/js/utils.js"></script>
     <script src="assets/js/theme.js" defer></script>
 
     <!-- Vendor JS Files -->

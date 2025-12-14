@@ -211,7 +211,11 @@
                   <div id="alert-container"></div>
 
                   <!-- Login Form -->
-                  <form id="login-form" novalidate>
+                  <form
+                    id="login-form"
+                    novalidate
+                    onsubmit="event.preventDefault(); handleLogin();"
+                  >
                     <div class="mb-3">
                       <label for="username" class="form-label"
                         >Nome de utilizador</label
@@ -259,11 +263,7 @@
                       </label>
                     </div>
 
-                    <button
-                      type="button"
-                      class="btn btn-primary w-100 mb-3"
-                      onclick="handleLogin()"
-                    >
+                    <button type="submit" class="btn btn-primary w-100 mb-3">
                       <i class="bi bi-box-arrow-in-right me-2"></i>Iniciar
                       sessão
                     </button>
@@ -334,6 +334,7 @@
     <!-- Preloader -->
     <div id="preloader"></div>
 
+    <script src="assets/js/utils.js"></script>
     <script src="assets/js/theme.js" defer></script>
 
     <!-- Vendor JS Files -->

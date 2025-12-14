@@ -18,12 +18,6 @@ function logout() {
   window.location.href = "index.html";
 }
 
-function redirectToLogin() {
-  if (isLoggedIn() == false) {
-    window.location.href = "login.html";
-  }
-}
-
 function handleUserIconClick() {
   if (isLoggedIn() == false) {
     window.location.href = "login.html";
@@ -44,21 +38,26 @@ function updateHeader() {
     }
   }
 
-  let desktopUserIcons = document.getElementsByClassName("user-menu__icon");
-  if (desktopUserIcons.length > 0) {
-    let icon = desktopUserIcons[0];
-    let button = icon.parentNode;
+  let desktopUserMenus = document.getElementsByClassName("user-menu");
+  if (desktopUserMenus.length > 0) {
+    let button = desktopUserMenus[0].getElementsByTagName("button")[0];
+    if (button != null) {
+      let icon = button.getElementsByClassName("user-menu__icon")[0];
+      let nameSpan = button.getElementsByClassName("user-menu__name")[0];
 
-    if (session != null) {
-      icon.classList.remove("bi-box-arrow-in-right");
-      icon.classList.add("bi-person-circle");
-      if (button != null) {
+      icon.classList.remove("bi-box-arrow-in-right", "bi-person-circle");
+      button.setAttribute("data-bs-toggle", session ? "dropdown" : "");
+
+      if (session != null) {
+        nameSpan.innerText = session.name.split(" ")[0];
+        nameSpan.style.display = "inline";
+        icon.classList.add("bi-person-circle");
+        icon.classList.remove("bi-box-arrow-in-right");
         button.setAttribute("data-bs-toggle", "dropdown");
-      }
-    } else {
-      icon.classList.remove("bi-person-circle");
-      icon.classList.add("bi-box-arrow-in-right");
-      if (button != null) {
+      } else {
+        icon.classList.add("bi-box-arrow-in-right");
+        nameSpan.style.display = "none";
+        icon.classList.remove("bi-person-circle");
         button.setAttribute("data-bs-toggle", "");
       }
     }
@@ -71,31 +70,16 @@ function updateHeader() {
     let icons = mobileProfileInfos[0].getElementsByTagName("i");
     if (icons.length > 0) {
       let icon = icons[0];
+      icon.classList.remove("bi-box-arrow-in-right", "bi-person-circle");
       if (session != null) {
-        icon.classList.remove("bi-box-arrow-in-right");
         icon.classList.add("bi-person-circle");
+        icon.classList.remove("bi-box-arrow-in-right");
       } else {
-        icon.classList.remove("bi-person-circle");
         icon.classList.add("bi-box-arrow-in-right");
+        icon.classList.remove("bi-person-circle");
       }
     }
   }
-}
-
-function getUserName() {
-  let session = getSession();
-  if (session != null) {
-    return session.name;
-  }
-  return "Visitante";
-}
-
-function getUserFirstName() {
-  let session = getSession();
-  if (session != null) {
-    return session.name.split(" ")[0];
-  }
-  return "Visitante";
 }
 
 var oldOnLoadAuth = window.onload;

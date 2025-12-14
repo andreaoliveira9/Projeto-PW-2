@@ -1,9 +1,3 @@
-async function loadData(file) {
-  let response = await fetch(file);
-  let data = await response.json();
-  return data;
-}
-
 async function loadAllResources() {
   let resources = [];
   let years = [10, 11, 12];
@@ -36,13 +30,6 @@ function findResourceById(resources, id) {
     }
   }
   return null;
-}
-
-function setTextById(id, text) {
-  let element = document.getElementById(id);
-  if (element != null) {
-    element.innerText = text;
-  }
 }
 
 function updatePageTitle(resource) {
