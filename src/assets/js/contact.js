@@ -1,6 +1,4 @@
-(function () {
-  emailjs.init("MWFq8f7-C_8OX4m1Q");
-})();
+emailjs.init("MWFq8f7-C_8OX4m1Q");
 
 function validateName(name) {
   if (name.length < 3) {
