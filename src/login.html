@@ -33,12 +33,10 @@
     <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
 
     <script>
-      (function () {
-        const theme = localStorage.getItem("mathpath-theme");
-        if (theme && ["auto", "light", "dark"].includes(theme)) {
-          document.documentElement.setAttribute("data-theme", theme);
-        }
-      })();
+      const theme = localStorage.getItem("mathpath-theme");
+      if (theme && ["auto", "light", "dark"].includes(theme)) {
+        document.documentElement.setAttribute("data-theme", theme);
+      }
     </script>
 
     <!-- Main CSS File -->

@@ -36,12 +36,10 @@
     <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
 
     <script>
-      (function () {
-        const theme = localStorage.getItem("mathpath-theme");
-        if (theme && ["auto", "light", "dark"].includes(theme)) {
-          document.documentElement.setAttribute("data-theme", theme);
-        }
-      })();
+      const theme = localStorage.getItem("mathpath-theme");
+      if (theme && ["auto", "light", "dark"].includes(theme)) {
+        document.documentElement.setAttribute("data-theme", theme);
+      }
     </script>
 
     <!-- Main CSS File -->
@@ -218,7 +216,7 @@
               onclick="handleUserIconClick()"
             >
               <i class="user-menu__icon bi bi-person-circle"></i>
-              <span class="user-menu__name ms-2" style="display: none;"></span>
+              <span class="user-menu__name ms-2" style="display: none"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end shadow">
               <li>
