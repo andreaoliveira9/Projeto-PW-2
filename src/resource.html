@@ -67,27 +67,64 @@
 
         <nav id="navmenu" class="navmenu">
           <ul>
-            <li><a href="index.html" onclick="handleNavLinkClick()">Início</a></li>
+            <li>
+              <a href="index.html" onclick="handleNavLinkClick()">Início</a>
+            </li>
             <li class="dropdown">
-              <a href="catalog.html" class="active" onclick="handleNavLinkClick()"
+              <a
+                href="catalog.html"
+                class="active"
+                onclick="handleNavLinkClick()"
                 ><span>Recursos</span>
-                <i class="bi bi-chevron-down toggle-dropdown" onclick="toggleDropdown(this)"></i
+                <i
+                  class="bi bi-chevron-down toggle-dropdown"
+                  onclick="toggleDropdown(this)"
+                ></i
               ></a>
               <ul>
-                <li><a href="catalog.html#recursos-10" onclick="handleNavLinkClick()">10.º Ano</a></li>
-                <li><a href="catalog.html#recursos-11" onclick="handleNavLinkClick()">11.º Ano</a></li>
-                <li><a href="catalog.html#recursos-12" onclick="handleNavLinkClick()">12.º Ano</a></li>
+                <li>
+                  <a
+                    href="catalog.html#recursos-10"
+                    onclick="handleNavLinkClick()"
+                    >10.º Ano</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="catalog.html#recursos-11"
+                    onclick="handleNavLinkClick()"
+                    >11.º Ano</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="catalog.html#recursos-12"
+                    onclick="handleNavLinkClick()"
+                    >12.º Ano</a
+                  >
+                </li>
               </ul>
             </li>
-            <li><a href="calculator.html" onclick="handleNavLinkClick()">Calculadora</a></li>
-            <li><a href="contact.html" onclick="handleNavLinkClick()">Contactos</a></li>
+            <li>
+              <a href="calculator.html" onclick="handleNavLinkClick()"
+                >Calculadora</a
+              >
+            </li>
+            <li>
+              <a href="contact.html" onclick="handleNavLinkClick()"
+                >Contactos</a
+              >
+            </li>
             <li class="dropdown mobile-profile d-lg-none">
               <a href="account.html">
                 <span class="mobile-profile-info">
                   <i class="bi bi-person-circle"></i>
                   <span class="mobile-profile-name"></span>
                 </span>
-                <i class="bi bi-chevron-down toggle-dropdown" onclick="toggleDropdown(this); return false;"></i>
+                <i
+                  class="bi bi-chevron-down toggle-dropdown"
+                  onclick="toggleDropdown(this); return false;"
+                ></i>
               </a>
               <ul>
                 <li>
@@ -107,7 +144,10 @@
               </ul>
             </li>
           </ul>
-          <i class="mobile-nav-toggle d-lg-none bi bi-list" onclick="mobileNavToogle()"></i>
+          <i
+            class="mobile-nav-toggle d-lg-none bi bi-list"
+            onclick="mobileNavToogle()"
+          ></i>
         </nav>
 
         <div class="header-actions d-flex align-items-center gap-3">
@@ -185,7 +225,7 @@
               onclick="handleUserIconClick()"
             >
               <i class="user-menu__icon bi bi-person-circle"></i>
-              <span class="user-menu__name ms-2" style="display: none;"></span>
+              <span class="user-menu__name ms-2" style="display: none"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-end shadow">
               <li>
@@ -324,9 +364,7 @@
                   <span class="text-muted small">Atualizado em tempo real</span>
                 </div>
                 <div class="card-body">
-                  <div class="chat-thread" id="chat-thread">
-                    <!-- Mensagens serão carregadas dinamicamente -->
-                  </div>
+                  <div class="chat-thread" id="chat-thread"></div>
                 </div>
                 <div class="card-footer">
                   <form
