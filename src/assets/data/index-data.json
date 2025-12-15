@@ -1,0 +1,82 @@
+{
+  "features": [
+    {
+      "icon": "bi-journal-text",
+      "title": "10.º Ano: Modelos e Funções",
+      "description": "Trabalha modelos matemáticos, estatística descritiva, gráficos, funções quadráticas e geometria analítica com fichas guiadas e um vídeo de revisão por tema."
+    },
+    {
+      "icon": "bi-diagram-3",
+      "title": "11.º Ano: Vetores e Sucessões",
+      "description": "Revê trigonometria, produto escalar, contagem combinatória, sucessões e funções polinomiais com exercícios progressivos e resumo em vídeo."
+    },
+    {
+      "icon": "bi-graph-up-arrow",
+      "title": "12.º Ano: Probabilidades e Análise",
+      "description": "Consolida números complexos, probabilidades, distribuições, exponenciais, logaritmos, limites e derivadas com fichas e vídeo de síntese."
+    }
+  ],
+  "featuredResources": [
+    {
+      "image": "assets/img/index/1.png",
+      "imageAlt": "Ficha de modelos matemáticos com gráficos e tabelas",
+      "badge": "10.º Ano",
+      "badgeClass": "text-bg-primary",
+      "title": "Modelos matemáticos para a cidadania",
+      "description": "Sequência de fichas que aplicam funções a eleições, partilhas e decisões financeiras, acompanhadas por resumo em vídeo.",
+      "highlights": [
+        "Modelos matemáticos nas eleições",
+        "Partilha justa de recursos e negociação",
+        "Planeamento financeiro com tabelas comparativas"
+      ],
+      "link": "resource.html?id=101",
+      "buttonText": "Ver fichas e resumo"
+    },
+    {
+      "image": "assets/img/index/2.png",
+      "imageAlt": "Caderno com exercícios de sucessões e contagem",
+      "badge": "11.º Ano",
+      "badgeClass": "text-bg-success",
+      "title": "Sucessões e contagem combinatória",
+      "description": "Fichas progressivas sobre contagem, sucessões e aplicações a problemas de crescimento, com síntese em vídeo.",
+      "highlights": [
+        "Listagens e árvores de decisão para contagem",
+        "Sucessões aritméticas e geométricas",
+        "Resumo em vídeo com estratégias de resolução"
+      ],
+      "link": "resource.html?id=1401",
+      "buttonText": "Explorar materiais"
+    },
+    {
+      "image": "assets/img/index/3.png",
+      "imageAlt": "Resumo de probabilidades com gráficos e tabelas",
+      "badge": "12.º Ano",
+      "badgeClass": "text-bg-warning",
+      "title": "Probabilidades e distribuições",
+      "description": "Conjunto de fichas sobre noções gerais de probabilidade, condicionadas, combinatória e distribuições, com vídeo de revisão.",
+      "highlights": [
+        "Conjuntos e propriedades fundamentais",
+        "Probabilidade condicionada com exemplos resolvidos",
+        "Distribuição normal e função massa de probabilidade"
+      ],
+      "link": "resource.html?id=2201",
+      "buttonText": "Consultar recursos"
+    }
+  ],
+  "testimonials": [
+    {
+      "image": "assets/img/index/testimonials-2.jpg",
+      "imageAlt": "Foto de estudante do 12.º ano",
+      "quote": "As fichas de modelos matemáticos ajudaram-me a comparar estratégias de eleições e finanças. O resumo em vídeo facilitou a revisão na véspera do teste.",
+      "author": "Maria Silva",
+      "year": "12.º ano"
+    },
+    {
+      "image": "assets/img/index/testimonials-1.jpg",
+      "imageAlt": "Foto de estudante do 11.º ano",
+      "quote": "Usei as fichas de contagem e sucessões para preparar a avaliação. O quadro passo a passo das derivadas ajudou-me a perceber onde aplicar cada regra.",
+      "author": "João Costa",
+      "year": "11.º ano"
+    }
+  ]
+}
