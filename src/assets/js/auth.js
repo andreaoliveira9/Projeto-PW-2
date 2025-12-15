@@ -82,10 +82,4 @@ function updateHeader() {
   }
 }
 
-var oldOnLoadAuth = window.onload;
-window.onload = function () {
-  if (oldOnLoadAuth != null) {
-    oldOnLoadAuth();
-  }
-  updateHeader();
-};
+updateHeader();

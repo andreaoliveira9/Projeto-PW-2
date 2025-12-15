@@ -111,6 +111,11 @@ async function loadAllResources() {
   await loadYearResources(11);
   await loadYearResources(12);
   updateAllFavoriteButtons();
+
+  let countElement = document.getElementById("count-number");
+  if (countElement != null) {
+    countElement.innerText = document.getElementsByTagName("tr").length;
+  }
 }
 
 function updateAllFavoriteButtons() {
@@ -338,15 +343,4 @@ function clearModalIframe(modalId) {
   }
 }
 
-var oldOnLoadCatalog = window.onload;
-window.onload = function () {
-  if (oldOnLoadCatalog != null) {
-    oldOnLoadCatalog();
-  }
-  loadAllResources().then(function () {
-    let countElement = document.getElementById("count-number");
-    if (countElement != null) {
-      countElement.innerText = document.getElementsByTagName("tr").length;
-    }
-  });
-};
+loadAllResources();

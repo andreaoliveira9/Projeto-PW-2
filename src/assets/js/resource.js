@@ -208,10 +208,4 @@ async function initializeResourcePage() {
   displayMessages(resourceId);
 }
 
-var oldOnLoadResource = window.onload;
-window.onload = function () {
-  if (oldOnLoadResource != null) {
-    oldOnLoadResource();
-  }
-  initializeResourcePage();
-};
+initializeResourcePage();

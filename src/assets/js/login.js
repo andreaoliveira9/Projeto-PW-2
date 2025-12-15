@@ -104,10 +104,4 @@ function clearValidation(input) {
   }
 }
 
-var oldOnLoadLogin = window.onload;
-window.onload = function () {
-  if (oldOnLoadLogin != null) {
-    oldOnLoadLogin();
-  }
-  checkIfAlreadyLoggedIn();
-};
+checkIfAlreadyLoggedIn();

@@ -177,11 +177,5 @@ function loadHistory() {
   }
 }
 
-var oldOnLoadCalculator = window.onload;
-window.onload = function () {
-  if (oldOnLoadCalculator != null) {
-    oldOnLoadCalculator();
-  }
-  loadHistory();
-  updateDisplay();
-};
+loadHistory();
+updateDisplay();

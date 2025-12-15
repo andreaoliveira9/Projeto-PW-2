@@ -190,10 +190,4 @@ function initializeAccountPage() {
   renderStudyPlan();
 }
 
-var oldOnLoadAccount = window.onload;
-window.onload = function () {
-  if (oldOnLoadAccount != null) {
-    oldOnLoadAccount();
-  }
-  initializeAccountPage();
-};
+initializeAccountPage();

@@ -247,10 +247,4 @@ function onFormReset() {
   }, 0);
 }
 
-var oldOnLoadContact = window.onload;
-window.onload = function () {
-  if (oldOnLoadContact != null) {
-    oldOnLoadContact();
-  }
-  updateCharacterCount();
-};
+updateCharacterCount();
