@@ -40,10 +40,10 @@ function updateProfileSummary(userData) {
   setTextById("profile-school", userData.school);
   setTextById("profile-last-access", formatLoginTime(userData.loginTime));
 
-  let yearCourse = document.getElementById("profile-year-course");
-  if (yearCourse != null) {
-    yearCourse.innerText = userData.year + ".º Ano · " + userData.course;
-  }
+  setTextById(
+    "profile-year-course",
+    userData.year + ".º Ano · " + userData.course
+  );
 
   setTextById("profile-goal", userData.goal);
 }
@@ -54,10 +54,7 @@ function updateAccountDetails(userData) {
   setTextById("account-school", userData.school);
   setTextById("account-course", userData.course);
 
-  let yearBadge = document.getElementById("account-year");
-  if (yearBadge != null) {
-    yearBadge.innerText = userData.year + ".º Ano";
-  }
+  setTextById("account-year", userData.year + ".º Ano");
 
   let planLabel = document.getElementById("profile-plan");
   if (planLabel != null && userData.activePlan != null) {

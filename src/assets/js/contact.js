@@ -231,7 +231,7 @@ function updateCharacterCount() {
     messageField.value = val;
   }
 
-  countDiv.innerText = currentLength + " / " + maxLength + " caracteres";
+  setTextById("char-count", currentLength + " / " + maxLength + " caracteres");
   if (currentLength > maxLength) {
     countDiv.classList.add("text-danger");
   } else {

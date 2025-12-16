@@ -112,10 +112,7 @@ async function loadAllResources() {
   await loadYearResources(12);
   updateAllFavoriteButtons();
 
-  let countElement = document.getElementById("count-number");
-  if (countElement != null) {
-    countElement.innerText = document.getElementsByTagName("tr").length;
-  }
+  setTextById("count-number", document.getElementsByTagName("tr").length);
 }
 
 function updateAllFavoriteButtons() {
@@ -242,10 +239,7 @@ function applyFilters() {
     }
   }
 
-  let countElement = document.getElementById("count-number");
-  if (countElement != null) {
-    countElement.innerText = visibleCount;
-  }
+  setTextById("count-number", visibleCount);
 }
 
 function resetFilters() {
@@ -285,10 +279,7 @@ function resetFilters() {
   for (let i = 0; i < tbodies.length; i++) {
     tbodyRows = tbodyRows + tbodies[i].getElementsByTagName("tr").length;
   }
-  let countElement = document.getElementById("count-number");
-  if (countElement != null) {
-    countElement.innerText = tbodyRows;
-  }
+  setTextById("count-number", tbodyRows);
 }
 
 function openPreview(button) {
