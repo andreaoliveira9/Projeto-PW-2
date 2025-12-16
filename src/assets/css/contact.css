@@ -87,3 +87,13 @@
     transform: translateY(0);
   }
 }
+
+/* Dark mode character counter fix */
+[data-theme="dark"] #char-count,
+[data-theme="auto"] #char-count {
+  color: var(--default-color);
+}
+
+[data-theme="dark"] #char-count.text-danger {
+  color: #dc3545 !important;
+}

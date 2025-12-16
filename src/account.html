@@ -323,7 +323,10 @@
                         class="text-muted font-size-sm mb-3"
                         id="profile-school"
                       ></p>
-                      <button class="btn btn-primary btn-sm px-3">
+                      <button
+                        class="btn btn-primary btn-sm px-3"
+                        onclick="openPlanModal()"
+                      >
                         Gerir plano
                       </button>
                     </div>
@@ -424,9 +427,12 @@
                   </li>
                 </ul>
                 <div class="card-footer bg-transparent text-end">
-                  <a href="#" class="btn btn-primary btn-sm"
-                    ><i class="bi bi-sliders me-1"></i>Atualizar preferências</a
+                  <button
+                    class="btn btn-primary btn-sm"
+                    onclick="openPreferencesModal()"
                   >
+                    <i class="bi bi-sliders me-1"></i>Atualizar preferências
+                  </button>
                 </div>
               </div>
             </div>
@@ -556,6 +562,13 @@
     <!-- Preloader -->
     <div id="preloader"></div>
 
+    <!-- Modal backdrop (permanent element, shown/hidden via JS) -->
+    <div
+      class="modal-backdrop fade"
+      id="modal-backdrop"
+      style="display: none"
+    ></div>
+
     <!-- Templates -->
     <template id="template-favorite-item">
       <div
@@ -576,6 +589,126 @@
         </div>
       </div>
     </template>
+
+    <!-- Modal: Gerir Plano -->
+    <div
+      class="modal fade"
+      id="planModal"
+      tabindex="-1"
+      aria-labelledby="planModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="planModalLabel">
+              <i class="bi bi-calendar-check me-2"></i>Gerir plano semanal
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="table-responsive">
+              <table class="table table-bordered align-middle">
+                <thead class="table-light">
+                  <tr>
+                    <th scope="col">Dia</th>
+                    <th scope="col">Tema</th>
+                    <th scope="col">Objetivo</th>
+                    <th scope="col">Tempo (min)</th>
+                    <th scope="col">Ações</th>
+                  </tr>
+                </thead>
+                <tbody id="plan-modal-body"></tbody>
+              </table>
+            </div>
+            <button class="btn btn-success btn-sm mt-3" onclick="addPlanRow()">
+              <i class="bi bi-plus-circle me-1"></i>Adicionar linha
+            </button>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button type="button" class="btn btn-primary" onclick="savePlan()">
+              Guardar alterações
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal: Atualizar Preferências -->
+    <div
+      class="modal fade"
+      id="preferencesModal"
+      tabindex="-1"
+      aria-labelledby="preferencesModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="preferencesModalLabel">
+              <i class="bi bi-sliders me-2"></i>Atualizar preferências
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Fechar"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <div class="mb-3">
+              <label for="goalInput" class="form-label fw-bold">Objetivo</label>
+              <input
+                type="text"
+                class="form-control"
+                id="goalInput"
+                placeholder="Ex: Atingir 20 valores no exame"
+              />
+            </div>
+            <div class="mb-3">
+              <label class="form-label fw-bold">Competências em foco</label>
+              <small class="text-muted d-block mb-2"
+                >Separe as competências com vírgulas</small
+              >
+              <textarea
+                class="form-control"
+                id="skillsInput"
+                rows="3"
+                placeholder="Ex: Probabilidades compostas, Derivadas, Vetores no espaço"
+              ></textarea>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Cancelar
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="savePreferences()"
+            >
+              Guardar preferências
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <script src="assets/js/utils.js"></script>
     <script src="assets/js/theme.js" defer></script>
