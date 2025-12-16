@@ -69,14 +69,14 @@
       "imageAlt": "Foto de estudante do 12.º ano",
       "quote": "As fichas de modelos matemáticos ajudaram-me a comparar estratégias de eleições e finanças. O resumo em vídeo facilitou a revisão na véspera do teste.",
       "author": "Maria Silva",
-      "year": "12.º ano"
+      "year": 12
     },
     {
       "image": "assets/img/index/testimonials-1.jpg",
       "imageAlt": "Foto de estudante do 11.º ano",
       "quote": "Usei as fichas de contagem e sucessões para preparar a avaliação. O quadro passo a passo das derivadas ajudou-me a perceber onde aplicar cada regra.",
       "author": "João Costa",
-      "year": "11.º ano"
+      "year": 11
     }
   ]
 }

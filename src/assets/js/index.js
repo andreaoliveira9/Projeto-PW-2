@@ -98,7 +98,7 @@ function renderTestimonials(testimonials) {
     html += '<blockquote class="mb-0">';
     html += '<p class="mb-2">"' + testimonial.quote + '"</p>';
     html += '<footer class="blockquote-footer mt-2">';
-    html += testimonial.author + ", " + testimonial.year;
+    html += testimonial.author + ", " + testimonial.year + ".º ano";
     html += "</footer>";
     html += "</blockquote>";
     html += "</div>";
