@@ -504,7 +504,6 @@ function savePreferences() {
   backdrop.classList.remove("show");
 
   updateProfileSummary(userData);
-  updateAccountDetails(userData);
   updateSkills(userData);
 
   alert("Preferências atualizadas com sucesso!");
