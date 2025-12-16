@@ -21,7 +21,6 @@ function createResourceRow(resource, year, categoryIndex) {
   let template = document.getElementById("template-resource-row");
   let clone = template.content.cloneNode(true);
 
-  // Get the first child (the tr) from the DocumentFragment
   let row = clone.children[0];
   row.getElementsByClassName("resource-title")[0].innerText = resource.title;
   row.getElementsByClassName("resource-type")[0].innerText = resource.type;
@@ -46,7 +45,6 @@ function createResourceRow(resource, year, categoryIndex) {
 function createResourceTable(resources, year, categoryIndex) {
   let template = document.getElementById("template-resource-table");
   let clone = template.content.cloneNode(true);
-
   // Get the first child (the table-responsive div) from the DocumentFragment
   let tableDiv = clone.children[0];
   let tbody = tableDiv.getElementsByTagName("tbody")[0];
@@ -64,7 +62,6 @@ function createAccordionItem(category, index, year) {
   let template = document.getElementById("template-accordion-item");
   let clone = template.content.cloneNode(true);
 
-  // Get the first child (the accordion-item div) from the DocumentFragment
   let item = clone.children[0];
   let header = item.getElementsByClassName("accordion-header")[0];
   header.setAttribute("id", "heading-" + itemId);
@@ -252,19 +249,16 @@ function resetFilters() {
     typeFilter.value = "todos";
   }
 
-  // Restore all rows visibility
   let rows = document.getElementsByTagName("tr");
   for (let i = 0; i < rows.length; i++) {
     rows[i].style.display = "";
   }
 
-  // Restore all accordion items visibility
   let items = document.getElementsByClassName("accordion-item");
   for (let i = 0; i < items.length; i++) {
     items[i].style.display = "";
   }
 
-  // Restore all sections visibility
   let yearIds = ["recursos-10", "recursos-11", "recursos-12"];
   for (let i = 0; i < yearIds.length; i++) {
     let section = document.getElementById(yearIds[i]);
@@ -273,7 +267,6 @@ function resetFilters() {
     }
   }
 
-  // Update count
   let tbodyRows = 0;
   let tbodies = document.getElementsByTagName("tbody");
   for (let i = 0; i < tbodies.length; i++) {
