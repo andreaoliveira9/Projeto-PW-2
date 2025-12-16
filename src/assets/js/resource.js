@@ -7,6 +7,7 @@ async function loadAllResources() {
       for (let j = 0; j < json[i].resources.length; j++) {
         let resource = json[i].resources[j];
         resource.category = json[i].category;
+        resource.year = years[y];
         resources.push(resource);
       }
     }
