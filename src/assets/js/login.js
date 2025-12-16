@@ -65,6 +65,7 @@ async function handleLogin() {
       username: user.username,
       name: user.name,
       email: user.email,
+      profilePicture: user.profilePicture,
       year: user.year,
       school: user.school,
       course: user.course,

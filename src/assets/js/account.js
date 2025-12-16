@@ -1,3 +1,25 @@
+function closePlanModal() {
+  let planModal = document.getElementById("planModal");
+  planModal.classList.remove("show");
+  planModal.style.display = "none";
+  document.body.classList.remove("modal-open");
+
+  let backdrop = document.getElementById("modal-backdrop");
+  backdrop.style.display = "none";
+  backdrop.classList.remove("show");
+}
+
+function closePreferencesModal() {
+  let preferencesModal = document.getElementById("preferencesModal");
+  preferencesModal.classList.remove("show");
+  preferencesModal.style.display = "none";
+  document.body.classList.remove("modal-open");
+
+  let backdrop = document.getElementById("modal-backdrop");
+  backdrop.style.display = "none";
+  backdrop.classList.remove("show");
+}
+
 function checkAuthentication() {
   let session = localStorage.getItem("mathpath-session");
   if (session == null) {
@@ -46,6 +68,11 @@ function updateProfileSummary(userData) {
   );
 
   setTextById("profile-goal", userData.goal);
+
+  let profilePicture = document.getElementById("profile-picture");
+  if (profilePicture != null && userData.profilePicture != null) {
+    profilePicture.src = userData.profilePicture;
+  }
 }
 
 function updateAccountDetails(userData) {
