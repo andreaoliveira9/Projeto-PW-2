@@ -57,7 +57,7 @@ function calculate() {
   } else if (operation === "/") {
     if (num2 === 0) {
       currentValue = "Erro";
-      displayExpression = "Erro";
+      displayExpression = "Erro: Divisão por zero";
       updateDisplay();
       addToHistory(expression, "Erro: Divisão por zero");
       previousValue = "";
@@ -105,7 +105,7 @@ function calculateSquareRoot() {
   let num = parseFloat(currentValue);
   if (num < 0) {
     currentValue = "Erro";
-    displayExpression = "Erro";
+    displayExpression = "Erro: Raiz de número negativo";
     updateDisplay();
     addToHistory("√" + num, "Erro: Raiz de número negativo");
     return;

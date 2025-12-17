@@ -107,12 +107,8 @@ function updateSkills(userData) {
   skillsContainer.innerHTML = html;
 }
 
-function openFavoriteUrl(url) {
-  window.open(url, "_blank");
-}
-
 function removeFavoriteFromList(resourceId) {
-  event.stopPropagation();
+  event.stopPropagation(); // Ao clicar no botão, não abrir o link do favorito
   removeFromFavorites(resourceId);
   displayFavorites();
 }
@@ -138,7 +134,7 @@ function displayFavorites() {
     let clone = template.content.cloneNode(true);
 
     let item = clone.children[0];
-    item.setAttribute("onclick", "openFavoriteUrl('" + fav.url + "')");
+    item.setAttribute("onclick", "window.open('" + fav.url + "', '_blank')");
 
     item.getElementsByClassName("favorite-title")[0].innerText = fav.title;
 

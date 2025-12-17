@@ -45,7 +45,7 @@ function createResourceRow(resource, year, categoryIndex) {
 function createResourceTable(resources, year, categoryIndex) {
   let template = document.getElementById("template-resource-table");
   let clone = template.content.cloneNode(true);
-  // Get the first child (the table-responsive div) from the DocumentFragment
+
   let tableDiv = clone.children[0];
   let tbody = tableDiv.getElementsByTagName("tbody")[0];
   for (let i = 0; i < resources.length; i++) {

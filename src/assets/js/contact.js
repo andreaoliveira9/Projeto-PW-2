@@ -103,16 +103,6 @@ function onInputMessage(input) {
 function handleFormSubmit() {
   let form = document.getElementById("contact-form");
   let submitButton = document.getElementById("contact-submit-btn");
-  if (submitButton == null) {
-    let btns = form.getElementsByTagName("button");
-    for (let i = 0; i < btns.length; i++) {
-      if (btns[i].type === "submit") {
-        submitButton = btns[i];
-        break;
-      }
-    }
-  }
-
   let originalButtonText = submitButton.innerHTML;
 
   let nameValue = document.getElementById("name-field").value.trim();
@@ -191,9 +181,9 @@ function saveContactMessage(formData) {
 
 function showSuccessModal() {
   let modalElement = document.getElementById("success-modal");
-  if (typeof bootstrap !== "undefined" && modalElement != null) {
-    let modal = new bootstrap.Modal(modalElement);
-    modal.show();
+  if (modalElement != null) {
+    modalElement.style.display = "block";
+    modalElement.classList.add("show");
   }
 }
 
@@ -225,7 +215,6 @@ function updateCharacterCount() {
       '<div id="char-count" class="form-text"></div>';
     messageField = document.getElementById("message-field");
     countDiv = document.getElementById("char-count");
-    messageField.focus();
     let val = messageField.value;
     messageField.value = "";
     messageField.value = val;
