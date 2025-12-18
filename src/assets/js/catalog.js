@@ -36,6 +36,7 @@ function createResourceRow(resource, year, categoryIndex) {
   previewBtn.setAttribute("data-bs-target", previewModal);
   previewBtn.setAttribute("data-url", previewUrl);
   previewBtn.setAttribute("data-title", resource.title);
+  previewBtn.setAttribute("data-resource-url", getResourceUrl(resource));
 
   let resourceLink = row.getElementsByClassName("resource-link")[0];
   resourceLink.setAttribute("href", getResourceUrl(resource));
@@ -286,6 +287,7 @@ function openPreview(button) {
   let url = button.getAttribute("data-url");
   let title = button.getAttribute("data-title");
   let target = button.getAttribute("data-bs-target");
+  let resourceUrl = button.getAttribute("data-resource-url");
 
   let targetId = target.substring(1);
   let modal = document.getElementById(targetId);
@@ -312,6 +314,10 @@ function openPreview(button) {
     if (iframe != null) {
       iframe.src = url;
     }
+    let openLink = document.getElementById("video-open-resource-link");
+    if (openLink != null && resourceUrl != null) {
+      openLink.setAttribute("href", resourceUrl);
+    }
   } else if (target === "#pdfPreviewModal") {
     let modalTitle = modal.getElementsByClassName("modal-title")[0];
     let iframe = modal.getElementsByTagName("iframe")[0];
@@ -320,6 +326,10 @@ function openPreview(button) {
     }
     if (iframe != null) {
       iframe.src = url + "#toolbar=0&navpanes=0&scrollbar=0";
+    }
+    let openLink = document.getElementById("pdf-open-resource-link");
+    if (openLink != null && resourceUrl != null) {
+      openLink.setAttribute("href", resourceUrl);
     }
   }
 }
