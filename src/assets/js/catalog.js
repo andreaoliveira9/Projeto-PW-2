@@ -1,3 +1,10 @@
+function getResourceUrl(resource) {
+  if (resource.type === "Vídeo") {
+    return resource.url;
+  }
+  return "resource.html?id=" + resource.id;
+}
+
 function createResourceRow(resource, year, categoryIndex) {
   if (resource.id == null) {
     resource.id =
@@ -31,13 +38,13 @@ function createResourceRow(resource, year, categoryIndex) {
   previewBtn.setAttribute("data-title", resource.title);
 
   let resourceLink = row.getElementsByClassName("resource-link")[0];
-  resourceLink.setAttribute("href", resource.url);
+  resourceLink.setAttribute("href", getResourceUrl(resource));
 
   let favoriteBtn = row.getElementsByClassName("favorite-btn")[0];
   favoriteBtn.setAttribute("data-resource-id", resource.id);
   favoriteBtn.setAttribute("data-title", resource.title);
   favoriteBtn.setAttribute("data-type", resource.type);
-  favoriteBtn.setAttribute("data-url", resource.url);
+  favoriteBtn.setAttribute("data-url", getResourceUrl(resource));
 
   return clone;
 }
