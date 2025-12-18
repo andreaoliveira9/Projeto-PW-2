@@ -70,8 +70,13 @@ function updateProfileSummary(userData) {
   setTextById("profile-goal", userData.goal);
 
   let profilePicture = document.getElementById("profile-picture");
-  if (profilePicture != null && userData.profilePicture != null) {
-    profilePicture.src = userData.profilePicture;
+  if (profilePicture != null) {
+    let pictureUrl = userData.profilePicture;
+    if (pictureUrl == null || pictureUrl === "") {
+      pictureUrl = "assets/img/account/user-icon.png";
+    }
+    profilePicture.setAttribute("src", pictureUrl);
+    profilePicture.setAttribute("alt", userData.name || "Foto de perfil");
   }
 }
 
